@@ -17,13 +17,13 @@
     <header class="border-b border-purple-900/40 bg-[#1e1b2e]/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3 space-x-reverse">
-                <div class="w-10 h-10 bg-gradient-to-tr from-purple-600 to-indigo-500 rounded-xl flex items-center justify-center font-bold text-xl text-white shadow-lg shadow-purple-500/30">
-                    أ
+                <!-- صورة شعار التطبيق بدل الحرف النصي -->
+                <div class="w-12 h-12 rounded-xl overflow-hidden shadow-lg shadow-purple-500/30 border border-purple-500/40">
+                    <img src="icon.png" alt="ARBAH Logo" class="w-full h-full object-cover">
                 </div>
                 <span class="font-extrabold text-xl text-white tracking-wide">ARBAH APP</span>
             </div>
             <div class="flex items-center space-x-2 space-x-reverse">
-                <!-- زر طلب التفعيل في الهيدر -->
                 <button onclick="openActivationModal()" class="bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold px-4 py-2 rounded-xl transition flex items-center space-x-1 space-x-reverse shadow-lg shadow-purple-600/30">
                     <i class="fa-solid fa-key"></i>
                     <span>طلب التفعيل</span>
@@ -46,7 +46,7 @@
             برنامج ARBAH APP المخصص لأجهزة الكمبيوتر والهواتف والطابلت (Windows/ios/apk). يساعدك في تنظيم محلك، طباعة الفواتير والباركود مباشرة، ومتابعة الديون والأرباح بدقة عالية.
         </p>
 
-        <!-- Download Buttons (مرتبط برابط Google Drive الخاص بك) -->
+        <!-- Download Buttons -->
         <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
             <a href="https://drive.google.com/file/d/1DZ5R0mFrESglaXQiYNrUvqY3oNT3nmdH/view?usp=sharing" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-2xl shadow-xl shadow-purple-600/30 transition text-sm flex items-center justify-center space-x-2 space-x-reverse">
                 <i class="fa-solid fa-download text-lg"></i>
@@ -58,7 +58,6 @@
             </a>
         </div>
         
-        <!-- زر طلب التفعيل وسط الصفحة -->
         <div class="pt-2">
             <button onclick="openActivationModal()" class="px-6 py-3 bg-purple-900/40 hover:bg-purple-900/60 text-purple-200 border border-purple-500/40 font-bold rounded-xl transition text-xs shadow-md">
                 <i class="fa-solid fa-file-contract ml-1"></i> هل حملت البرنامج؟ اضغط هنا لطلب التفعيل الرسمي
@@ -94,7 +93,7 @@
         </div>
     </section>
 
-    <!-- Pricing / Subscription Section -->
+    <!-- Pricing Section -->
     <section class="max-w-4xl mx-auto px-4 py-12 border-t border-purple-900/30 text-center">
         <h2 class="text-2xl font-bold text-white mb-2">خطط الاشتراك والتفعيل</h2>
         <p class="text-xs text-slate-400 mb-8">اختر الخطة المناسبة لنشاطك التجاري</p>
@@ -124,14 +123,15 @@
         <p>للتواصل والدعم الفني: واتساب 0542054655 | seetuimilodnn@gmail.com</p>
     </footer>
 
-    <!-- ================= ACTIVATION MODAL (نافذة طلب التفعيل) ================= -->
+    <!-- ================= ACTIVATION MODAL ================= -->
     <div id="activationModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
         <div class="bg-[#1e1b2e] border border-purple-500/40 rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl relative">
             <button onclick="closeActivationModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             
             <div class="text-center space-y-1">
-                <div class="w-12 h-12 bg-purple-600/20 text-purple-400 rounded-xl flex items-center justify-center mx-auto text-xl border border-purple-500/30">
-                    <i class="fa-solid fa-key"></i>
+                <!-- صورة شعار التطبيق داخل نافذة طلب التفعيل أيضاً -->
+                <div class="w-14 h-14 rounded-2xl overflow-hidden mx-auto shadow-lg shadow-purple-500/30 border border-purple-500/40 mb-2">
+                    <img src="image_generation_content/8515116103439973158" alt="ARBAH Logo" class="w-full h-full object-cover">
                 </div>
                 <h3 class="text-xl font-bold text-white">إرسال طلب تفعيل التطبيق</h3>
                 <p class="text-xs text-slate-400">أدخل بيانات متجرك ليصلك مفتاح الترخيص قريباً</p>
@@ -171,7 +171,7 @@
         </div>
     </div>
 
-    <!-- ================= SUCCESS POPUP MODAL (نافذة النجاح والانتظار) ================= -->
+    <!-- ================= SUCCESS POPUP MODAL ================= -->
     <div id="successModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
         <div class="bg-[#1e1b2e] border border-emerald-500/40 rounded-2xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl">
             <div class="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto text-2xl border border-emerald-500/30">
@@ -187,7 +187,7 @@
         </div>
     </div>
 
-    <!-- JavaScript للتحكم بالطلب والربط بالواتساب -->
+    <!-- JavaScript -->
     <script>
         function openActivationModal() {
             document.getElementById('activationModal').classList.remove('hidden');
@@ -200,24 +200,20 @@
         function handleActivationSubmit(e) {
             e.preventDefault();
             
-            // جلب البيانات المدخلة من النموذج
             const storeName = document.getElementById('actStoreName').value.trim();
             const phone = document.getElementById('actPhone').value.trim();
             const email = document.getElementById('actEmail').value.trim();
             const serial = document.getElementById('actSerial').value.trim();
 
-            // تجهيز نص رسالة الواتساب لتصلك مباشرة مع كل تفاصيل الزبون
             const message = `طلب تفعيل جديد لبرنامج أرباح ARBAH APP:%0A` +
                             `- اسم المتجر: ${encodeURIComponent(storeName)}%0A` +
                             `- رقم الهاتف: ${encodeURIComponent(phone)}%0A` +
                             `- البريد: ${encodeURIComponent(email || 'غير مدخل')}%0A` +
                             `- السريال العتادي: ${encodeURIComponent(serial || 'غير مدخل')}`;
 
-            // فتح محادثة الواتساب الخاصة بك تلقائياً بالبيانات
             const whatsappUrl = `https://wa.me/213542054655?text=${message}`;
             window.open(whatsappUrl, '_blank');
 
-            // إغلاق نافذة الإدخال وإظهار رسالة الشكر والانتظار للزبون
             closeActivationModal();
             document.getElementById('activationForm').reset();
             document.getElementById('successModal').classList.remove('hidden');
