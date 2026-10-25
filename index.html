@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,161 +9,290 @@
     <!-- Icons & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <style> body { font-family: 'Cairo', sans-serif; } </style>
+    <style>
+        /* ================= THEMES SYSTEM ================= */
+        :root, [data-theme="dark"] {
+          --bg: #13111c;
+          --panel: #1e1b2e;
+          --panel2: #141221;
+          --text: #f1f5f9;
+          --muted: #94a3b8;
+          --primary: #9333ea;
+          --primary-hover: #a855f7;
+          --border: rgba(147, 51, 234, 0.3);
+          --card-bg: #1e1b2e;
+          --pos-card: rgba(255, 255, 255, 0.04);
+        }
+
+        [data-theme="light"] {
+          --bg: #f8fafc;
+          --panel: #ffffff;
+          --panel2: #f1f5f9;
+          --text: #0f172a;
+          --muted: #64748b;
+          --primary: #7c3aed;
+          --primary-hover: #6d28d9;
+          --border: rgba(124, 58, 237, 0.2);
+          --card-bg: #ffffff;
+          --pos-card: rgba(0, 0, 0, 0.03);
+        }
+
+        [data-theme="green"] {
+          --bg: #f3fbf7;
+          --panel: #ffffff;
+          --panel2: #e4f5ed;
+          --text: #0f382c;
+          --muted: #4a7567;
+          --primary: #10b981;
+          --primary-hover: #059669;
+          --border: rgba(16, 185, 129, 0.25);
+          --card-bg: #ffffff;
+          --pos-card: rgba(16, 185, 129, 0.05);
+        }
+
+        body { 
+          font-family: 'Cairo', sans-serif; 
+          background-color: var(--bg); 
+          color: var(--text); 
+          transition: background 0.3s, color 0.3s;
+        }
+
+        .custom-panel { background-color: var(--panel); border-color: var(--border); }
+        .custom-panel2 { background-color: var(--panel2); }
+        .select-theme { background: var(--panel); color: var(--text); border: 1px solid var(--border); }
+    </style>
 </head>
-<body class="bg-[#13111c] text-slate-100 min-h-screen">
+<body class="min-h-screen">
 
     <!-- Header / Navbar -->
-    <header class="border-b border-purple-900/40 bg-[#1e1b2e]/80 backdrop-blur-md sticky top-0 z-50">
+    <header class="border-b border-purple-900/40 bg-opacity-80 backdrop-blur-md sticky top-0 z-50 custom-panel">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3 space-x-reverse">
-                <!-- صورة شعار التطبيق بدل الحرف النصي -->
                 <div class="w-12 h-12 rounded-xl overflow-hidden shadow-lg shadow-purple-500/30 border border-purple-500/40">
                     <img src="icon.png" alt="ARBAH Logo" class="w-full h-full object-cover">
                 </div>
-                <span class="font-extrabold text-xl text-white tracking-wide">ARBAH APP</span>
+                <span class="font-extrabold text-xl tracking-wide" data-i18n="brand_name">ARBAH APP</span>
             </div>
-            <div class="flex items-center space-x-2 space-x-reverse">
+
+            <!-- Theme Switcher, Language Switcher & Actions -->
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <select id="langSelect" class="select-theme text-xs rounded-xl px-3 py-2 outline-none cursor-pointer font-bold">
+                    <option value="ar">🇩🇿 العربية</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="en">🇬🇧 English</option>
+                </select>
+
+                <select id="themeSelect" class="select-theme text-xs rounded-xl px-3 py-2 outline-none cursor-pointer font-bold">
+                    <option value="dark" data-i18n="theme_dark">🌙 داكن</option>
+                    <option value="light" data-i18n="theme_light">☀️ فاتح</option>
+                    <option value="green" data-i18n="theme_green">🌿 أخضر</option>
+                </select>
+
                 <button onclick="openActivationModal()" class="bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold px-4 py-2 rounded-xl transition flex items-center space-x-1 space-x-reverse shadow-lg shadow-purple-600/30">
                     <i class="fa-solid fa-key"></i>
-                    <span>طلب التفعيل</span>
+                    <span data-i18n="nav_activation">طلب التفعيل</span>
                 </button>
                 <a href="https://wa.me/213542054655" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-xl transition flex items-center space-x-2 space-x-reverse">
                     <i class="fa-brands fa-whatsapp text-base"></i>
-                    <span>واتساب</span>
+                    <span data-i18n="nav_whatsapp">واتساب</span>
                 </a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="max-w-6xl mx-auto px-4 py-16 text-center space-y-6">
-        <span class="bg-purple-950 text-purple-300 border border-purple-800/50 text-xs px-3 py-1 rounded-full font-semibold">الإصدار 4.9 متوفر الآن</span>
-        <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight">
-            النظام الأسهل والأسرع لإدارة <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">المبيعات والمخزون</span>
+    <section class="max-w-6xl mx-auto px-4 py-12 text-center space-y-6">
+        <span class="bg-purple-950 text-purple-300 border border-purple-800/50 text-xs px-3 py-1 rounded-full font-semibold" data-i18n="hero_badge">الإصدار 4.9 متوفر الآن</span>
+        <h1 class="text-3xl sm:text-5xl font-black leading-tight">
+            <span data-i18n="hero_title_1">النظام الأسهل والأسرع لإدارة</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400" data-i18n="hero_title_2">المبيعات والمخزون</span>
         </h1>
-        <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed" data-i18n="hero_desc">
             برنامج ARBAH APP المخصص لأجهزة الكمبيوتر والهواتف والطابلت (Windows/ios/apk). يساعدك في تنظيم محلك، طباعة الفواتير والباركود مباشرة، ومتابعة الديون والأرباح بدقة عالية.
         </p>
 
         <!-- Download Buttons -->
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
-            <a href="https://drive.google.com/file/d/1DZ5R0mFrESglaXQiYNrUvqY3oNT3nmdH/view?usp=sharing" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-2xl shadow-xl shadow-purple-600/30 transition text-sm flex items-center justify-center space-x-2 space-x-reverse">
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
+            <a href="https://drive.google.com/file/d/1DZ5R0mFrESglaXQiYNrUvqY3oNT3nmdH/view" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-2xl shadow-xl shadow-purple-600/30 transition text-sm flex items-center justify-center space-x-2 space-x-reverse">
                 <i class="fa-solid fa-download text-lg"></i>
-                <span>تحميل البرنامج للكمبيوتر (EXE)</span>
+                <span data-i18n="btn_download_pc">تحميل البرنامج للكمبيوتر (EXE)</span>
             </a>
-            <a href="https://wa.me/213542054655" target="_blank" class="w-full sm:w-auto px-6 py-4 bg-[#1e1b2e] hover:bg-purple-900/30 text-purple-300 border border-purple-500/30 font-bold rounded-2xl transition text-sm flex items-center justify-center space-x-2 space-x-reverse">
+            <a href="https://wa.me/213542054655" target="_blank" class="w-full sm:w-auto px-6 py-4 custom-panel hover:bg-purple-900/30 text-purple-300 border border-purple-500/30 font-bold rounded-2xl transition text-sm flex items-center justify-center space-x-2 space-x-reverse">
                 <i class="fa-solid fa-headset text-lg"></i>
-                <span>اطلب نسخة الهاتف والدعم</span>
+                <span data-i18n="btn_phone_support">اطلب نسخة الهاتف والدعم</span>
             </a>
-        </div>
-        
-        <div class="pt-2">
-            <button onclick="openActivationModal()" class="px-6 py-3 bg-purple-900/40 hover:bg-purple-900/60 text-purple-200 border border-purple-500/40 font-bold rounded-xl transition text-s shadow-md">
-                <i class="fa-solid fa-file-contract ml-1"></i>  اضغط هنا لطلب نسخة مجانية
+            <button onclick="openActivationModal()" class="w-full sm:w-auto px-6 py-4 bg-purple-900/40 hover:bg-purple-900/60 text-purple-200 border border-purple-500/40 font-bold rounded-2xl transition text-sm flex items-center justify-center space-x-2 space-x-reverse shadow-md">
+                <i class="fa-solid fa-file-contract ml-1"></i>
+                <span data-i18n="btn_free_version">اضغط هنا لطلب نسخة مجانية</span>
             </button>
+        </div>
+    </section>
+
+    <!-- ================= INTERACTIVE POS SALES SIMULATION (تم وضعها هنا مباشرة بعد أزرار التحميل) ================= -->
+    <section class="max-w-4xl mx-auto px-4 py-8">
+        <div class="text-center mb-6">
+            <span class="text-cyan-400 uppercase text-xs font-extrabold tracking-widest" data-i18n="pos_badge">تجربة حية</span>
+            <h2 class="text-2xl font-bold mt-1" data-i18n="pos_title">جرب شاشة المبيعات التفاعلية لبرنامج أرباح</h2>
+            <p class="text-xs text-slate-400 mt-1" data-i18n="pos_desc">انقر على أي منتج أدناه لإضافته إلى سلة المبيعات وحساب الإجمالي مباشرة</p>
+        </div>
+
+        <div class="flex justify-center" id="visualContainer" style="perspective: 1000px;">
+            <div class="custom-panel border rounded-3xl p-5 w-full max-w-lg shadow-2xl transition-transform duration-100 ease-out" id="interactiveDashboard">
+                
+                <div class="flex justify-between items-center mb-4 pb-2 border-b border-purple-900/30">
+                    <div class="flex gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-yellow-500 inline-block"></span><span class="w-2.5 h-2.5 rounded-full bg-green-500 inline-block"></span></div>
+                    <span class="text-[11px] text-purple-400 font-bold" data-i18n="pos_header_title">نقطة بيع أرباح (POS)</span>
+                    <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2.5 py-0.5 rounded-full font-bold" data-i18n="pos_status">● متصل</span>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex gap-2 bg-[var(--pos-card)] p-2 rounded-xl border border-purple-900/20 items-center text-xs text-slate-400">
+                        <i class="fa-solid fa-barcode text-purple-400"></i>
+                        <span data-i18n="pos_search">بحث عن منتج أو مسح باركود...</span>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="grid grid-cols-3 gap-2.5">
+                        <div onclick="addToCart('شاشة حماية هاتف', 350)" class="bg-[var(--pos-card)] border border-purple-900/20 rounded-xl p-2.5 text-center cursor-pointer hover:border-purple-500 transition">
+                            <div class="text-xl mb-1">📱</div>
+                            <span class="text-[11px] font-bold block truncate" data-i18n="prod_1">حماية شاشة</span>
+                            <span class="text-[10px] text-cyan-400 font-extrabold">350 د.ج</span>
+                        </div>
+                        <div onclick="addToCart('صيانة هاتف / فلاش', 1500)" class="bg-[var(--pos-card)] border border-purple-900/20 rounded-xl p-2.5 text-center cursor-pointer hover:border-purple-500 transition">
+                            <div class="text-xl mb-1">🛠️</div>
+                            <span class="text-[11px] font-bold block truncate" data-i18n="prod_2">صيانة / فلاش</span>
+                            <span class="text-[10px] text-cyan-400 font-extrabold">1500 د.ج</span>
+                        </div>
+                        <div onclick="addToCart('سماعات بلوتوث', 1200)" class="bg-[var(--pos-card)] border border-purple-900/20 rounded-xl p-2.5 text-center cursor-pointer hover:border-purple-500 transition">
+                            <div class="text-xl mb-1">🎧</div>
+                            <span class="text-[11px] font-bold block truncate" data-i18n="prod_3">سماعات لاسلكية</span>
+                            <span class="text-[10px] text-cyan-400 font-extrabold">1200 د.ج</span>
+                        </div>
+                    </div>
+
+                    <!-- Cart Summary -->
+                    <div class="bg-[var(--pos-card)] border border-purple-900/20 rounded-xl p-3">
+                        <div class="flex justify-between text-xs font-bold mb-2 pb-1.5 border-b border-purple-900/20">
+                            <span data-i18n="cart_title">محتويات الفاتورة</span>
+                            <span id="cartCount">عنصران</span>
+                        </div>
+                        
+                        <div class="max-h-24 overflow-y-auto space-y-1.5 text-xs" id="cartList">
+                            <!-- Items populated via JS -->
+                        </div>
+
+                        <div class="flex justify-between items-center mt-3 pt-2 border-t border-dashed border-purple-900/30 font-black text-sm">
+                            <span data-i18n="cart_total">المجموع الإجمالي:</span>
+                            <span id="cartTotalSum" class="text-emerald-400">1850 د.ج</span>
+                        </div>
+                    </div>
+
+                    <button onclick="triggerCheckout()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold py-2.5 rounded-xl text-xs transition shadow-md" data-i18n="cart_checkout">
+                        إتمام وطباعة الفاتورة صامتاً ↗
+                    </button>
+                </div>
+
+            </div>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="max-w-6xl mx-auto px-4 py-12 border-t border-purple-900/30">
-        <h2 class="text-center text-2xl font-bold text-white mb-10">مميزات برنامج أرباح</h2>
+        <h2 class="text-center text-2xl font-bold mb-10" data-i18n="features_title">مميزات برنامج أرباح</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-[#1e1b2e] p-6 rounded-2xl border border-purple-900/30 space-y-3">
+            <div class="custom-panel p-6 rounded-2xl border space-y-3 shadow-md">
                 <div class="w-12 h-12 bg-purple-600/20 text-purple-400 rounded-xl flex items-center justify-center text-xl">
                     <i class="fa-solid fa-print"></i>
                 </div>
-                <h3 class="font-bold text-white text-lg">طباعة صامتة فورية</h3>
-                <p class="text-xs text-slate-400 leading-relaxed">يدعم الطباعة الفورية الصامتة بدون أي نوافذ تأكيد، للوصلات الحرارية (80mm/58mm)، فواتير A4، وملصقات الباركود.</p>
+                <h3 class="font-bold text-lg" data-i18n="feat_1_title">طباعة صامتة فورية</h3>
+                <p class="text-xs text-slate-400 leading-relaxed" data-i18n="feat_1_desc">يدعم الطباعة الفورية الصامتة بدون أي نوافذ تأكيد، للوصلات الحرارية (80mm/58mm)، فواتير A4، وملصقات الباركود.</p>
             </div>
-            <div class="bg-[#1e1b2e] p-6 rounded-2xl border border-purple-900/30 space-y-3">
+            <div class="custom-panel p-6 rounded-2xl border space-y-3 shadow-md">
                 <div class="w-12 h-12 bg-emerald-600/20 text-emerald-400 rounded-xl flex items-center justify-center text-xl">
                     <i class="fa-solid fa-chart-line"></i>
                 </div>
-                <h3 class="font-bold text-white text-lg">تقارير وأرباح دقيقة</h3>
-                <p class="text-xs text-slate-400 leading-relaxed">حساب تلقائي لصافي أرباح اليوم والشهر، متابعة ديون الزبائن والموردين، وتصدير واسترجاع قواعد البيانات بسهولة.</p>
+                <h3 class="font-bold text-lg" data-i18n="feat_2_title">تقارير وأرباح دقيقة</h3>
+                <p class="text-xs text-slate-400 leading-relaxed" data-i18n="feat_2_desc">حساب تلقائي لصافي أرباح اليوم والشهر، متابعة ديون الزبائن والموردين، وتصدير واسترجاع قواعد البيانات بسهولة.</p>
             </div>
-            <div class="bg-[#1e1b2e] p-6 rounded-2xl border border-purple-900/30 space-y-3">
+            <div class="custom-panel p-6 rounded-2xl border space-y-3 shadow-md">
                 <div class="w-12 h-12 bg-indigo-600/20 text-indigo-400 rounded-xl flex items-center justify-center text-xl">
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
-                <h3 class="font-bold text-white text-lg">حماية وترخيص إلكتروني</h3>
-                <p class="text-xs text-slate-400 leading-relaxed">نظام حماية موثوق يربط التفعيل ببصمة العتاد الثابتة للحاسوب لضمان حقوقك واستدامة اشتراكات عملائك.</p>
+                <h3 class="font-bold text-lg" data-i18n="feat_3_title">حماية وترخيص إلكتروني</h3>
+                <p class="text-xs text-slate-400 leading-relaxed" data-i18n="feat_3_desc">نظام حماية موثوق يربط التفعيل ببصمة العتاد الثابتة للحاسوب لضمان حقوقك واستدامة اشتراكات عملائك.</p>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
     <section class="max-w-4xl mx-auto px-4 py-12 border-t border-purple-900/30 text-center">
-        <h2 class="text-2xl font-bold text-white mb-2">خطط الاشتراك والتفعيل</h2>
-        <p class="text-xs text-slate-400 mb-8">اختر الخطة المناسبة لنشاطك التجاري</p>
+        <h2 class="text-2xl font-bold mb-2" data-i18n="pricing_title">خطط الاشتراك والتفعيل</h2>
+        <p class="text-xs text-slate-400 mb-8" data-i18n="pricing_subtitle">اختر الخطة المناسبة لنشاطك التجاري</p>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-bold">
-            <div class="bg-[#1e1b2e] p-4 rounded-xl border border-purple-900/40">
-                <p class="text-purple-400 mb-1">شهر واحد</p>
-                <p class="text-white text-lg">800 د.ج</p>
+            <div class="custom-panel p-4 rounded-xl border shadow-sm">
+                <p class="text-purple-400 mb-1" data-i18n="plan_1_name">شهر واحد</p>
+                <p class="text-lg">800 د.ج</p>
             </div>
-            <div class="bg-[#1e1b2e] p-4 rounded-xl border border-purple-900/40">
-                <p class="text-purple-400 mb-1">3 أشهر</p>
-                <p class="text-white text-lg">2000 د.ج</p>
+            <div class="custom-panel p-4 rounded-xl border shadow-sm">
+                <p class="text-purple-400 mb-1" data-i18n="plan_2_name">3 أشهر</p>
+                <p class="text-lg">2000 د.ج</p>
             </div>
-            <div class="bg-[#1e1b2e] p-4 rounded-xl border border-purple-900/40">
-                <p class="text-purple-400 mb-1">6 أشهر</p>
-                <p class="text-white text-lg">3500 د.ج</p>
+            <div class="custom-panel p-4 rounded-xl border shadow-sm">
+                <p class="text-purple-400 mb-1" data-i18n="plan_3_name">6 أشهر</p>
+                <p class="text-lg">3500 د.ج</p>
             </div>
-            <div class="bg-gradient-to-b from-purple-900/40 to-[#1e1b2e] p-4 rounded-xl border border-purple-500/50">
-                <p class="text-emerald-400 mb-1">سنة كاملة</p>
-                <p class="text-white text-lg">5000 د.ج</p>
+            <div class="bg-gradient-to-b from-purple-900/40 to-purple-950 p-4 rounded-xl border border-purple-500/50 shadow-sm text-white">
+                <p class="text-emerald-400 mb-1" data-i18n="plan_4_name">سنة كاملة</p>
+                <p class="text-lg">5000 د.ج</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="border-t border-purple-900/30 py-8 text-center text-xs text-slate-500 space-y-2">
-        <p>جميع الحقوق محفوظة © ARBAH APP</p>
-        <p>للتواصل والدعم الفني: واتساب 0542054655 | seetuimilodnn@gmail.com</p>
+        <p data-i18n="footer_rights">جميع الحقوق محفوظة © ARBAH APP</p>
+        <p data-i18n="footer_contact">للتواصل والدعم الفني: واتساب 0542054655 | seetuimilodnn@gmail.com</p>
     </footer>
 
     <!-- ================= ACTIVATION MODAL ================= -->
     <div id="activationModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
-        <div class="bg-[#1e1b2e] border border-purple-500/40 rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl relative">
+        <div class="custom-panel border rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl relative">
             <button onclick="closeActivationModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             
             <div class="text-center space-y-1">
-                <!-- صورة شعار التطبيق داخل نافذة طلب التفعيل أيضاً -->
                 <div class="w-14 h-14 rounded-2xl overflow-hidden mx-auto shadow-lg shadow-purple-500/30 border border-purple-500/40 mb-2">
-                    <img src="image_generation_content/8515116103439973158" alt="ARBAH Logo" class="w-full h-full object-cover">
+                    <img src="icon.png" alt="ARBAH Logo" class="w-full h-full object-cover">
                 </div>
-                <h3 class="text-xl font-bold text-white">إرسال طلب تفعيل التطبيق</h3>
-                <p class="text-xs text-slate-400">أدخل بيانات متجرك ليصلك مفتاح الترخيص قريباً</p>
+                <h3 class="text-xl font-bold" data-i18n="modal_title">إرسال طلب تفعيل التطبيق</h3>
+                <p class="text-xs text-slate-400" data-i18n="modal_subtitle">أدخل بيانات متجرك ليصلك مفتاح الترخيص قريباً</p>
             </div>
 
             <form id="activationForm" onsubmit="handleActivationSubmit(event)" class="space-y-3.5 text-xs">
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1">اسم المتجر / المحل *:</label>
-                    <input type="text" id="actStoreName" required placeholder="مثال: متجر السعادة للملابس" class="w-full bg-[#141221] border border-purple-900/50 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-purple-500">
+                    <label class="block font-semibold mb-1" data-i18n="form_store">اسم المتجر / المحل *:</label>
+                    <input type="text" id="actStoreName" required placeholder="مثال: متجر السعادة للملابس" class="w-full custom-panel2 border rounded-xl px-3 py-2.5 outline-none focus:border-purple-500">
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1">رقم الهاتف *:</label>
-                    <input type="tel" id="actPhone" required placeholder="0542054655" class="w-full bg-[#141221] border border-purple-900/50 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-purple-500">
+                    <label class="block font-semibold mb-1" data-i18n="form_phone">رقم الهاتف *:</label>
+                    <input type="tel" id="actPhone" required placeholder="0542054655" class="w-full custom-panel2 border rounded-xl px-3 py-2.5 outline-none focus:border-purple-500">
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1">البريد الإلكتروني:</label>
-                    <input type="email" id="actEmail" placeholder="example@gmail.com" class="w-full bg-[#141221] border border-purple-900/50 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-purple-500">
+                    <label class="block font-semibold mb-1" data-i18n="form_email">البريد الإلكتروني:</label>
+                    <input type="email" id="actEmail" placeholder="example@gmail.com" class="w-full custom-panel2 border rounded-xl px-3 py-2.5 outline-none focus:border-purple-500">
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1">سريال الجهاز (اختياري):</label>
-                    <input type="text" id="actSerial" placeholder="ARB-HDD-XXXXXX-ARBAH" class="w-full bg-[#141221] border border-purple-900/50 rounded-xl px-3 py-2.5 text-white font-mono uppercase focus:outline-none focus:border-purple-500">
-                    <span class="text-[10px] text-slate-500 mt-0.5 block">تجده داخل التطبيق في واجهة تسجيل الدخول.</span>
+                    <label class="block font-semibold mb-1" data-i18n="form_serial">سريال الجهاز (اختياري):</label>
+                    <input type="text" id="actSerial" placeholder="ARB-HDD-XXXXXX-ARBAH" class="w-full custom-panel2 border rounded-xl px-3 py-2.5 font-mono uppercase outline-none focus:border-purple-500">
+                    <span class="text-[10px] text-slate-500 mt-0.5 block" data-i18n="form_serial_note">تجده داخل التطبيق في واجهة تسجيل الدخول.</span>
                 </div>
 
                 <div class="pt-2 flex space-x-2 space-x-reverse">
-                    <button type="submit" class="flex-1 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-xl transition shadow-lg shadow-purple-600/30">
+                    <button type="submit" class="flex-1 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-xl transition shadow-lg shadow-purple-600/30" data-i18n="form_submit">
                         إرسال الطلب (OK)
                     </button>
-                    <button type="button" onclick="closeActivationModal()" class="px-4 py-3 bg-slate-800 text-slate-300 rounded-xl hover:bg-slate-700">
+                    <button type="button" onclick="closeActivationModal()" class="px-4 py-3 bg-slate-800 text-slate-300 rounded-xl hover:bg-slate-700" data-i18n="form_cancel">
                         إلغاء
                     </button>
                 </div>
@@ -173,15 +302,15 @@
 
     <!-- ================= SUCCESS POPUP MODAL ================= -->
     <div id="successModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
-        <div class="bg-[#1e1b2e] border border-emerald-500/40 rounded-2xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl">
+        <div class="custom-panel border border-emerald-500/40 rounded-2xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl">
             <div class="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto text-2xl border border-emerald-500/30">
                 <i class="fa-solid fa-circle-check"></i>
             </div>
-            <h3 class="text-lg font-bold text-white">شكرا لك</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <h3 class="text-lg font-bold" data-i18n="success_title">شكرا لك</h3>
+            <p class="text-xs text-slate-300 leading-relaxed" data-i18n="success_desc">
                 انتظر قليلا وسيتم الرد من فريقنا التقني عبر رقم الهاتف أو البريد الإلكتروني الخاص بك في أقرب وقت.
             </p>
-            <button onclick="closeSuccessModal()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition text-xs shadow-lg shadow-emerald-600/30">
+            <button onclick="closeSuccessModal()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition text-xs shadow-lg shadow-emerald-600/30" data-i18n="success_btn">
                 حسناً
             </button>
         </div>
@@ -189,6 +318,197 @@
 
     <!-- JavaScript -->
     <script>
+        const WHATSAPP_NUMBER = "213542054655";
+
+        /* ================= TRANSLATIONS ================= */
+        const translations = {
+            ar: {
+                brand_name: "ARBAH APP",
+                nav_activation: "طلب التفعيل",
+                nav_whatsapp: "واتساب",
+                theme_dark: "🌙 داكن",
+                theme_light: "☀️ فاتح",
+                theme_green: "🌿 أخضر",
+                hero_badge: "الإصدار 4.9 متوفر الآن",
+                hero_title_1: "النظام الأسهل والأسرع لإدارة",
+                hero_title_2: "المبيعات والمخزون",
+                hero_desc: "برنامج ARBAH APP المخصص لأجهزة الكمبيوتر والهواتف والطابلت (Windows/ios/apk). يساعدك في تنظيم محلك، طباعة الفواتير والباركود مباشرة، ومتابعة الديون والأرباح بدقة عالية.",
+                btn_download_pc: "تحميل البرنامج للكمبيوتر (EXE)",
+                btn_phone_support: "اطلب نسخة الهاتف والدعم",
+                btn_free_version: "اضغط هنا لطلب نسخة مجانية",
+                features_title: "مميزات برنامج أرباح",
+                feat_1_title: "طباعة صامتة فورية",
+                feat_1_desc: "يدعم الطباعة الفورية الصامتة بدون أي نوافذ تأكيد، للوصلات الحرارية (80mm/58mm)، فواتير A4، وملصقات الباركود.",
+                feat_2_title: "تقارير وأرباح دقيقة",
+                feat_2_desc: "حساب تلقائي لصافي أرباح اليوم والشهر، متابعة ديون الزبائن والموردين، وتصدير واسترجاع قواعد البيانات بسهولة.",
+                feat_3_title: "حماية وترخيص إلكتروني",
+                feat_3_desc: "نظام حماية موثوق يربط التفعيل ببصمة العتاد الثابتة للحاسوب لضمان حقوقك واستدامة اشتراكات عملائك.",
+                pricing_title: "خطط الاشتراك والتفعيل",
+                pricing_subtitle: "اختر الخطة المناسبة لنشاطك التجاري",
+                plan_1_name: "شهر واحد",
+                plan_2_name: "3 أشهر",
+                plan_3_name: "6 أشهر",
+                plan_4_name: "سنة كاملة",
+                pos_badge: "تجربة حية",
+                pos_title: "جرب شاشة المبيعات التفاعلية لبرنامج أرباح",
+                pos_desc: "انقر على أي منتج أدناه لإضافته إلى سلة المبيعات وحساب الإجمالي مباشرة",
+                pos_header_title: "نقطة بيع أرباح (POS)",
+                pos_status: "● متصل",
+                pos_search: "بحث عن منتج أو مسح باركود...",
+                prod_1: "حماية شاشة",
+                prod_2: "صيانة / فلاش",
+                prod_3: "سماعات لاسلكية",
+                cart_title: "محتويات الفاتورة",
+                cart_total: "المجموع الإجمالي:",
+                cart_checkout: "إتمام وطباعة الفاتورة صامتاً ↗",
+                footer_rights: "جميع الحقوق محفوظة © ARBAH APP",
+                footer_contact: "للتواصل والدعم الفني: واتساب 0542054655 | seetuimilodnn@gmail.com",
+                modal_title: "إرسال طلب تفعيل التطبيق",
+                modal_subtitle: "أدخل بيانات متجرك ليصلك مفتاح الترخيص قريباً",
+                form_store: "اسم المتجر / المحل *:",
+                form_phone: "رقم الهاتف *:",
+                form_email: "البريد الإلكتروني:",
+                form_serial: "سريال الجهاز (اختياري):",
+                form_serial_note: "تجده داخل التطبيق في واجهة تسجيل الدخول.",
+                form_submit: "إرسال الطلب (OK)",
+                form_cancel: "إلغاء",
+                success_title: "شكرا لك",
+                success_desc: "انتظر قليلا وسيتم الرد من فريقنا التقني عبر رقم الهاتف أو البريد الإلكتروني الخاص بك في أقرب وقت.",
+                success_btn: "حسناً"
+            },
+            fr: {
+                brand_name: "ARBAH APP",
+                nav_activation: "Demander Activation",
+                nav_whatsapp: "WhatsApp",
+                theme_dark: "🌙 Sombre",
+                theme_light: "☀️ Clair",
+                theme_green: "🌿 Vert",
+                hero_badge: "Version 4.9 disponible maintenant",
+                hero_title_1: "Le système le plus simple et rapide pour gérer",
+                hero_title_2: "les Ventes et le Stock",
+                hero_desc: "Logiciel ARBAH APP conçu pour PC, téléphones et tablettes (Windows/iOS/APK). Il vous aide à organiser votre magasin, imprimer factures et codes-barres directement, et suivre vos dettes et profits avec précision.",
+                btn_download_pc: "Télécharger pour PC (EXE)",
+                btn_phone_support: "Demander version mobile & support",
+                btn_free_version: "Cliquez ici pour demander version gratuite",
+                features_title: "Fonctionnalités d'Arbah",
+                feat_1_title: "Impression silencieuse instantanée",
+                feat_1_desc: "Prend en charge l'impression thermique instantanée sans fenêtres de confirmation (80mm/58mm), factures A4 et étiquettes codes-barres.",
+                feat_2_title: "Rapports et bénéfices précis",
+                feat_2_desc: "Calcul automatique des profits nets journaliers et mensuels, suivi des dettes clients/fournisseurs, et gestion des sauvegardes.",
+                feat_3_title: "Sécurité et licence électronique",
+                feat_3_desc: "Système de protection fiable liant l'activation à l'empreinte matérielle pour garantir vos droits et la durabilité des abonnements.",
+                pricing_title: "Plans d'abonnement et d'activation",
+                pricing_subtitle: "Choisissez le plan adapté à votre activité commerciale",
+                plan_1_name: "1 Mois",
+                plan_2_name: "3 Mois",
+                plan_3_name: "6 Mois",
+                plan_4_name: "1 An",
+                pos_badge: "Démo en direct",
+                pos_title: "Testez l'écran de vente interactif d'Arbah",
+                pos_desc: "Cliquez sur un produit ci-dessous pour l'ajouter au panier et calculer le total en direct",
+                pos_header_title: "Caisse Arbah (POS)",
+                pos_status: "● En ligne",
+                pos_search: "Rechercher un produit ou scanner...",
+                prod_1: "Film protection",
+                prod_2: "Réparation / Flash",
+                prod_3: "Écouteurs sans fil",
+                cart_title: "Contenu de la facture",
+                cart_total: "Total général :",
+                cart_checkout: "Valider et imprimer silencieusement ↗",
+                footer_rights: "Tous droits réservés © ARBAH APP",
+                footer_contact: "Contact & Support : WhatsApp 0542054655 | seetuimilodnn@gmail.com",
+                modal_title: "Envoyer une demande d'activation",
+                modal_subtitle: "Entrez les détails de votre magasin pour recevoir la clé de licence",
+                form_store: "Nom du magasin / boutique *:",
+                form_phone: "Numéro de téléphone *:",
+                form_email: "E-mail:",
+                form_serial: "Numéro de série de l'appareil (optionnel):",
+                form_serial_note: "Trouvé dans l'application sur l'écran de connexion.",
+                form_submit: "Envoyer (OK)",
+                form_cancel: "Annuler",
+                success_title: "Merci",
+                success_desc: "Veuillez patienter, notre équipe technique vous répondra par téléphone ou e-mail dans les plus brefs délais.",
+                success_btn: "D'accord"
+            },
+            en: {
+                brand_name: "ARBAH APP",
+                nav_activation: "Request Activation",
+                nav_whatsapp: "WhatsApp",
+                theme_dark: "🌙 Dark",
+                theme_light: "☀️ Light",
+                theme_green: "🌿 Green",
+                hero_badge: "Version 4.9 is now available",
+                hero_title_1: "The easiest and fastest system to manage",
+                hero_title_2: "Sales & Inventory",
+                hero_desc: "ARBAH APP software designed for PC, phones, and tablets (Windows/iOS/APK). Helps you organize your store, print invoices and barcodes directly, and track debts and profits accurately.",
+                btn_download_pc: "Download for PC (EXE)",
+                btn_phone_support: "Request Mobile Version & Support",
+                btn_free_version: "Click here to request a free version",
+                features_title: "Arbah Features",
+                feat_1_title: "Instant Silent Printing",
+                feat_1_desc: "Supports instant silent printing without confirmation popups for thermal receipts (80mm/58mm), A4 invoices, and barcode labels.",
+                feat_2_title: "Accurate Reports & Profits",
+                feat_2_desc: "Automatic daily and monthly net profit calculation, customer/supplier debt tracking, and database backup/restore.",
+                feat_3_title: "Electronic Security & Licensing",
+                feat_3_desc: "Reliable protection system linking activation to hardware fingerprint to protect your rights and sustain client subscriptions.",
+                pricing_title: "Subscription & Activation Plans",
+                pricing_subtitle: "Choose the right plan for your commercial business",
+                plan_1_name: "1 Month",
+                plan_2_name: "3 Months",
+                plan_3_name: "6 Months",
+                plan_4_name: "1 Year",
+                pos_badge: "Live Demo",
+                pos_title: "Test Arbah's Interactive Sales Screen",
+                pos_desc: "Click on any product below to add it to the cart and calculate the total instantly",
+                pos_header_title: "Arbah POS",
+                pos_status: "● Online",
+                pos_search: "Search product or scan barcode...",
+                prod_1: "Screen Protector",
+                prod_2: "Repair / Flash",
+                prod_3: "Wireless Earbuds",
+                cart_title: "Invoice Items",
+                cart_total: "Grand Total:",
+                cart_checkout: "Complete & Print Silently ↗",
+                footer_rights: "All rights reserved © ARBAH APP",
+                footer_contact: "Contact & Support: WhatsApp 0542054655 | seetuimilodnn@gmail.com",
+                modal_title: "Send App Activation Request",
+                modal_subtitle: "Enter your store details to receive your license key soon",
+                form_store: "Store / Shop Name *:",
+                form_phone: "Phone Number *:",
+                form_email: "Email:",
+                form_serial: "Device Serial (Optional):",
+                form_serial_note: "Found inside the app on the login screen.",
+                form_submit: "Send Request (OK)",
+                form_cancel: "Cancel",
+                success_title: "Thank You",
+                success_desc: "Please wait, our technical team will respond via phone or email shortly.",
+                success_btn: "OK"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            
+            const dict = translations[lang] || translations.ar;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.textContent = dict[key];
+                }
+            });
+            localStorage.setItem('arbah_lang', lang);
+        }
+
+        const langSelect = document.getElementById('langSelect');
+        langSelect.addEventListener('change', (e) => {
+            setLanguage(e.target.value);
+        });
+
+        const savedLang = localStorage.getItem('arbah_lang') || 'ar';
+        langSelect.value = savedLang;
+        setLanguage(savedLang);
+
         function openActivationModal() {
             document.getElementById('activationModal').classList.remove('hidden');
         }
@@ -199,7 +519,6 @@
 
         function handleActivationSubmit(e) {
             e.preventDefault();
-            
             const storeName = document.getElementById('actStoreName').value.trim();
             const phone = document.getElementById('actPhone').value.trim();
             const email = document.getElementById('actEmail').value.trim();
@@ -211,9 +530,7 @@
                             `- البريد: ${encodeURIComponent(email || 'غير مدخل')}%0A` +
                             `- السريال العتادي: ${encodeURIComponent(serial || 'غير مدخل')}`;
 
-            const whatsappUrl = `https://wa.me/213542054655?text=${message}`;
-            window.open(whatsappUrl, '_blank');
-
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
             closeActivationModal();
             document.getElementById('activationForm').reset();
             document.getElementById('successModal').classList.remove('hidden');
@@ -222,6 +539,94 @@
         function closeSuccessModal() {
             document.getElementById('successModal').classList.add('hidden');
         }
+
+        /* ================= THEME SWITCHER LOGIC ================= */
+        const themeSelect = document.getElementById('themeSelect');
+        themeSelect.addEventListener('change', (e) => {
+            const theme = e.target.value;
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('arbah_theme', theme);
+        });
+
+        const savedTheme = localStorage.getItem('arbah_theme') || 'dark';
+        themeSelect.value = savedTheme;
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        /* ================= 3D PARALLAX EFFECT ================= */
+        const dashboard = document.getElementById('interactiveDashboard');
+        const visualContainer = document.getElementById('visualContainer');
+
+        if (visualContainer && dashboard) {
+            visualContainer.addEventListener('mousemove', (e) => {
+                const rect = visualContainer.getBoundingClientRect();
+                const x = e.clientX - rect.left - (rect.width / 2);
+                const y = e.clientY - rect.top - (rect.height / 2);
+                const rotateX = (-y / rect.height) * 18;
+                const rotateY = (x / rect.width) * 18;
+                dashboard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            visualContainer.addEventListener('mouseleave', () => {
+                dashboard.style.transform = `rotateX(0deg) rotateY(0deg)`;
+            });
+        }
+
+        /* ================= POS CART SIMULATION ================= */
+        let cartItems = [
+            { name: 'شاشة حماية هاتف', price: 350, qty: 1 },
+            { name: 'صيانة هاتف / فلاش', price: 1500, qty: 1 }
+        ];
+
+        function renderCart() {
+            const cartList = document.getElementById('cartList');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotalSum = document.getElementById('cartTotalSum');
+            
+            cartList.innerHTML = '';
+            let totalSum = 0;
+            let totalQty = 0;
+
+            cartItems.forEach(item => {
+                totalSum += item.price * item.qty;
+                totalQty += item.qty;
+                
+                const row = document.createElement('div');
+                row.className = 'flex justify-between items-center bg-[var(--panel2)] p-2 rounded-lg';
+                row.innerHTML = `
+                    <span><strong class="text-purple-400">${item.qty}x</strong> ${item.name}</span>
+                    <span class="font-bold">${(item.price * item.qty)} د.ج</span>
+                `;
+                cartList.appendChild(row);
+            });
+
+            cartCount.textContent = `${totalQty} عناصر`;
+            cartTotalSum.textContent = `${totalSum} د.ج`;
+        }
+
+        function addToCart(name, price) {
+            const existing = cartItems.find(i => i.name === name);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cartItems.push({ name, price, qty: 1 });
+            }
+            renderCart();
+        }
+
+        function triggerCheckout() {
+            const btn = document.querySelector('button[data-i18n="cart_checkout"]') || event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✓ تم طباعة الفاتورة بنجاح!';
+            btn.style.background = '#10b981';
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+                cartItems = [];
+                renderCart();
+            }, 1800);
+        }
+
+        renderCart();
     </script>
 </body>
 </html>
