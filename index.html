@@ -111,19 +111,32 @@
         </p>
 
         <!-- Download Buttons -->
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
-            <a href="https://github.com/zawaligaming-cmd/arbah-licenses/releases/download/v4.9/ARBAH-Setup-4.9.2.exe" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-2xl shadow-xl shadow-purple-600/30 transition text-sm flex items-center justify-center space-x-2 space-x-reverse">
-                <i class="fa-solid fa-download text-lg"></i>
-                <span data-i18n="btn_download_pc">تحميل البرنامج للكمبيوتر (EXE)</span>
-            </a>
-            <a href="https://wa.me/213542054655" target="_blank" class="w-full sm:w-auto px-6 py-4 custom-panel hover:bg-purple-900/30 text-purple-300 border border-purple-500/30 font-bold rounded-2xl transition text-sm flex items-center justify-center space-x-2 space-x-reverse">
-                <i class="fa-solid fa-headset text-lg"></i>
-                <span data-i18n="btn_phone_support">اطلب نسخة الهاتف والدعم</span>
-            </a>
-            <button onclick="openActivationModal()" class="w-full sm:w-auto px-6 py-4 bg-purple-900/40 hover:bg-purple-900/60 text-purple-200 border border-purple-500/40 font-bold rounded-2xl transition text-sm flex items-center justify-center space-x-2 space-x-reverse shadow-md">
-                <i class="fa-solid fa-file-contract ml-1"></i>
-                <span data-i18n="btn_free_version">اضغط هنا لطلب نسخة مجانية</span>
-            </button>
+        <div class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 pt-2">
+            <div class="flex items-stretch gap-2 w-full sm:w-auto">
+                <a id="dl-exe" href="https://github.com/zawaligaming-cmd/arbah-licenses/releases/download/v4.9/ARBAH-Setup-4.9.2.exe" target="_blank" class="flex-1 sm:flex-none px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-2xl shadow-xl shadow-purple-600/30 transition text-sm flex items-center justify-center space-x-2 space-x-reverse">
+                    <i class="fa-solid fa-download text-lg"></i>
+                    <span data-i18n="btn_download_pc">تحميل البرنامج للكمبيوتر (EXE)</span>
+                </a>
+            </div>
+            <div class="flex items-stretch gap-2 w-full sm:w-auto">
+                <a href="#" data-dl="apk" class="flex-1 sm:flex-none px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-2xl shadow-xl shadow-emerald-600/30 transition text-sm flex items-center justify-center space-x-2 space-x-reverse">
+                    <i class="fa-brands fa-android text-lg"></i>
+                    <span data-i18n="btn_download_apk">تحميل نسخة الهاتف (APK)</span>
+                </a>
+            </div>
+            <div class="flex items-stretch w-full sm:w-auto">
+                <button type="button" onclick="openGuide('reports')" class="relative shadow-lg shadow-amber-500/20 flex-1 sm:flex-none px-6 py-4 rounded-2xl custom-panel border border-amber-500/40 text-amber-300 hover:bg-amber-900/20 transition text-xs font-bold flex items-center justify-center space-x-1 space-x-reverse text-center leading-tight">
+                    <span class="absolute bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full shadow-lg animate-pulse" style="top:-9px;inset-inline-end:-6px" data-i18n="badge_new">جديد</span>
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span data-i18n="guide_btn">ما هي منصة رواد الأعمال؟</span>
+                </button>
+            </div>
+            <div class="flex items-stretch gap-2 w-full sm:w-auto">
+                <button onclick="openActivationModal()" class="flex-1 sm:flex-none px-6 py-4 bg-purple-900/40 hover:bg-purple-900/60 text-purple-200 border border-purple-500/40 font-bold rounded-2xl transition text-sm flex items-center justify-center space-x-2 space-x-reverse shadow-md">
+                    <i class="fa-solid fa-file-contract ml-1"></i>
+                    <span data-i18n="btn_free_version">اضغط هنا لطلب نسخة مجانية</span>
+                </button>
+            </div>
         </div>
     </section>
 
@@ -316,6 +329,41 @@
         </div>
     </div>
 
+    <!-- ================= GUIDE MODAL (شرح تفاعلي لكل زر) ================= -->
+    <div id="guideModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50" onclick="if(event.target===this)closeGuide()">
+        <div class="custom-panel border border-purple-500/40 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+            <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-purple-500/20 text-purple-300 rounded-2xl flex items-center justify-center text-xl border border-purple-500/30">
+                        <i id="guideIcon" class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <h3 id="guideTitle" class="text-lg font-bold"></h3>
+                </div>
+                <button type="button" onclick="closeGuide()" class="text-slate-400 hover:text-white text-xl leading-none" aria-label="close">&times;</button>
+            </div>
+            <p id="guideDesc" class="text-xs text-slate-300 leading-relaxed"></p>
+
+            <div class="h-1.5 bg-slate-700/50 rounded-full overflow-hidden">
+                <div id="guideBar" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 transition-all duration-300" style="width:0%"></div>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-slate-400">
+                <span id="guideCounter"></span>
+                <div id="guideDots" class="flex gap-1.5"></div>
+            </div>
+
+            <div class="custom-panel2 border border-purple-500/20 rounded-xl p-4 min-h-[88px] flex items-start gap-3">
+                <span id="guideNum" class="w-7 h-7 shrink-0 bg-purple-600 text-white rounded-full flex items-center justify-center text-xs font-bold"></span>
+                <p id="guideStep" class="text-sm leading-relaxed"></p>
+            </div>
+
+            <div class="flex gap-2">
+                <button id="guideBack" type="button" onclick="stepGuide(-1)" class="px-4 py-3 bg-slate-800 text-slate-300 rounded-xl hover:bg-slate-700 text-xs font-bold disabled:opacity-40" data-i18n="guide_back">السابق</button>
+                <button id="guideNext" type="button" onclick="stepGuide(1)" class="flex-1 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-xl transition text-xs" data-i18n="guide_next">التالي</button>
+                <button id="guideCta" type="button" onclick="guideAction()" class="flex-1 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-xl transition text-xs hidden"></button>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script>
         const WHATSAPP_NUMBER = "213542054655";
@@ -335,6 +383,16 @@
                 hero_desc: "برنامج ARBAH APP المخصص لأجهزة الكمبيوتر والهواتف والطابلت (Windows/ios/apk). يساعدك في تنظيم محلك، طباعة الفواتير والباركود مباشرة، ومتابعة الديون والأرباح بدقة عالية.",
                 btn_download_pc: "تحميل البرنامج للكمبيوتر (EXE)",
                 btn_phone_support: "اطلب نسخة الهاتف والدعم",
+                guide_btn: "ما هي منصة رواد الأعمال؟",
+                badge_new: "جديد",
+                guide_back: "السابق",
+                guide_next: "التالي",
+                guide_step: "الخطوة",
+                guide_of: "من",
+                guide_close: "إغلاق",
+                guide_reports: {"title": "راقب تجارتك من بعيد", "desc": "منصة رواد الأعمال تتيح لك كصاحب مشروع أن تتابع أرقام محلك من هاتفك أينما كنت، دون أن تكون في المحل. تتحدث الأرقام مع آخر مزامنة من برنامج الكاشير.", "steps": ["التقرير بنظرة واحدة: عدد الفواتير وإجمالي المبيعات والربح والمصاريف وصافي الربح، مع ديون الزبائن والموردين.", "المبيعات والمصاريف والمشتريات بالتفصيل: كل فاتورة بتاريخها وزبونها وأصنافها واسم الكاشير الذي نفّذها.", "الصندوق والديون: المقبوضات والمدفوعات، وإغلاق الصندوق بالفرق بين المتوقع والمعدود، وقائمة من عليه دين من الزبائن والموردين.", "المخزون وسجل النشاط: الكميات والأسعار والتكلفة والصلاحية مع الأصناف النافدة بالأحمر، وسجل بما فعله كل مستخدم داخل البرنامج. ويمكنك تحديد فترة من تاريخ إلى تاريخ.", "كيف تبدأ؟ احصل على رقم التعريف وكلمة المرور من فريقنا عبر واتساب، وسجّل الدخول من برنامج الكاشير مرة واحدة لتبدأ المزامنة، ثم افتح المنصة من أي هاتف. تحتاج اتصالاً بالإنترنت."]},
+                btn_download_apk: "تحميل نسخة الهاتف (APK)",
+                dl_soon: "رابط التحميل غير متوفر بعد، تواصل معنا عبر واتساب.",
                 btn_free_version: "اضغط هنا لطلب نسخة مجانية",
                 features_title: "مميزات برنامج أرباح",
                 feat_1_title: "طباعة صامتة فورية",
@@ -389,6 +447,16 @@
                 hero_desc: "Logiciel ARBAH APP conçu pour PC, téléphones et tablettes (Windows/iOS/APK). Il vous aide à organiser votre magasin, imprimer factures et codes-barres directement, et suivre vos dettes et profits avec précision.",
                 btn_download_pc: "Télécharger pour PC (EXE)",
                 btn_phone_support: "Demander version mobile & support",
+                guide_btn: "Qu'est-ce que la plateforme Entrepreneurs ?",
+                badge_new: "Nouveau",
+                guide_back: "Précédent",
+                guide_next: "Suivant",
+                guide_step: "Étape",
+                guide_of: "sur",
+                guide_close: "Fermer",
+                guide_reports: {"title": "Surveillez votre commerce à distance", "desc": "La plateforme Entrepreneurs vous permet, en tant que propriétaire, de suivre les chiffres de votre magasin depuis votre téléphone, où que vous soyez, sans être sur place. Les chiffres se mettent à jour à la dernière synchronisation du logiciel de caisse.", "steps": ["Le rapport en un coup d'œil : nombre de factures, ventes totales, bénéfice, dépenses et bénéfice net, avec les dettes des clients et des fournisseurs.", "Ventes, dépenses et achats en détail : chaque facture avec sa date, son client, ses articles et le nom du caissier qui l'a faite.", "Caisse et dettes : encaissements et paiements, clôture de caisse avec l'écart entre le montant attendu et compté, et la liste des clients et fournisseurs endettés.", "Stock et journal d'activité : quantités, prix, coût et péremption, avec les articles épuisés en rouge, et un journal de ce que chaque utilisateur a fait. Vous pouvez choisir une période de date à date.", "Comment commencer ? Obtenez votre identifiant et votre mot de passe auprès de notre équipe via WhatsApp, connectez-vous une fois depuis le logiciel de caisse pour lancer la synchronisation, puis ouvrez la plateforme depuis n'importe quel téléphone. Une connexion Internet est nécessaire."]},
+                btn_download_apk: "Télécharger pour mobile (APK)",
+                dl_soon: "Lien de téléchargement bientôt disponible, contactez-nous sur WhatsApp.",
                 btn_free_version: "Cliquez ici pour demander version gratuite",
                 features_title: "Fonctionnalités d'Arbah",
                 feat_1_title: "Impression silencieuse instantanée",
@@ -443,6 +511,16 @@
                 hero_desc: "ARBAH APP software designed for PC, phones, and tablets (Windows/iOS/APK). Helps you organize your store, print invoices and barcodes directly, and track debts and profits accurately.",
                 btn_download_pc: "Download for PC (EXE)",
                 btn_phone_support: "Request Mobile Version & Support",
+                guide_btn: "What is the Entrepreneurs Platform?",
+                badge_new: "New",
+                guide_back: "Back",
+                guide_next: "Next",
+                guide_step: "Step",
+                guide_of: "of",
+                guide_close: "Close",
+                guide_reports: {"title": "Monitor Your Business Remotely", "desc": "The Entrepreneurs Platform lets you, as the business owner, follow your shop's numbers from your phone wherever you are, without being at the shop. The numbers update with the latest sync from the POS software.", "steps": ["The report at a glance: number of invoices, total sales, profit, expenses and net profit, plus customer and supplier debts.", "Sales, expenses and purchases in detail: every invoice with its date, customer, items and the cashier who made it.", "Cash and debts: money in and out, cash closings showing the difference between expected and counted, and the list of customers and suppliers who owe money.", "Stock and activity log: quantities, prices, cost and expiry with out-of-stock items in red, and a log of what each user did in the software. You can pick a date range.", "How to start? Get your ID number and password from our team via WhatsApp, log in once from the POS software to start syncing, then open the platform from any phone. An Internet connection is required."]},
+                btn_download_apk: "Download Mobile Version (APK)",
+                dl_soon: "Download link not available yet, contact us on WhatsApp.",
                 btn_free_version: "Click here to request a free version",
                 features_title: "Arbah Features",
                 feat_1_title: "Instant Silent Printing",
@@ -498,7 +576,66 @@
                 }
             });
             localStorage.setItem('arbah_lang', lang);
+            if (typeof guideKey !== 'undefined' && guideKey && !document.getElementById('guideModal').classList.contains('hidden')) renderGuide();
         }
+
+        /* ===== روابط تحميل تطبيقات الأندرويد =====
+           ضع هنا رابط ملف APK بعد رفعه (مثلاً في Releases على GitHub).
+           الرابط الفارغ يُظهر للزائر رسالة "غير متوفر بعد". */
+        const DOWNLOAD_LINKS = {
+            apk: ''       // نسخة الهاتف (برنامج الكاشير)
+        };
+        document.querySelectorAll('[data-dl]').forEach(a => {
+            const url = DOWNLOAD_LINKS[a.dataset.dl];
+            if (url) {
+                a.href = url; a.target = '_blank'; a.rel = 'noopener';
+            } else {
+                a.addEventListener('click', e => {
+                    e.preventDefault();
+                    const d = translations[document.documentElement.getAttribute('lang')] || translations.ar;
+                    alert(d.dl_soon);
+                });
+            }
+        });
+
+        /* ===== شرح تفاعلي لكل زر ===== */
+        const GUIDE_ICONS = { reports: 'fa-solid fa-chart-line' };
+        let guideKey = null, guideIdx = 0;
+        function guideDict() { return translations[document.documentElement.getAttribute('lang')] || translations.ar; }
+        function renderGuide() {
+            const d = guideDict(), g = d['guide_' + guideKey] || translations.ar['guide_' + guideKey];
+            const n = g.steps.length, last = guideIdx === n - 1;
+            document.getElementById('guideIcon').className = GUIDE_ICONS[guideKey];
+            document.getElementById('guideTitle').textContent = g.title;
+            document.getElementById('guideDesc').textContent = g.desc;
+            document.getElementById('guideStep').textContent = g.steps[guideIdx];
+            document.getElementById('guideNum').textContent = guideIdx + 1;
+            document.getElementById('guideCounter').textContent = d.guide_step + ' ' + (guideIdx + 1) + ' ' + d.guide_of + ' ' + n;
+            document.getElementById('guideBar').style.width = ((guideIdx + 1) / n * 100) + '%';
+            document.getElementById('guideDots').innerHTML = g.steps.map((_, i) =>
+                '<button type="button" onclick="goGuide(' + i + ')" class="w-2.5 h-2.5 rounded-full ' + (i === guideIdx ? 'bg-purple-400' : 'bg-slate-600') + '"></button>').join('');
+            document.getElementById('guideBack').disabled = guideIdx === 0;
+            document.getElementById('guideNext').classList.toggle('hidden', last);
+            const cta = document.getElementById('guideCta');
+            cta.classList.toggle('hidden', !last);
+            cta.textContent = d.guide_close;
+        }
+        function openGuide(key) { guideKey = key; guideIdx = 0; renderGuide(); document.getElementById('guideModal').classList.remove('hidden'); }
+        function closeGuide() { document.getElementById('guideModal').classList.add('hidden'); }
+        function goGuide(i) { guideIdx = i; renderGuide(); }
+        function stepGuide(dir) {
+            const n = (guideDict()['guide_' + guideKey] || translations.ar['guide_' + guideKey]).steps.length;
+            guideIdx = Math.max(0, Math.min(n - 1, guideIdx + dir));
+            renderGuide();
+        }
+        function guideAction() { closeGuide(); }
+        document.addEventListener('keydown', e => {
+            if (document.getElementById('guideModal').classList.contains('hidden')) return;
+            if (e.key === 'Escape') closeGuide();
+            const rtl = document.documentElement.getAttribute('dir') === 'rtl';
+            if (e.key === 'ArrowLeft') stepGuide(rtl ? 1 : -1);
+            if (e.key === 'ArrowRight') stepGuide(rtl ? -1 : 1);
+        });
 
         const langSelect = document.getElementById('langSelect');
         langSelect.addEventListener('change', (e) => {
