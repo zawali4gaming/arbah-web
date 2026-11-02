@@ -140,6 +140,24 @@
         </div>
     </section>
 
+    <!-- Business Trust Counter -->
+    <section class="max-w-4xl mx-auto px-4 py-4">
+        <div class="flex justify-center">
+            <button id="trustCounter" type="button" onclick="openActivationModal()" class="inline-flex items-center gap-3 rounded-2xl custom-panel border px-5 py-3 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-purple-400 hover:shadow-purple-500/20 hover:shadow-xl active:scale-95 cursor-pointer group" data-i18n-aria="trust_aria">
+                <div class="w-11 h-11 shrink-0 rounded-full bg-purple-600/20 text-purple-400 border border-purple-500/30 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="leading-tight text-start">
+                    <p class="text-xl sm:text-2xl font-black text-purple-400"><span id="trustedCount">236</span><span class="inline-flex text-sm align-top ms-0.5 transition-transform duration-300 group-hover:translate-y-[-2px]">+</span></p>
+                    <p class="text-xs sm:text-sm font-bold text-slate-300" data-i18n="trust_message">صاحب مشروع يضع ثقته فينا</p>
+                </div>
+                <div class="w-7 h-7 rounded-full bg-purple-600 text-white flex items-center justify-center text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </button>
+        </div>
+    </section>
+
     <!-- ================= INTERACTIVE POS SALES SIMULATION (مباشرة أسفل أزرار التنزيل) ================= -->
     <section class="max-w-4xl mx-auto px-4 py-8">
         <div class="text-center mb-6">
@@ -343,10 +361,10 @@
             </div>
             <p id="guideDesc" class="text-xs text-slate-300 leading-relaxed"></p>
 
-            <div class="h-1.5 bg-slate-700/50 rounded-full overflow-hidden">
+            <div id="guideProgress" class="h-1.5 bg-slate-700/50 rounded-full overflow-hidden">
                 <div id="guideBar" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 transition-all duration-300" style="width:0%"></div>
             </div>
-            <div class="flex items-center justify-between text-[11px] text-slate-400">
+            <div id="guidePager" class="flex items-center justify-between text-[11px] text-slate-400">
                 <span id="guideCounter"></span>
                 <div id="guideDots" class="flex gap-1.5"></div>
             </div>
@@ -381,16 +399,18 @@
                 hero_title_1: "النظام الأسهل والأسرع لإدارة",
                 hero_title_2: "المبيعات والمخزون",
                 hero_desc: "برنامج ARBAH APP المخصص لأجهزة الكمبيوتر والهواتف والطابلت (Windows/ios/apk). يساعدك في تنظيم محلك، طباعة الفواتير والباركود مباشرة، ومتابعة الديون والأرباح بدقة عالية.",
+                trust_message: "صاحب مشروع يضع ثقته فينا",
+                trust_aria: "انضم إلى أصحاب المشاريع الذين يثقون بنا",
                 btn_download_pc: "تحميل البرنامج للكمبيوتر (EXE)",
                 btn_phone_support: "اطلب نسخة الهاتف والدعم",
-                guide_btn: "ما هي منصة رواد الأعمال؟",
+                guide_btn: "اشترك بميزة رواد الأعمال",
                 badge_new: "جديد",
                 guide_back: "السابق",
                 guide_next: "التالي",
                 guide_step: "الخطوة",
                 guide_of: "من",
-                guide_close: "إغلاق",
-                guide_reports: {"title": "راقب تجارتك من بعيد", "desc": "منصة رواد الأعمال تتيح لك كصاحب مشروع أن تتابع أرقام محلك من هاتفك أينما كنت، دون أن تكون في المحل. تتحدث الأرقام مع آخر مزامنة من برنامج الكاشير.", "steps": ["التقرير بنظرة واحدة: عدد الفواتير وإجمالي المبيعات والربح والمصاريف وصافي الربح، مع ديون الزبائن والموردين.", "المبيعات والمصاريف والمشتريات بالتفصيل: كل فاتورة بتاريخها وزبونها وأصنافها واسم الكاشير الذي نفّذها.", "الصندوق والديون: المقبوضات والمدفوعات، وإغلاق الصندوق بالفرق بين المتوقع والمعدود، وقائمة من عليه دين من الزبائن والموردين.", "المخزون وسجل النشاط: الكميات والأسعار والتكلفة والصلاحية مع الأصناف النافدة بالأحمر، وسجل بما فعله كل مستخدم داخل البرنامج. ويمكنك تحديد فترة من تاريخ إلى تاريخ.", "كيف تبدأ؟ احصل على رقم التعريف وكلمة المرور من فريقنا عبر واتساب، وسجّل الدخول من برنامج الكاشير مرة واحدة لتبدأ المزامنة، ثم افتح المنصة من أي هاتف. تحتاج اتصالاً بالإنترنت."]},
+                guide_close: "اشترك بميزة رواد الأعمال",
+                guide_reports: {"title": "اشترك بمنصة رواد الأعمال واستفد من مزاياها", "desc": "تابع سجل المبيعات والعمليات داخل محلك من هاتفك، في أي وقت ومن أي مكان.", "steps": ["يتزامن تطبيق الهاتف تلقائياً مع برنامج الكاشير ليعرض لك سجل العمليات داخل المحل. لا يمكن رؤية بياناتك إلا صاحب المحل، والربط مرتبط بحساب واحد فقط مع المتجر لضمان خصوصية المعلومات وحمايتها."]},
                 btn_download_apk: "تحميل نسخة الهاتف (APK)",
                 dl_soon: "رابط التحميل غير متوفر بعد، تواصل معنا عبر واتساب.",
                 btn_free_version: "اضغط هنا لطلب نسخة مجانية",
@@ -445,16 +465,18 @@
                 hero_title_1: "Le système le plus simple et rapide pour gérer",
                 hero_title_2: "les Ventes et le Stock",
                 hero_desc: "Logiciel ARBAH APP conçu pour PC, téléphones et tablettes (Windows/iOS/APK). Il vous aide à organiser votre magasin, imprimer factures et codes-barres directement, et suivre vos dettes et profits avec précision.",
+                trust_message: "propriétaires de projets nous font confiance",
+                trust_aria: "Rejoignez les propriétaires de projets qui nous font confiance",
                 btn_download_pc: "Télécharger pour PC (EXE)",
                 btn_phone_support: "Demander version mobile & support",
-                guide_btn: "Qu'est-ce que la plateforme Entrepreneurs ?",
+                guide_btn: "Abonnez-vous à la fonctionnalité Entrepreneurs",
                 badge_new: "Nouveau",
                 guide_back: "Précédent",
                 guide_next: "Suivant",
                 guide_step: "Étape",
                 guide_of: "sur",
-                guide_close: "Fermer",
-                guide_reports: {"title": "Surveillez votre commerce à distance", "desc": "La plateforme Entrepreneurs vous permet, en tant que propriétaire, de suivre les chiffres de votre magasin depuis votre téléphone, où que vous soyez, sans être sur place. Les chiffres se mettent à jour à la dernière synchronisation du logiciel de caisse.", "steps": ["Le rapport en un coup d'œil : nombre de factures, ventes totales, bénéfice, dépenses et bénéfice net, avec les dettes des clients et des fournisseurs.", "Ventes, dépenses et achats en détail : chaque facture avec sa date, son client, ses articles et le nom du caissier qui l'a faite.", "Caisse et dettes : encaissements et paiements, clôture de caisse avec l'écart entre le montant attendu et compté, et la liste des clients et fournisseurs endettés.", "Stock et journal d'activité : quantités, prix, coût et péremption, avec les articles épuisés en rouge, et un journal de ce que chaque utilisateur a fait. Vous pouvez choisir une période de date à date.", "Comment commencer ? Obtenez votre identifiant et votre mot de passe auprès de notre équipe via WhatsApp, connectez-vous une fois depuis le logiciel de caisse pour lancer la synchronisation, puis ouvrez la plateforme depuis n'importe quel téléphone. Une connexion Internet est nécessaire."]},
+                guide_close: "S'abonner à la fonctionnalité Entrepreneurs",
+                guide_reports: {"title": "Abonnez-vous à la plateforme Entrepreneurs", "desc": "Suivez les ventes et les opérations de votre magasin depuis votre téléphone, où que vous soyez.", "steps": ["L'application mobile se synchronise automatiquement avec le logiciel de caisse pour afficher le journal des opérations du magasin. Seul le propriétaire peut consulter les données. La connexion est limitée à un compte lié uniquement à votre magasin, pour protéger vos informations."]},
                 btn_download_apk: "Télécharger pour mobile (APK)",
                 dl_soon: "Lien de téléchargement bientôt disponible, contactez-nous sur WhatsApp.",
                 btn_free_version: "Cliquez ici pour demander version gratuite",
@@ -509,16 +531,18 @@
                 hero_title_1: "The easiest and fastest system to manage",
                 hero_title_2: "Sales & Inventory",
                 hero_desc: "ARBAH APP software designed for PC, phones, and tablets (Windows/iOS/APK). Helps you organize your store, print invoices and barcodes directly, and track debts and profits accurately.",
+                trust_message: "business owners trust us",
+                trust_aria: "Join the business owners who trust us",
                 btn_download_pc: "Download for PC (EXE)",
                 btn_phone_support: "Request Mobile Version & Support",
-                guide_btn: "What is the Entrepreneurs Platform?",
+                guide_btn: "Subscribe to Entrepreneurs Feature",
                 badge_new: "New",
                 guide_back: "Back",
                 guide_next: "Next",
                 guide_step: "Step",
                 guide_of: "of",
-                guide_close: "Close",
-                guide_reports: {"title": "Monitor Your Business Remotely", "desc": "The Entrepreneurs Platform lets you, as the business owner, follow your shop's numbers from your phone wherever you are, without being at the shop. The numbers update with the latest sync from the POS software.", "steps": ["The report at a glance: number of invoices, total sales, profit, expenses and net profit, plus customer and supplier debts.", "Sales, expenses and purchases in detail: every invoice with its date, customer, items and the cashier who made it.", "Cash and debts: money in and out, cash closings showing the difference between expected and counted, and the list of customers and suppliers who owe money.", "Stock and activity log: quantities, prices, cost and expiry with out-of-stock items in red, and a log of what each user did in the software. You can pick a date range.", "How to start? Get your ID number and password from our team via WhatsApp, log in once from the POS software to start syncing, then open the platform from any phone. An Internet connection is required."]},
+                guide_close: "Subscribe to Entrepreneurs Feature",
+                guide_reports: {"title": "Subscribe to Entrepreneurs Platform", "desc": "Follow your store's sales and operations log from your phone, anytime and anywhere.", "steps": ["The mobile app automatically synchronizes with the POS software to display the store's operations log. Only the store owner can view the data. Access is linked to one account for each store to keep your information private and protected."]},
                 btn_download_apk: "Download Mobile Version (APK)",
                 dl_soon: "Download link not available yet, contact us on WhatsApp.",
                 btn_free_version: "Click here to request a free version",
@@ -575,6 +599,12 @@
                     el.textContent = dict[key];
                 }
             });
+            document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+                const key = el.getAttribute('data-i18n-aria');
+                if (dict[key]) {
+                    el.setAttribute('aria-label', dict[key]);
+                }
+            });
             localStorage.setItem('arbah_lang', lang);
             if (typeof guideKey !== 'undefined' && guideKey && !document.getElementById('guideModal').classList.contains('hidden')) renderGuide();
         }
@@ -619,6 +649,10 @@
             const cta = document.getElementById('guideCta');
             cta.classList.toggle('hidden', !last);
             cta.textContent = d.guide_close;
+            const singleScreen = n === 1;
+            document.getElementById('guideProgress').classList.toggle('hidden', singleScreen);
+            document.getElementById('guidePager').classList.toggle('hidden', singleScreen);
+            document.getElementById('guideBack').classList.toggle('hidden', singleScreen);
         }
         function openGuide(key) { guideKey = key; guideIdx = 0; renderGuide(); document.getElementById('guideModal').classList.remove('hidden'); }
         function closeGuide() { document.getElementById('guideModal').classList.add('hidden'); }
@@ -628,7 +662,10 @@
             guideIdx = Math.max(0, Math.min(n - 1, guideIdx + dir));
             renderGuide();
         }
-        function guideAction() { closeGuide(); }
+        function guideAction() {
+            closeGuide();
+            if (guideKey === 'reports') openActivationModal();
+        }
         document.addEventListener('keydown', e => {
             if (document.getElementById('guideModal').classList.contains('hidden')) return;
             if (e.key === 'Escape') closeGuide();
@@ -686,6 +723,50 @@
 
         function closeSuccessModal() {
             document.getElementById('successModal').classList.add('hidden');
+        }
+
+        /* ================= TRUST COUNTER ANIMATION ================= */
+        const trustedCount = document.getElementById('trustedCount');
+        const trustCounter = document.getElementById('trustCounter');
+        let trustAnimationStarted = false;
+
+        function animateTrustedCount() {
+            if (trustAnimationStarted) return;
+            trustAnimationStarted = true;
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                trustedCount.textContent = '236';
+                return;
+            }
+
+            const duration = 1200;
+            const startTime = performance.now();
+
+            function updateCount(currentTime) {
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                const easedProgress = 1 - Math.pow(1 - progress, 3);
+                trustedCount.textContent = Math.floor(easedProgress * 236).toLocaleString('en-US');
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCount);
+                } else {
+                    trustedCount.textContent = '236';
+                }
+            }
+
+            requestAnimationFrame(updateCount);
+        }
+
+        if ('IntersectionObserver' in window && trustedCount) {
+            const trustObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animateTrustedCount();
+                    trustObserver.disconnect();
+                }
+            }, { threshold: 0.5 });
+            trustObserver.observe(trustCounter);
+        } else {
+            animateTrustedCount();
         }
 
         /* ================= THEME SWITCHER LOGIC ================= */
