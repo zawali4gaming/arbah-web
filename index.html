@@ -20,7 +20,12 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1200">
     <meta property="og:url" content="https://arbah-group.com/">
+    <meta property="og:locale" content="ar_AR">
+    <link rel="canonical" href="https://arbah-group.com/">
     <meta name="twitter:card" content="summary">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Icons & Fonts -->
@@ -194,6 +199,15 @@
         [data-theme="light"] .text-purple-400 { color: #581c87; }
         [data-theme="light"] .bg-slate-800 { background: #e9e3f5; color: #2e1065; }
 
+        /* الوضع الفاتح: العناصر ذات الخلفية البنفسجية الداكنة تحتفظ بنص ذهبي فاتح */
+        [data-theme="light"] .bg-purple-950\/80 .text-amber-300,
+        [data-theme="light"] .bg-purple-950\/80 .text-amber-400,
+        [data-theme="light"] .from-purple-900\/90 .text-amber-300 { color: #fcd34d; }
+        [data-theme="light"] .from-purple-900\/90 .gold-text {
+          background: linear-gradient(135deg, #fde047 0%, #eab308 100%);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
         /* حركات وانتقالات */
         @keyframes rise { from { opacity: 0; translate: 0 24px; } to { opacity: 1; translate: 0 0; } }
         @keyframes pop { from { opacity: 0; transform: translateY(14px) scale(0.96); } to { opacity: 1; transform: none; } }
@@ -216,14 +230,40 @@
         #activationModal:not(.hidden), #successModal:not(.hidden), #guideModal:not(.hidden) { animation: fade 0.2s; }
         #activationModal:not(.hidden) > div, #successModal:not(.hidden) > div, #guideModal:not(.hidden) > div { animation: pop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
-        a:active, button:active { transform: scale(0.97); }
+        a:active, button:active { scale: 0.97; }
+
+        /* ===== انتقالات حركية احترافية ===== */
+        #scrollBar { position: fixed; top: 0; inset-inline: 0; height: 3px; z-index: 60; transform: scaleX(0); transform-origin: left; pointer-events: none;
+          background: linear-gradient(90deg, #8b5cf6, #eab308 70%, #fde047); box-shadow: 0 0 10px rgba(234,179,8,.6); }
+        html[dir="rtl"] #scrollBar { transform-origin: right; }
+
+        header > div { transition: padding .3s ease; }
+        header.scrolled > div { padding-block: .45rem; }
+        header.scrolled { box-shadow: 0 8px 30px rgba(0,0,0,.45); }
+
+        /* تبديل الثيم بموجة دائرية، واللغة بتلاشي ناعم (View Transitions) */
+        html.vt-theme::view-transition-old(root), html.vt-theme::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+        html.vt-theme::view-transition-old(root) { z-index: 1; }
+        html.vt-theme::view-transition-new(root) { z-index: 2; }
+        html.vt-lang::view-transition-group(root) { animation-duration: .35s; }
+
+        /* إغلاق متحرك للنوافذ */
+        @keyframes fadeOut { to { opacity: 0; } }
+        @keyframes popOut { to { opacity: 0; transform: translateY(10px) scale(0.97); } }
+        .is-closing { animation: fadeOut .2s ease both !important; pointer-events: none; }
+        .is-closing > div { animation: popOut .2s ease both !important; }
         @media (prefers-reduced-motion: reduce) {
-          *, *::before, *::after { animation: none !important; transition: none !important; }
-          .reveal { opacity: 1; }
+          html:not([data-motion="on"]) .is-closing, html:not([data-motion="on"]) .is-closing > div { animation: none !important; }
+          html:not([data-motion="on"]) #scrollBar { display: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          html:not([data-motion="on"]) *, html:not([data-motion="on"]) *::before, html:not([data-motion="on"]) *::after { animation: none !important; transition: none !important; }
+          html:not([data-motion="on"]) .reveal { opacity: 1; }
         }
     </style>
 </head>
 <body class="min-h-screen">
+    <div id="scrollBar" aria-hidden="true"></div>
 
     <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 custom-panel">
@@ -241,18 +281,20 @@
             <!-- Language buttons, Theme Switcher & Actions -->
             <div class="flex flex-wrap items-center gap-2">
                 <div id="langSwitch" class="lang-group" role="group" aria-label="Language">
-                    <button type="button" class="lang-btn" data-lang="ar">العربية</button>
-                    <button type="button" class="lang-btn" data-lang="fr">Français</button>
-                    <button type="button" class="lang-btn" data-lang="en">English</button>
+                    <button type="button" class="lang-btn" data-lang="ar" aria-pressed="true">العربية</button>
+                    <button type="button" class="lang-btn" data-lang="fr" aria-pressed="false">Français</button>
+                    <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">English</button>
                 </div>
 
-                <button id="themeToggle" type="button" class="theme-toggle" aria-label="Theme"><i class="fa-solid fa-sun"></i></button>
+                <button id="motionToggle" type="button" class="theme-toggle" style="display:none" aria-label="Enable animations" title="Enable animations" data-i18n-aria="motion_aria"><i class="fa-solid fa-bolt"></i></button>
+
+                <button id="themeToggle" type="button" class="theme-toggle" aria-label="Toggle theme" data-i18n-aria="theme_aria"><i class="fa-solid fa-sun"></i></button>
 
                 <button onclick="openActivationModal()" class="btn-gold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-1.5">
                     <i class="fa-solid fa-key"></i>
                     <span data-i18n="nav_activation">طلب التفعيل</span>
                 </button>
-                <a href="https://wa.me/213542054655" target="_blank" rel="noopener" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 shadow-md shadow-emerald-600/20">
+                <a href="https://wa.me/213542054655" data-wa target="_blank" rel="noopener" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 shadow-md shadow-emerald-600/20">
                     <i class="fa-brands fa-whatsapp text-base"></i>
                     <span data-i18n="nav_whatsapp">واتساب</span>
                 </a>
@@ -270,7 +312,7 @@
         </span>
         <span data-i18n="hero_new">جديد</span>
     </span>
-    <i class="fa-solid fa-sparkles text-amber-400"></i>
+    <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
     <span data-i18n="hero_badge">الإصدار 5.0.0 متوفر الآن</span>
 </div>
 
@@ -306,7 +348,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Product 1: PC -->
             <div class="custom-panel hover-card border rounded-3xl p-6 flex flex-col gap-4 shadow-xl">
-                <div class="w-13 h-13 w-12 h-12 bg-amber-500/15 text-amber-400 border border-amber-400/30 rounded-2xl flex items-center justify-center text-xl">
+                <div class="w-12 h-12 bg-amber-500/15 text-amber-400 border border-amber-400/30 rounded-2xl flex items-center justify-center text-xl">
                     <i class="fa-brands fa-windows"></i>
                 </div>
                 <h3 class="font-bold text-lg" data-i18n="prod_pc_title">أرباح للكمبيوتر</h3>
@@ -324,7 +366,7 @@
                 </div>
                 <h3 class="font-bold text-lg" data-i18n="prod_phone_title">أرباح للهاتف</h3>
                 <p class="text-xs text-slate-300 leading-relaxed flex-1" data-i18n="prod_phone_desc">نسخة الأندرويد من برنامج المحاسبة، للعمل من الهاتف أو الطابلت.</p>
-                <a href="https://github.com/zawali4gaming/arbah-ecran/releases/download/apk/ARBAH.POS.V1.5.apk" data-dl="apk" class="px-5 py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-600/25 transition text-xs sm:text-sm flex items-center justify-center gap-2">
+                <a href="https://github.com/zawali4gaming/arbah-ecran/releases/download/apk/ARBAH.POS.V1.5.apk" data-dl="apk" target="_blank" rel="noopener" class="px-5 py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-600/25 transition text-xs sm:text-sm flex items-center justify-center gap-2">
                     <i class="fa-solid fa-download"></i>
                     <span data-i18n="btn_download_apk">تحميل نسخة الهاتف (APK)</span>
                 </a>
@@ -404,17 +446,17 @@
                         <div onclick="addToCart('prod_1', 350)" class="bg-[var(--pos-card)] border border-amber-400/20 rounded-xl p-2.5 text-center cursor-pointer hover:border-amber-400 hover:bg-amber-400/5 transition">
                             <div class="text-xl mb-1">📱</div>
                             <span class="text-[11px] font-bold block truncate" data-i18n="prod_1">حماية شاشة</span>
-                            <span class="text-[10px] text-amber-400 font-extrabold">350 د.ج</span>
+                            <span class="text-[10px] text-amber-400 font-extrabold">350 <span data-i18n="cur">د.ج</span></span>
                         </div>
                         <div onclick="addToCart('prod_2', 1500)" class="bg-[var(--pos-card)] border border-amber-400/20 rounded-xl p-2.5 text-center cursor-pointer hover:border-amber-400 hover:bg-amber-400/5 transition">
                             <div class="text-xl mb-1">🛠️</div>
                             <span class="text-[11px] font-bold block truncate" data-i18n="prod_2">صيانة / فلاش</span>
-                            <span class="text-[10px] text-amber-400 font-extrabold">1500 د.ج</span>
+                            <span class="text-[10px] text-amber-400 font-extrabold">1500 <span data-i18n="cur">د.ج</span></span>
                         </div>
                         <div onclick="addToCart('prod_3', 1200)" class="bg-[var(--pos-card)] border border-amber-400/20 rounded-xl p-2.5 text-center cursor-pointer hover:border-amber-400 hover:bg-amber-400/5 transition">
                             <div class="text-xl mb-1">🎧</div>
                             <span class="text-[11px] font-bold block truncate" data-i18n="prod_3">سماعات لاسلكية</span>
-                            <span class="text-[10px] text-amber-400 font-extrabold">1200 د.ج</span>
+                            <span class="text-[10px] text-amber-400 font-extrabold">1200 <span data-i18n="cur">د.ج</span></span>
                         </div>
                     </div>
 
@@ -479,22 +521,22 @@
         <h2 class="text-2xl sm:text-3xl font-black gold-text inline-block mb-2" data-i18n="pricing_title">اشتراكات برنامج أرباح للمحاسبة</h2>
         <p class="text-xs sm:text-sm text-slate-300 mb-8" data-i18n="pricing_subtitle">اختر الخطة المناسبة لنشاطك التجاري</p>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-bold">
-            <div class="custom-panel hover-card p-5 rounded-2xl border shadow-md">
+            <button type="button" onclick="openActivationModal('plan_1_name')" class="custom-panel hover-card p-5 rounded-2xl border shadow-md w-full cursor-pointer">
                 <p class="text-amber-400 mb-1.5" data-i18n="plan_1_name">شهر واحد</p>
-                <p class="text-xl font-black">800 د.ج</p>
-            </div>
-            <div class="custom-panel hover-card p-5 rounded-2xl border shadow-md">
+                <p class="text-xl font-black">800 <span class="text-sm" data-i18n="cur">د.ج</span></p>
+            </button>
+            <button type="button" onclick="openActivationModal('plan_2_name')" class="custom-panel hover-card p-5 rounded-2xl border shadow-md w-full cursor-pointer">
                 <p class="text-amber-400 mb-1.5" data-i18n="plan_2_name">3 أشهر</p>
-                <p class="text-xl font-black">2000 د.ج</p>
-            </div>
-            <div class="custom-panel hover-card p-5 rounded-2xl border shadow-md">
+                <p class="text-xl font-black">2000 <span class="text-sm" data-i18n="cur">د.ج</span></p>
+            </button>
+            <button type="button" onclick="openActivationModal('plan_3_name')" class="custom-panel hover-card p-5 rounded-2xl border shadow-md w-full cursor-pointer">
                 <p class="text-amber-400 mb-1.5" data-i18n="plan_3_name">6 أشهر</p>
-                <p class="text-xl font-black">3500 د.ج</p>
-            </div>
-            <div class="bg-gradient-to-b from-purple-900/90 to-purple-950 p-5 rounded-2xl border-2 border-amber-400 shadow-lg shadow-amber-500/15 text-white relative">
+                <p class="text-xl font-black">3500 <span class="text-sm" data-i18n="cur">د.ج</span></p>
+            </button>
+            <button type="button" onclick="openActivationModal('plan_4_name')" class="bg-gradient-to-b from-purple-900/90 to-purple-950 p-5 rounded-2xl border-2 border-amber-400 shadow-lg shadow-amber-500/15 text-white relative w-full cursor-pointer">
                 <p class="text-amber-300 mb-1.5" data-i18n="plan_4_name">سنة كاملة</p>
-                <p class="text-xl font-black gold-text">5000 د.ج</p>
-            </div>
+                <p class="text-xl font-black gold-text">5000 <span class="text-sm" data-i18n="cur">د.ج</span></p>
+            </button>
         </div>
     </section>
 
@@ -507,13 +549,13 @@
                 <span class="w-12 h-12 shrink-0 rounded-2xl bg-purple-500/20 text-amber-300 border border-amber-400/30 flex items-center justify-center text-xl"><i class="fa-brands fa-facebook"></i></span>
                 <span class="min-w-0 text-start"><span class="block text-xs text-slate-300" data-i18n="contact_fb">صفحتنا على فيسبوك</span><span class="block font-bold text-sm truncate" dir="ltr">arbah.group</span></span>
             </a>
-            <a href="mailto:arbahcom.here@gmail.com" target="_blank" rel="noopener" class="custom-panel border border-amber-400/20 rounded-2xl p-5 flex items-center gap-4 hover:border-amber-400 hover:-translate-y-1 transition">
+            <a href="mailto:arbahcom.here@gmail.com" class="custom-panel border border-amber-400/20 rounded-2xl p-5 flex items-center gap-4 hover:border-amber-400 hover:-translate-y-1 transition">
                 <span class="w-12 h-12 shrink-0 rounded-2xl bg-purple-500/20 text-amber-300 border border-amber-400/30 flex items-center justify-center text-xl"><i class="fa-solid fa-envelope"></i></span>
                 <span class="min-w-0 text-start"><span class="block text-xs text-slate-300" data-i18n="contact_email">البريد الإلكتروني</span><span class="block font-bold text-sm truncate" dir="ltr">arbahcom.here@gmail.com</span></span>
             </a>
-            <a href="https://wa.me/213542054655" target="_blank" rel="noopener" class="custom-panel border border-amber-400/20 rounded-2xl p-5 flex items-center gap-4 hover:border-amber-400 hover:-translate-y-1 transition">
+            <a href="https://wa.me/213542054655" data-wa target="_blank" rel="noopener" class="custom-panel border border-amber-400/20 rounded-2xl p-5 flex items-center gap-4 hover:border-amber-400 hover:-translate-y-1 transition">
                 <span class="w-12 h-12 shrink-0 rounded-2xl bg-purple-500/20 text-amber-300 border border-amber-400/30 flex items-center justify-center text-xl"><i class="fa-brands fa-whatsapp"></i></span>
-                <span class="min-w-0 text-start"><span class="block text-xs text-slate-300" data-i18n="contact_phone">الهاتف / واتساب</span><span class="block font-bold text-sm truncate" dir="ltr">+213542054655</span></span>
+                <span class="min-w-0 text-start"><span class="block text-xs text-slate-300" data-i18n="contact_phone">الهاتف / واتساب</span><span class="block font-bold text-sm truncate" dir="ltr" data-wa-text>+213542054655</span></span>
             </a>
         </div>
     </section>
@@ -524,37 +566,38 @@
     </footer>
 
     <!-- ================= ACTIVATION MODAL ================= -->
-    <div id="activationModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+    <div id="activationModal" role="dialog" aria-modal="true" aria-labelledby="actTitle" onclick="if(event.target===this)closeActivationModal()" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
         <div class="custom-panel border border-amber-400/40 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl relative">
-            <button onclick="closeActivationModal()" class="absolute top-4 left-4 text-slate-400 hover:text-amber-400 transition" aria-label="close"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <button onclick="closeActivationModal()" class="absolute top-4 end-4 text-slate-400 hover:text-amber-400 transition" aria-label="close"><i class="fa-solid fa-xmark text-lg"></i></button>
             
             <div class="text-center space-y-1">
                 <div class="w-16 h-16 rounded-full overflow-hidden mx-auto shadow-lg shadow-amber-500/25 border-2 border-amber-400 mb-2">
                     <img src="icon.png" alt="ARBAH GROUP Logo" class="w-full h-full object-cover">
                 </div>
-                <h3 class="text-xl font-black gold-text" data-i18n="modal_title">إرسال طلب تفعيل التطبيق</h3>
+                <h3 id="actTitle" class="text-xl font-black gold-text" data-i18n="modal_title">إرسال طلب تفعيل التطبيق</h3>
                 <p class="text-xs text-slate-300" data-i18n="modal_subtitle">أدخل بيانات متجرك ليصلك مفتاح الترخيص قريباً</p>
+                <p id="actPlan" class="hidden text-xs font-bold text-amber-300 pt-1"></p>
             </div>
 
             <form id="activationForm" onsubmit="handleActivationSubmit(event)" class="space-y-3.5 text-xs">
                 <div>
-                    <label class="block font-semibold mb-1" data-i18n="form_store">اسم المتجر / المحل *:</label>
-                    <input type="text" id="actStoreName" required data-i18n-ph="ph_store" placeholder="مثال: متجر السعادة للملابس" class="w-full custom-panel2 border rounded-xl px-3.5 py-2.5 outline-none focus:border-amber-400 transition">
+                    <label for="actStoreName" class="block font-semibold mb-1" data-i18n="form_store">اسم المتجر / المحل *:</label>
+                    <input type="text" id="actStoreName" required autocomplete="organization" maxlength="80" data-i18n-ph="ph_store" placeholder="مثال: متجر السعادة للملابس" class="w-full custom-panel2 border rounded-xl px-3.5 py-2.5 outline-none focus:border-amber-400 transition">
                 </div>
 
                 <div>
-                    <label class="block font-semibold mb-1" data-i18n="form_phone">رقم الهاتف *:</label>
-                    <input type="tel" id="actPhone" required placeholder="05XX XX XX XX" class="w-full custom-panel2 border rounded-xl px-3.5 py-2.5 outline-none focus:border-amber-400 transition">
+                    <label for="actPhone" class="block font-semibold mb-1" data-i18n="form_phone">رقم الهاتف *:</label>
+                    <input type="tel" id="actPhone" required inputmode="tel" autocomplete="tel" maxlength="20" placeholder="05XX XX XX XX" class="w-full custom-panel2 border rounded-xl px-3.5 py-2.5 outline-none focus:border-amber-400 transition">
                 </div>
 
                 <div>
-                    <label class="block font-semibold mb-1" data-i18n="form_email">البريد الإلكتروني:</label>
-                    <input type="email" id="actEmail" placeholder="example@gmail.com" class="w-full custom-panel2 border rounded-xl px-3.5 py-2.5 outline-none focus:border-amber-400 transition">
+                    <label for="actEmail" class="block font-semibold mb-1" data-i18n="form_email">البريد الإلكتروني:</label>
+                    <input type="email" id="actEmail" autocomplete="email" placeholder="example@gmail.com" class="w-full custom-panel2 border rounded-xl px-3.5 py-2.5 outline-none focus:border-amber-400 transition">
                 </div>
 
                 <div>
-                    <label class="block font-semibold mb-1" data-i18n="form_serial">سريال الجهاز (اختياري):</label>
-                    <input type="text" id="actSerial" placeholder="ARB-HDD-XXXXXX-ARBAH" class="w-full custom-panel2 border rounded-xl px-3.5 py-2.5 font-mono uppercase outline-none focus:border-amber-400 transition">
+                    <label for="actSerial" class="block font-semibold mb-1" data-i18n="form_serial">سريال الجهاز (اختياري):</label>
+                    <input type="text" id="actSerial" autocomplete="off" spellcheck="false" placeholder="ARB-HDD-XXXXXX-ARBAH" class="w-full custom-panel2 border rounded-xl px-3.5 py-2.5 font-mono uppercase outline-none focus:border-amber-400 transition">
                     <span class="text-[10px] text-slate-400 mt-0.5 block" data-i18n="form_serial_note">تجده داخل التطبيق في واجهة تسجيل الدخول.</span>
                 </div>
 
@@ -571,12 +614,12 @@
     </div>
 
     <!-- ================= SUCCESS POPUP MODAL ================= -->
-    <div id="successModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+    <div id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle" onclick="if(event.target===this)closeSuccessModal()" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
         <div class="custom-panel border border-emerald-500/40 rounded-3xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl">
             <div class="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto text-2xl border border-emerald-500/30">
                 <i class="fa-solid fa-circle-check"></i>
             </div>
-            <h3 class="text-lg font-bold" data-i18n="success_title">شكرا لك</h3>
+            <h3 id="successTitle" class="text-lg font-bold" data-i18n="success_title">شكرا لك</h3>
             <p class="text-xs text-slate-300 leading-relaxed" data-i18n="success_desc">
                 انتظر قليلا وسيتم الرد من فريقنا التقني عبر رقم الهاتف أو البريد الإلكتروني الخاص بك في أقرب وقت.
             </p>
@@ -587,7 +630,7 @@
     </div>
 
     <!-- ================= GUIDE MODAL ================= -->
-    <div id="guideModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50" onclick="if(event.target===this)closeGuide()">
+    <div id="guideModal" role="dialog" aria-modal="true" aria-labelledby="guideTitle" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50" onclick="if(event.target===this)closeGuide()">
         <div class="custom-panel border border-amber-400/40 rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl">
             <div class="flex items-start justify-between gap-3">
                 <div class="flex items-center gap-3">
@@ -624,6 +667,31 @@
     <!-- JavaScript -->
     <script>
         const WHATSAPP_NUMBER = "213542054655";
+        const REDUCED_MQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+        try { if (localStorage.getItem('arbah_motion') === 'on') document.documentElement.setAttribute('data-motion', 'on'); } catch (e) {}
+        /* true فقط إذا كان إعداد النظام "تقليل الحركة" ولم يفعّل الزائر الحركات يدوياً */
+        const noMotion = () => REDUCED_MQ.matches && document.documentElement.getAttribute('data-motion') !== 'on';
+
+        /* تشغيل تغيير الواجهة داخل انتقال متصفح ناعم إن كان مدعوماً */
+        function withTransition(cls, fn) {
+            const root = document.documentElement;
+            if (!document.startViewTransition || noMotion()) { fn(); return null; }
+            root.classList.add(cls);
+            const t = document.startViewTransition(fn);
+            t.finished.catch(() => {}).finally(() => root.classList.remove(cls));
+            return t;
+        }
+
+        function hideModal(id) {
+            const el = document.getElementById(id);
+            if (el.classList.contains('hidden') || el.classList.contains('is-closing')) return;
+            if (noMotion()) { el.classList.add('hidden'); return; }
+            el.classList.add('is-closing');
+            setTimeout(() => {
+                if (!el.classList.contains('is-closing')) return; // أُعيد فتحها أثناء الإغلاق
+                el.classList.add('hidden'); el.classList.remove('is-closing');
+            }, 200);
+        }
 
         /* ================= TRANSLATIONS ================= */
         const translations = {
@@ -633,6 +701,13 @@
                 nav_activation: "طلب التفعيل",
                 nav_whatsapp: "واتساب",
                 hero_badge: "الإصدار 5.0.0 متوفر الآن",
+                hero_new: "جديد",
+                cur: "د.ج",
+                theme_aria: "تبديل المظهر",
+                motion_aria: "تفعيل الحركات",
+                err_phone: "أدخل رقم هاتف جزائري صحيحاً، مثال: 0555 12 34 56",
+                form_plan: "الخطة المختارة:",
+                cart_empty: "الفاتورة فارغة، أضف منتجاً",
                 hero_title_1: "النظام الأسهل والأسرع لإدارة",
                 hero_title_2: "المبيعات والمخزون والمحاسبة",
                 hero_title_3: "وتطبيقات كثيرة في انتظارك",
@@ -709,7 +784,7 @@
                 form_submit: "إرسال الطلب (OK)",
                 form_cancel: "إلغاء",
                 success_title: "شكرا لك",
-                success_desc: "انتظر قليلا وسيتم الرد من فريقنا التقني عبر رقم الهاتف أو البريد الإلكتروني الخاص بك في أقرب وقت.",
+                success_desc: "فتحنا لك واتساب برسالة جاهزة. اضغط «إرسال» هناك لإتمام طلبك، وسيرد عليك فريقنا التقني في أقرب وقت.",
                 success_btn: "حسناً"
             },
             fr: {
@@ -718,6 +793,13 @@
                 nav_activation: "Demander Activation",
                 nav_whatsapp: "WhatsApp",
                 hero_badge: "Version 5.0.0 disponible maintenant",
+                hero_new: "Nouveau",
+                cur: "DA",
+                theme_aria: "Changer de thème",
+                motion_aria: "Activer les animations",
+                err_phone: "Entrez un numéro algérien valide, ex. : 0555 12 34 56",
+                form_plan: "Offre choisie :",
+                cart_empty: "Facture vide, ajoutez un produit",
                 hero_title_1: "Le système le plus simple et rapide pour gérer",
                 hero_title_2: "les ventes, le stock et la comptabilité",
                 hero_title_3: "et de nombreuses applications vous attendent",
@@ -794,7 +876,7 @@
                 form_submit: "Envoyer (OK)",
                 form_cancel: "Annuler",
                 success_title: "Merci",
-                success_desc: "Veuillez patienter, notre équipe technique vous répondra par téléphone ou e-mail dans les plus brefs délais.",
+                success_desc: "WhatsApp s'est ouvert avec un message prêt. Appuyez sur « Envoyer » pour finaliser votre demande ; notre équipe technique vous répondra rapidement.",
                 success_btn: "D'accord"
             },
             en: {
@@ -803,6 +885,13 @@
                 nav_activation: "Request Activation",
                 nav_whatsapp: "WhatsApp",
                 hero_badge: "Version 5.0.0 is now available",
+                hero_new: "New",
+                cur: "DZD",
+                theme_aria: "Toggle theme",
+                motion_aria: "Enable animations",
+                err_phone: "Enter a valid Algerian phone number, e.g. 0555 12 34 56",
+                form_plan: "Selected plan:",
+                cart_empty: "Invoice is empty, add a product",
                 hero_title_1: "The easiest and fastest system to manage",
                 hero_title_2: "sales, inventory and accounting",
                 hero_title_3: "and many more apps are waiting for you",
@@ -879,7 +968,7 @@
                 form_submit: "Send Request (OK)",
                 form_cancel: "Cancel",
                 success_title: "Thank You",
-                success_desc: "Please wait, our technical team will respond via phone or email shortly.",
+                success_desc: "WhatsApp opened with a ready message. Press “Send” there to complete your request; our technical team will reply shortly.",
                 success_btn: "OK"
             }
         };
@@ -924,18 +1013,11 @@
         }
 
         /* ===== روابط تحميل تطبيقات الأندرويد ===== */
-        const DOWNLOAD_LINKS = {
-            apk: 'https://github.com/zawali4gaming/arbah-ecran/releases/download/apk/ARBAH.POS.V1.5.apk'
-        };
+        /* رابط الـ APK الوحيد موجود في الـ HTML؛ إن كان الرابط فارغاً يظهر تنبيه "غير متوفر" */
         document.querySelectorAll('[data-dl]').forEach(a => {
-            const url = DOWNLOAD_LINKS[a.dataset.dl];
-            if (url) {
-                a.href = url; a.target = '_blank'; a.rel = 'noopener';
-            } else {
-                a.addEventListener('click', e => {
-                    e.preventDefault();
-                    alert(getCurrentDict().dl_soon);
-                });
+            const href = a.getAttribute('href');
+            if (!href || href === '#') {
+                a.addEventListener('click', e => { e.preventDefault(); alert(getCurrentDict().dl_soon); });
             }
         });
 
@@ -963,9 +1045,12 @@
             document.getElementById('guideProgress').classList.toggle('hidden', singleScreen);
             document.getElementById('guidePager').classList.toggle('hidden', singleScreen);
             document.getElementById('guideBack').classList.toggle('hidden', singleScreen);
+            if (!noMotion()) ['guideStep', 'guideNum'].forEach(id => document.getElementById(id).animate(
+                [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],
+                { duration: 280, easing: 'cubic-bezier(.2,.7,.2,1)' }));
         }
-        function openGuide(key) { guideKey = key; guideIdx = 0; renderGuide(); document.getElementById('guideModal').classList.remove('hidden'); }
-        function closeGuide() { document.getElementById('guideModal').classList.add('hidden'); }
+        function openGuide(key) { guideKey = key; guideIdx = 0; renderGuide(); document.getElementById('guideModal').classList.remove('hidden', 'is-closing'); }
+        function closeGuide() { hideModal('guideModal'); }
         function goGuide(i) { guideIdx = i; renderGuide(); }
         function stepGuide(dir) {
             const n = (getCurrentDict()['guide_' + guideKey] || translations.ar['guide_' + guideKey]).steps.length;
@@ -977,8 +1062,8 @@
             if (guideKey === 'reports') openActivationModal();
         }
         document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') { closeGuide(); closeActivationModal(); closeSuccessModal(); return; }
             if (document.getElementById('guideModal').classList.contains('hidden')) return;
-            if (e.key === 'Escape') closeGuide();
             const rtl = document.documentElement.getAttribute('dir') === 'rtl';
             if (e.key === 'ArrowLeft') stepGuide(rtl ? 1 : -1);
             if (e.key === 'ArrowRight') stepGuide(rtl ? -1 : 1);
@@ -986,38 +1071,65 @@
 
         /* ===== أزرار اللغات ===== */
         document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+            btn.addEventListener('click', () => withTransition('vt-lang', () => setLanguage(btn.dataset.lang)));
         });
 
-        function openActivationModal() {
-            document.getElementById('activationModal').classList.remove('hidden');
+        let selectedPlan = null;
+        function openActivationModal(planKey) {
+            selectedPlan = typeof planKey === 'string' ? planKey : null;
+            const planEl = document.getElementById('actPlan');
+            if (selectedPlan) {
+                const d = getCurrentDict();
+                planEl.textContent = d.form_plan + ' ' + (d[selectedPlan] || '');
+                planEl.classList.remove('hidden');
+            } else {
+                planEl.textContent = '';
+                planEl.classList.add('hidden');
+            }
+            document.getElementById('activationModal').classList.remove('hidden', 'is-closing');
+            setTimeout(() => document.getElementById('actStoreName').focus(), 50);
         }
 
         function closeActivationModal() {
-            document.getElementById('activationModal').classList.add('hidden');
+            hideModal('activationModal');
         }
+
+        /* يقبل 0555.. أو +213555.. أو 213555.. ويعيد الرقم بصيغة 05xxxxxxxx أو null */
+        function normalizePhone(v) {
+            let d = v.replace(/[\s.\-()]/g, '');
+            if (d.startsWith('+213')) d = '0' + d.slice(4);
+            else if (d.startsWith('00213')) d = '0' + d.slice(5);
+            else if (d.startsWith('213')) d = '0' + d.slice(3);
+            return /^0([5-7]\d{8}|[2-4]\d{7})$/.test(d) ? d : null;
+        }
+        document.getElementById('actPhone').addEventListener('input', e => e.target.setCustomValidity(''));
 
         function handleActivationSubmit(e) {
             e.preventDefault();
             const storeName = document.getElementById('actStoreName').value.trim();
-            const phone = document.getElementById('actPhone').value.trim();
+            const phoneEl = document.getElementById('actPhone');
+            const phone = normalizePhone(phoneEl.value.trim());
+            if (!phone) { phoneEl.setCustomValidity(getCurrentDict().err_phone); phoneEl.reportValidity(); return; }
             const email = document.getElementById('actEmail').value.trim();
             const serial = document.getElementById('actSerial').value.trim();
 
-            const message = `طلب تفعيل جديد لبرنامج أرباح ARBAH:%0A` +
-                            `- اسم المتجر: ${encodeURIComponent(storeName)}%0A` +
-                            `- رقم الهاتف: ${encodeURIComponent(phone)}%0A` +
-                            `- البريد: ${encodeURIComponent(email || 'غير مدخل')}%0A` +
-                            `- السريال العتادي: ${encodeURIComponent(serial || 'غير مدخل')}`;
+            const lines = [
+                'طلب تفعيل جديد لبرنامج أرباح ARBAH:',
+                '- اسم المتجر: ' + storeName,
+                '- رقم الهاتف: ' + phone,
+                '- البريد: ' + (email || 'غير مدخل'),
+                '- السريال العتادي: ' + (serial || 'غير مدخل')
+            ];
+            if (selectedPlan) lines.push('- الخطة: ' + translations.ar[selectedPlan]);
 
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+            window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
             closeActivationModal();
             document.getElementById('activationForm').reset();
-            document.getElementById('successModal').classList.remove('hidden');
+            document.getElementById('successModal').classList.remove('hidden', 'is-closing');
         }
 
         function closeSuccessModal() {
-            document.getElementById('successModal').classList.add('hidden');
+            hideModal('successModal');
         }
 
         /* ================= TRUST COUNTER ANIMATION ================= */
@@ -1030,7 +1142,7 @@
             if (trustAnimationStarted) return;
             trustAnimationStarted = true;
 
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            if (noMotion()) {
                 trustedCount.textContent = String(TRUSTED_TOTAL);
                 return;
             }
@@ -1075,7 +1187,17 @@
         let savedTheme = 'dark';
         try { savedTheme = localStorage.getItem('arbah_theme') === 'light' ? 'light' : 'dark'; } catch (e) {}
         applyTheme(savedTheme);
-        themeToggle.addEventListener('click', () => applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+        themeToggle.addEventListener('click', () => {
+            const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            const r = themeToggle.getBoundingClientRect();
+            const x = r.left + r.width / 2, y = r.top + r.height / 2;
+            const end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+            const t = withTransition('vt-theme', () => applyTheme(next));
+            if (t) t.ready.then(() => document.documentElement.animate(
+                { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${end}px at ${x}px ${y}px)`] },
+                { duration: 650, easing: 'cubic-bezier(.4,0,.2,1)', pseudoElement: '::view-transition-new(root)' }
+            )).catch(() => {});
+        });
 
         /* ================= 3D PARALLAX EFFECT ================= */
         const dashboard = document.getElementById('interactiveDashboard');
@@ -1103,30 +1225,36 @@
 
         function renderCart() {
             const cartList = document.getElementById('cartList');
-            const cartCount = document.getElementById('cartCount');
-            const cartTotalSum = document.getElementById('cartTotalSum');
             const dict = getCurrentDict();
-            
-            cartList.innerHTML = '';
-            let totalSum = 0;
-            let totalQty = 0;
+            cartList.replaceChildren();
+            let totalSum = 0, totalQty = 0;
+
+            if (!cartItems.length) {
+                const p = document.createElement('p');
+                p.className = 'text-center text-slate-400 py-2';
+                p.textContent = dict.cart_empty;
+                cartList.appendChild(p);
+            }
 
             cartItems.forEach(item => {
                 totalSum += item.price * item.qty;
                 totalQty += item.qty;
-                const itemName = dict[item.key] || item.key;
-                
                 const row = document.createElement('div');
                 row.className = 'flex justify-between items-center bg-[var(--panel2)] border border-amber-400/15 p-2 rounded-lg';
-                row.innerHTML = `
-                    <span><strong class="text-amber-400">${item.qty}x</strong> ${itemName}</span>
-                    <span class="font-bold">${(item.price * item.qty)} د.ج</span>
-                `;
+                const left = document.createElement('span');
+                const q = document.createElement('strong');
+                q.className = 'text-amber-400';
+                q.textContent = item.qty + 'x';
+                left.append(q, ' ' + (dict[item.key] || item.key));
+                const right = document.createElement('span');
+                right.className = 'font-bold';
+                right.textContent = (item.price * item.qty) + ' ' + dict.cur;
+                row.append(left, right);
                 cartList.appendChild(row);
             });
 
-            cartCount.textContent = `${totalQty} ${dict.cart_items_label}`;
-            cartTotalSum.textContent = `${totalSum} د.ج`;
+            document.getElementById('cartCount').textContent = `${totalQty} ${dict.cart_items_label}`;
+            document.getElementById('cartTotalSum').textContent = `${totalSum} ${dict.cur}`;
         }
 
         function addToCart(key, price) {
@@ -1157,10 +1285,38 @@
         /* ===== انتقالات تفاعلية عند التمرير ===== */
         (function () {
             const els = document.querySelectorAll('section h2, #products .grid > div, section.border-t .grid > div, #visualContainer, #trustCounter');
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+            if (noMotion() || !('IntersectionObserver' in window)) return;
             const io = new IntersectionObserver(en => en.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.15 });
             els.forEach(el => { el.style.setProperty('--d', [...el.parentElement.children].indexOf(el) % 4); el.classList.add('reveal'); io.observe(el); });
         })();
+
+        /* زر تجاوز "تقليل الحركة" (يظهر فقط عند تفعيله في النظام) */
+        (function () {
+            const mt = document.getElementById('motionToggle');
+            if (noMotion()) mt.style.display = 'inline-flex';
+            mt.addEventListener('click', () => {
+                try { localStorage.setItem('arbah_motion', 'on'); } catch (e) {}
+                location.reload();
+            });
+        })();
+
+        /* شريط تقدم التمرير + انكماش الهيدر */
+        (function () {
+            const bar = document.getElementById('scrollBar'), hdr = document.querySelector('header');
+            let queued = false;
+            function update() {
+                queued = false;
+                const max = document.documentElement.scrollHeight - innerHeight;
+                bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(scrollY / max, 1) : 0) + ')';
+                hdr.classList.toggle('scrolled', scrollY > 24);
+            }
+            addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+            update();
+        })();
+
+        /* رقم واتساب من مصدر واحد (WHATSAPP_NUMBER) */
+        document.querySelectorAll('[data-wa]').forEach(a => { a.href = 'https://wa.me/' + WHATSAPP_NUMBER; });
+        document.querySelectorAll('[data-wa-text]').forEach(el => { el.textContent = '+' + WHATSAPP_NUMBER; });
 
         // تهيئة اللغة الافتراضية
         let initialLang = 'ar';
