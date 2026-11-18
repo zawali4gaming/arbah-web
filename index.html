@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="dark">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),async=true,j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-NTRKCZDC');</script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARBAH GROUP - برامج المحاسبة وإدارة المبيعات والمخزون</title>
     <meta name="description" content="ARBAH GROUP: برامج محاسبة وإدارة مبيعات ومخزون للكمبيوتر والهاتف، مع طباعة الفواتير والباركود ومتابعة الديون والأرباح.">
-
-    <!-- أيقونة الموقع -->
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="apple-touch-icon" href="icon.png">
-
-    <!-- معاينة المشاركة -->
     <meta property="fb:app_id" content="966242223397117">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="ARBAH GROUP">
@@ -33,228 +29,84 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Icons & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* ================= BRAND IDENTITY THEMES (ROYAL PURPLE & GOLD) ================= */
         :root, [data-theme="dark"] {
-          --bg: #0f071c;
-          --panel: rgba(28, 14, 52, 0.78);
-          --panel-solid: #1a0d30;
-          --panel2: rgba(15, 7, 28, 0.75);
-          --text: #ffffff;
-          --muted: #cbbde2;
-          --primary: #8b5cf6;
-          --primary-hover: #7c3aed;
-          --gold: #eab308;
-          --gold-light: #fde047;
-          --gold-dark: #ca8a04;
-          --border: rgba(234, 179, 8, 0.24);
-          --border-purple: rgba(139, 92, 246, 0.25);
-          --pos-card: rgba(255, 255, 255, 0.04);
+          --bg: #0f071c; --panel: rgba(28, 14, 52, 0.78); --panel-solid: #1a0d30; --panel2: rgba(15, 7, 28, 0.75);
+          --text: #ffffff; --muted: #cbbde2; --primary: #8b5cf6; --primary-hover: #7c3aed;
+          --gold: #eab308; --gold-light: #fde047; --gold-dark: #ca8a04;
+          --border: rgba(234, 179, 8, 0.24); --border-purple: rgba(139, 92, 246, 0.25); --pos-card: rgba(255, 255, 255, 0.04);
         }
-
         [data-theme="light"] {
-          --bg: #faf8ff;
-          --panel: rgba(255, 255, 255, 0.9);
-          --panel-solid: #ffffff;
-          --panel2: #f3effb;
-          --text: #1c0c36;
-          --muted: #5a4b75;
-          --primary: #4c1d95;
-          --primary-hover: #3b0764;
-          --gold: #b45309;
-          --gold-light: #d97706;
-          --gold-dark: #92400e;
-          --border: rgba(180, 83, 9, 0.25);
-          --border-purple: rgba(76, 29, 149, 0.15);
-          --pos-card: rgba(76, 29, 149, 0.04);
+          --bg: #faf8ff; --panel: rgba(255, 255, 255, 0.9); --panel-solid: #ffffff; --panel2: #f3effb;
+          --text: #1c0c36; --muted: #5a4b75; --primary: #4c1d95; --primary-hover: #3b0764;
+          --gold: #b45309; --gold-light: #d97706; --gold-dark: #92400e;
+          --border: rgba(180, 83, 9, 0.25); --border-purple: rgba(76, 29, 149, 0.15); --pos-card: rgba(76, 29, 149, 0.04);
         }
-
         html { scroll-behavior: smooth; }
-
-        body { 
-          font-family: 'Cairo', sans-serif; 
-          background-color: var(--bg); 
-          color: var(--text); 
-          transition: background 0.35s ease, color 0.35s ease;
-          overflow-x: hidden;
-        }
-
-        /* خلفية متدرجة مستوحاة من الشعار */
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg); color: var(--text); transition: background 0.35s ease, color 0.35s ease; overflow-x: hidden; }
         body::before {
-          content: "";
-          position: fixed;
-          inset: 0;
-          z-index: -1;
-          pointer-events: none;
-          background: 
+          content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+          background:
             radial-gradient(55rem 35rem at 85% -5%, rgba(88, 28, 135, 0.45), transparent 65%),
             radial-gradient(45rem 30rem at 10% 35%, rgba(234, 179, 8, 0.09), transparent 60%),
             radial-gradient(50rem 35rem at 50% 100%, rgba(59, 7, 100, 0.4), transparent 70%);
         }
-
         [data-theme="light"] body::before {
-          background: 
+          background:
             radial-gradient(55rem 35rem at 85% -5%, rgba(107, 33, 168, 0.10), transparent 65%),
             radial-gradient(45rem 30rem at 10% 35%, rgba(217, 119, 6, 0.08), transparent 60%);
         }
-
-        /* البطاقات الزجاجية */
-        .custom-panel { 
-          background-color: var(--panel); 
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-          border-color: var(--border); 
-          transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-        }
-        
+        .custom-panel { background-color: var(--panel); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-color: var(--border); transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
         .custom-panel2 { background-color: var(--panel2); border-color: var(--border-purple); }
-
-        header.custom-panel {
-          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
-          border-bottom: 1px solid var(--border);
-        }
-
-        /* تدرجات ذهبية وبنفسجية للهوية */
-        .gold-text {
-          background: linear-gradient(135deg, #fde047 0%, #eab308 50%, #ca8a04 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        [data-theme="light"] .gold-text {
-          background: linear-gradient(135deg, #b45309 0%, #d97706 50%, #92400e 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        .btn-gold {
-          background: linear-gradient(135deg, #facc15 0%, #eab308 50%, #ca8a04 100%);
-          color: #140826;
-          font-weight: 800;
-          box-shadow: 0 10px 25px -8px rgba(234, 179, 8, 0.55);
-        }
-        .btn-gold:hover {
-          background: linear-gradient(135deg, #fef08a 0%, #facc15 50%, #eab308 100%);
-          box-shadow: 0 14px 30px -6px rgba(234, 179, 8, 0.7);
-        }
-
-        .btn-royal {
-          background: linear-gradient(135deg, #581c87 0%, #3b0764 100%);
-          border: 1px solid rgba(234, 179, 8, 0.45);
-          color: #ffffff;
-          box-shadow: 0 10px 25px -8px rgba(88, 28, 135, 0.6);
-        }
-        .btn-royal:hover {
-          background: linear-gradient(135deg, #6b21a8 0%, #4c1d95 100%);
-          border-color: #fde047;
-        }
-
-        /* أزرار اللغات */
-        .lang-group { 
-          display: inline-flex; 
-          border: 1px solid var(--border); 
-          border-radius: 0.75rem; 
-          overflow: hidden; 
-          background: var(--panel2); 
-        }
-        .lang-btn { 
-          padding: 0.42rem 0.75rem; 
-          font-size: 0.75rem; 
-          font-weight: 700; 
-          color: var(--muted); 
-          cursor: pointer; 
-          transition: all 0.2s; 
-        }
+        header.custom-panel { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35); border-bottom: 1px solid var(--border); }
+        .gold-text { background: linear-gradient(135deg, #fde047 0%, #eab308 50%, #ca8a04 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        [data-theme="light"] .gold-text { background: linear-gradient(135deg, #b45309 0%, #d97706 50%, #92400e 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-gold { background: linear-gradient(135deg, #facc15 0%, #eab308 50%, #ca8a04 100%); color: #140826; font-weight: 800; box-shadow: 0 10px 25px -8px rgba(234, 179, 8, 0.55); }
+        .btn-gold:hover { background: linear-gradient(135deg, #fef08a 0%, #facc15 50%, #eab308 100%); box-shadow: 0 14px 30px -6px rgba(234, 179, 8, 0.7); }
+        .btn-royal { background: linear-gradient(135deg, #581c87 0%, #3b0764 100%); border: 1px solid rgba(234, 179, 8, 0.45); color: #ffffff; box-shadow: 0 10px 25px -8px rgba(88, 28, 135, 0.6); }
+        .btn-royal:hover { background: linear-gradient(135deg, #6b21a8 0%, #4c1d95 100%); border-color: #fde047; }
+        .lang-group { display: inline-flex; border: 1px solid var(--border); border-radius: 0.75rem; overflow: hidden; background: var(--panel2); }
+        .lang-btn { padding: 0.42rem 0.75rem; font-size: 0.75rem; font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.2s; }
         .lang-btn:hover { color: var(--text); }
-        .lang-btn[aria-pressed="true"] { 
-          background: linear-gradient(135deg, #eab308, #ca8a04); 
-          color: #140826; 
-        }
-
-        .theme-toggle {
-          width: 2.3rem;
-          height: 2.3rem;
-          border-radius: 0.75rem;
-          border: 1px solid var(--border);
-          background: var(--panel2);
-          color: var(--gold);
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: transform 0.25s, background 0.3s, border-color 0.3s;
-        }
-        .theme-toggle:hover {
-          transform: rotate(18deg) scale(1.06);
-          border-color: var(--gold);
-        }
-
+        .lang-btn[aria-pressed="true"] { background: linear-gradient(135deg, #eab308, #ca8a04); color: #140826; }
+        .theme-toggle { width: 2.3rem; height: 2.3rem; border-radius: 0.75rem; border: 1px solid var(--border); background: var(--panel2); color: var(--gold); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.25s, background 0.3s, border-color 0.3s; }
+        .theme-toggle:hover { transform: rotate(18deg) scale(1.06); border-color: var(--gold); }
         .scroll-target { scroll-margin-top: 6rem; }
-
-        /* تعديلات الوضع الفاتح للنصوص */
-        [data-theme="light"] .text-slate-300,
-        [data-theme="light"] .text-slate-400,
-        [data-theme="light"] .text-slate-500 { color: var(--muted); }
-        [data-theme="light"] .text-amber-300,
-        [data-theme="light"] .text-amber-400 { color: #b45309; }
-        [data-theme="light"] .text-purple-300,
-        [data-theme="light"] .text-purple-400 { color: #581c87; }
+        [data-theme="light"] .text-slate-300, [data-theme="light"] .text-slate-400, [data-theme="light"] .text-slate-500 { color: var(--muted); }
+        [data-theme="light"] .text-amber-300, [data-theme="light"] .text-amber-400 { color: #b45309; }
+        [data-theme="light"] .text-purple-300, [data-theme="light"] .text-purple-400 { color: #581c87; }
         [data-theme="light"] .bg-slate-800 { background: #e9e3f5; color: #2e1065; }
+        [data-theme="light"] .bg-purple-950\/80 .text-amber-300, [data-theme="light"] .bg-purple-950\/80 .text-amber-400, [data-theme="light"] .from-purple-900\/90 .text-amber-300 { color: #fcd34d; }
+        [data-theme="light"] .from-purple-900\/90 .gold-text { background: linear-gradient(135deg, #fde047 0%, #eab308 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        [data-theme="light"] .from-purple-900\/90 .text-slate-300 { color: #e2d9f3; }
 
-        /* الوضع الفاتح: العناصر ذات الخلفية البنفسجية الداكنة تحتفظ بنص ذهبي فاتح */
-        [data-theme="light"] .bg-purple-950\/80 .text-amber-300,
-        [data-theme="light"] .bg-purple-950\/80 .text-amber-400,
-        [data-theme="light"] .from-purple-900\/90 .text-amber-300 { color: #fcd34d; }
-        [data-theme="light"] .from-purple-900\/90 .gold-text {
-          background: linear-gradient(135deg, #fde047 0%, #eab308 100%);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-
-        /* حركات وانتقالات */
         @keyframes rise { from { opacity: 0; translate: 0 24px; } to { opacity: 1; translate: 0 0; } }
         @keyframes pop { from { opacity: 0; transform: translateY(14px) scale(0.96); } to { opacity: 1; transform: none; } }
         @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-
         .hero-in > * { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
         .hero-in > :nth-child(2) { animation-delay: 0.08s; }
         .hero-in > :nth-child(3) { animation-delay: 0.16s; }
         .hero-in > :nth-child(4) { animation-delay: 0.24s; }
-
+        .hero-in > :nth-child(5) { animation-delay: 0.32s; }
         .reveal { opacity: 0; }
         .reveal.in { animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(var(--d, 0) * 90ms); }
-
-        .hover-card:hover {
-          transform: translateY(-6px);
-          border-color: var(--gold);
-          box-shadow: 0 20px 40px -18px rgba(234, 179, 8, 0.25);
-        }
-
+        .hover-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 20px 40px -18px rgba(234, 179, 8, 0.25); }
         #activationModal:not(.hidden), #successModal:not(.hidden), #guideModal:not(.hidden) { animation: fade 0.2s; }
         #activationModal:not(.hidden) > div, #successModal:not(.hidden) > div, #guideModal:not(.hidden) > div { animation: pop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
-
         a:active, button:active { scale: 0.97; }
 
-        /* ===== انتقالات حركية احترافية ===== */
-        #scrollBar { position: fixed; top: 0; inset-inline: 0; height: 3px; z-index: 60; transform: scaleX(0); transform-origin: left; pointer-events: none;
-          background: linear-gradient(90deg, #8b5cf6, #eab308 70%, #fde047); box-shadow: 0 0 10px rgba(234,179,8,.6); }
+        #scrollBar { position: fixed; top: 0; inset-inline: 0; height: 3px; z-index: 60; transform: scaleX(0); transform-origin: left; pointer-events: none; background: linear-gradient(90deg, #8b5cf6, #eab308 70%, #fde047); box-shadow: 0 0 10px rgba(234,179,8,.6); }
         html[dir="rtl"] #scrollBar { transform-origin: right; }
-
         header > div { transition: padding .3s ease; }
         header.scrolled > div { padding-block: .45rem; }
         header.scrolled { box-shadow: 0 8px 30px rgba(0,0,0,.45); }
-
-        /* تبديل الثيم بموجة دائرية، واللغة بتلاشي ناعم (View Transitions) */
         html.vt-theme::view-transition-old(root), html.vt-theme::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
         html.vt-theme::view-transition-old(root) { z-index: 1; }
         html.vt-theme::view-transition-new(root) { z-index: 2; }
         html.vt-lang::view-transition-group(root) { animation-duration: .35s; }
-
-        /* إغلاق متحرك للنوافذ */
         @keyframes fadeOut { to { opacity: 0; } }
         @keyframes popOut { to { opacity: 0; transform: translateY(10px) scale(0.97); } }
         .is-closing { animation: fadeOut .2s ease both !important; pointer-events: none; }
@@ -267,16 +119,110 @@
           html:not([data-motion="on"]) *, html:not([data-motion="on"]) *::before, html:not([data-motion="on"]) *::after { animation: none !important; transition: none !important; }
           html:not([data-motion="on"]) .reveal { opacity: 1; }
         }
+
+        /* ===== جديد: واتساب عائم، أسئلة شائعة ===== */
+        #waFloat { position: fixed; inset-inline-end: 1rem; bottom: 1rem; z-index: 40; width: 3.6rem; height: 3.6rem; border-radius: 9999px; background: #22c55e; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; box-shadow: 0 10px 28px -6px rgba(34,197,94,.7); transition: transform .2s; }
+        #waFloat:hover { transform: scale(1.08); }
+        #waFloat::after { content: ""; position: absolute; inset: 0; border-radius: inherit; border: 2px solid #22c55e; animation: waPing 2s ease-out infinite; }
+        @keyframes waPing { from { transform: scale(1); opacity: .7; } to { transform: scale(1.6); opacity: 0; } }
+        @media (prefers-reduced-motion: reduce) { html:not([data-motion="on"]) #waFloat::after { display: none; } }
+        details.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: .75rem; font-weight: 700; font-size: .85rem; }
+        details.faq summary::-webkit-details-marker { display: none; }
+        details.faq summary i { transition: transform .25s; color: var(--gold); }
+        details.faq[open] summary i { transform: rotate(180deg); }
+        body { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+        /* ===== بطاقات الأقسام + انتقال ===== */
+        .sec-card { position: relative; width: calc(100% - 2rem); max-width: 72rem; margin: 2.25rem auto; padding: 2.5rem 1.25rem; border: 1px solid var(--border); border-radius: 2rem; background: linear-gradient(180deg, rgba(234,179,8,.06), transparent 14rem), var(--panel2); box-shadow: 0 30px 60px -35px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.05); }
+        [data-theme="light"] .sec-card { box-shadow: 0 24px 50px -34px rgba(76,29,149,.35), inset 0 1px 0 rgba(255,255,255,.8); }
+        @media (min-width: 640px) { .sec-card { padding: 3rem 2rem; } }
+        .sec-narrow { max-width: 56rem; }
+        .sec-slim { max-width: 48rem; }
+        .sec-card::before { content: ""; position: absolute; top: -2.25rem; left: 50%; width: 2px; height: 2.25rem; transform: translateX(-50%); background: linear-gradient(to bottom, transparent, var(--gold)); opacity: .7; }
+        .sec-card::after { content: ""; position: absolute; top: -5px; left: 50%; width: 9px; height: 9px; transform: translateX(-50%); border-radius: 9999px; background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+        #top.sec-card { margin-top: 1.5rem; }
+        #top.sec-card::before, #top.sec-card::after { display: none; }
+        .sec-anim { opacity: 0; transform: translateY(70px) scale(.95); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+        .sec-anim.in-view { opacity: 1; transform: none; }
+        /* قائمة أنواع المحلات: للعرض فقط وليست للضغط */
+        .biz-rail { display: none; pointer-events: none; user-select: none; -webkit-user-select: none; }
+        @media (min-width: 1536px) {
+          .biz-rail { display: block; position: fixed; top: 50%; transform: translateY(-50%); inset-inline-start: 1rem; width: 10rem; z-index: 30; }
+          .biz-inline { display: none; }
+        }
+        .biz-rail li::before { content: ""; width: 5px; height: 5px; border-radius: 9999px; background: var(--gold); flex-shrink: 0; }
+
+        /* ===== تحسين الشكل والانتقالات (v3) ===== */
+        .orbs { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+        .orbs i { position: absolute; border-radius: 50%; width: 46rem; height: 46rem; opacity: .5; will-change: transform; animation: orbFloat 22s ease-in-out infinite alternate; }
+        .orbs i:nth-child(1) { top: -14rem; inset-inline-end: -10rem; background: radial-gradient(closest-side, rgba(139,92,246,.55), transparent); }
+        .orbs i:nth-child(2) { top: 40%; inset-inline-start: -16rem; background: radial-gradient(closest-side, rgba(234,179,8,.30), transparent); animation-duration: 28s; animation-delay: -8s; }
+        .orbs i:nth-child(3) { bottom: -18rem; inset-inline-end: 20%; background: radial-gradient(closest-side, rgba(168,85,247,.42), transparent); animation-duration: 32s; animation-delay: -14s; }
+        [data-theme="light"] .orbs i { opacity: .42; }
+        @keyframes orbFloat { to { transform: translate3d(-6rem, 5rem, 0) scale(1.15); } }
+
+        /* هيدر عائم */
+        body > header.custom-panel { top: .6rem; margin: .6rem auto 0; width: calc(100% - 1.5rem); max-width: 74rem; border: 1px solid var(--border); border-radius: 1.4rem; }
+
+        /* نص ذهبي لامع */
+        html[data-theme] .gold-text, html[data-theme] .from-purple-900\/90 .gold-text { background-size: 220% 100%; animation: goldShift 5s ease-in-out infinite alternate; }
+        @keyframes goldShift { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+
+        /* لمعة على الأزرار الذهبية */
+        .btn-gold { position: relative; overflow: hidden; isolation: isolate; }
+        .btn-gold::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%); transform: translateX(-120%); transition: transform .7s ease; }
+        .btn-gold:hover::after { transform: translateX(120%); }
+
+        /* ضوء يتبع المؤشر على البطاقات */
+        .hover-card { position: relative; }
+        .hover-card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(18rem circle at var(--mx, 50%) var(--my, 50%), rgba(234,179,8,.18), transparent 60%); }
+        .hover-card:hover::before { opacity: 1; }
+        .hover-card > div:first-child { transition: transform .35s cubic-bezier(.3,1.6,.5,1); }
+        .hover-card:hover > div:first-child { transform: translateY(-3px) rotate(-6deg) scale(1.06); }
+
+        /* الخطة السنوية تنبض بلطف */
+        button[onclick*="plan_4_name"] { animation: glowPulse 3s ease-in-out infinite; }
+        @keyframes glowPulse { 0%, 100% { box-shadow: 0 10px 30px -10px rgba(234,179,8,.35); } 50% { box-shadow: 0 14px 44px -6px rgba(234,179,8,.75); } }
+
+        /* بطاقة الهيرو */
+        #top.sec-card { padding-block: 3.5rem; background: radial-gradient(40rem 18rem at 50% 0, rgba(234,179,8,.16), transparent 70%), var(--panel2); }
+
+        /* الخط الواصل بين البطاقات يرسم نفسه */
+        .sec-anim::before { transform: translateX(-50%) scaleY(0); transform-origin: bottom; transition: transform .8s cubic-bezier(.2,.7,.2,1) .35s; }
+        .sec-anim.in-view::before { transform: translateX(-50%) scaleY(1); }
+        .sec-anim::after { opacity: 0; transition: opacity .4s .9s; }
+        .sec-anim.in-view::after { opacity: 1; }
+
+        /* انتقال مرتبط بالتمرير في المتصفحات الحديثة (بدل الانتقال العادي) */
+        @keyframes secScroll { from { opacity: 0; transform: translateY(90px) scale(.9); } to { opacity: 1; transform: none; } }
+        @supports (animation-timeline: view()) {
+          .sec-anim { opacity: 1; transform: none; transition: none; animation: secScroll linear both; animation-timeline: view(); animation-range: entry 0% entry 16rem; }
+        }
     </style>
 </head>
 <body class="min-h-screen">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTRKCZDC"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTRKCZDC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="scrollBar" aria-hidden="true"></div>
+    <div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
 
-    <!-- Header / Navbar -->
+    <!-- قائمة جانبية لأنواع المحلات: لا تستجيب للنقر -->
+    <aside class="biz-rail custom-panel border rounded-2xl p-4" aria-label="business types">
+        <p class="text-xs font-black text-amber-300 mb-2" data-i18n="biz_title">مناسب لكل أنواع المحلات</p>
+        <ul>
+            <li class="flex items-center gap-2 text-xs font-bold py-1.5"><span>📱</span><span data-i18n="biz_1">الهواتف والإكسسوارات</span></li>
+            <li class="flex items-center gap-2 text-xs font-bold py-1.5"><span>🛠️</span><span data-i18n="biz_2">تصليح وصيانة</span></li>
+            <li class="flex items-center gap-2 text-xs font-bold py-1.5"><span>🍽️</span><span data-i18n="biz_3">المطاعم والمقاهي</span></li>
+            <li class="flex items-center gap-2 text-xs font-bold py-1.5"><span>🏨</span><span data-i18n="biz_4">الفنادق</span></li>
+            <li class="flex items-center gap-2 text-xs font-bold py-1.5"><span>👕</span><span data-i18n="biz_5">الملابس</span></li>
+            <li class="flex items-center gap-2 text-xs font-bold py-1.5"><span>🛒</span><span data-i18n="biz_6">البقالة والمواد الغذائية</span></li>
+            <li class="flex items-center gap-2 text-xs font-bold py-1.5"><span>🧱</span><span data-i18n="biz_7">مواد البناء</span></li>
+            <li class="flex items-center gap-2 text-xs font-bold py-1.5"><span>🏪</span><span data-i18n="biz_8">وأي نشاط تجاري آخر</span></li>
+        </ul>
+    </aside>
+
+    <!-- زر واتساب عائم -->
+    <a id="waFloat" href="https://wa.me/213542054655" data-wa target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
     <header class="sticky top-0 z-50 custom-panel">
         <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
             <a href="#top" class="flex items-center gap-3 group">
@@ -288,19 +234,14 @@
                     <span class="text-xs sm:text-sm font-bold tracking-wide mt-0.5" data-i18n="brand_sub">تطبيقات حسب الطلب</span>
                 </div>
             </a>
-
-            <!-- Language buttons, Theme Switcher & Actions -->
             <div class="flex flex-wrap items-center gap-2">
                 <div id="langSwitch" class="lang-group" role="group" aria-label="Language">
                     <button type="button" class="lang-btn" data-lang="ar" aria-pressed="true">العربية</button>
                     <button type="button" class="lang-btn" data-lang="fr" aria-pressed="false">Français</button>
                     <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">English</button>
                 </div>
-
                 <button id="motionToggle" type="button" class="theme-toggle" style="display:none" aria-label="Enable animations" title="Enable animations" data-i18n-aria="motion_aria"><i class="fa-solid fa-bolt"></i></button>
-
                 <button id="themeToggle" type="button" class="theme-toggle" aria-label="Toggle theme" data-i18n-aria="theme_aria"><i class="fa-solid fa-sun"></i></button>
-
                 <button onclick="openActivationModal()" class="btn-gold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-1.5">
                     <i class="fa-solid fa-key"></i>
                     <span data-i18n="nav_activation">طلب التفعيل</span>
@@ -313,129 +254,128 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="top" class="hero-in max-w-6xl mx-auto px-4 pt-14 pb-12 text-center space-y-6 relative">
+    <!-- Hero -->
+    <section id="top" class="hero-in sec-card text-center space-y-6">
         <div class="inline-flex items-center gap-2 bg-purple-950/80 text-amber-300 border border-amber-400/40 text-xs px-4 py-1.5 rounded-full font-bold shadow-lg shadow-purple-950/50">
-    <span class="relative inline-flex items-center gap-1 bg-red-600 text-white px-2 py-0.5 rounded-full text-[10px] font-extrabold animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.8)]">
-        <span class="relative flex h-1.5 w-1.5">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"></span>
-        </span>
-        <span data-i18n="hero_new">جديد</span>
-    </span>
-    <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
-    <span data-i18n="hero_badge">الإصدار 5.0.0 متوفر الآن</span>
-</div>
+            <span class="relative inline-flex items-center gap-1 bg-red-600 text-white px-2 py-0.5 rounded-full text-[10px] font-extrabold animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.8)]">
+                <span class="relative flex h-1.5 w-1.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"></span>
+                </span>
+                <span data-i18n="hero_new">جديد</span>
+            </span>
+            <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+            <span data-i18n="hero_badge">الإصدار 5.0.5 متوفر الآن</span>
+        </div>
 
         <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.28]">
-            <span data-i18n="hero_title_1">النظام الأسهل والأسرع لإدارة</span> 
-            <span class="gold-text block sm:inline" data-i18n="hero_title_2">المبيعات والمخزون والمحاسبة</span> 
-            <span class="block mt-3 text-xl sm:text-2xl font-bold text-slate-300" data-i18n="hero_title_3">وتطبيقات كثيرة في انتظارك</span>
+            <span data-i18n="hero_title_1">اعرف ربحك الحقيقي كل يوم</span>
+            <span class="gold-text block sm:inline" data-i18n="hero_title_2">وأوقف ضياع المخزون والديون</span>
         </h1>
+        <p class="text-lg sm:text-2xl font-bold text-slate-300" data-i18n="hero_title_3">برنامج محاسبة ومبيعات يعمل على الكمبيوتر والهاتف</p>
 
-        <p class="text-slate-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed" data-i18n="hero_desc">
-            نطوّر برامج المحاسبة وإدارة المخزون وتطبيقات متابعة الأعمال للتجار وأصحاب المشاريع. تعمل برامجنا على الكمبيوتر والهاتف، وتطبع الفواتير والباركود مباشرة، وتتابع الديون والأرباح بدقة.
-        </p>
+        <p class="text-slate-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed" data-i18n="hero_desc">تستطيع متابعة تجارتك من أي مكان، ومعرفة أرباحك تلقائياً، وتتبّع ديون الزبائن والموردين. صُمم للتجار وأصحاب المحلات، مع فيديوهات وصور تشرح الاستعمال.</p>
 
         <div class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 pt-3">
-            <a href="#products" class="w-full sm:w-auto px-8 py-4 btn-gold rounded-2xl transition text-sm flex items-center justify-center gap-2.5">
-                <i class="fa-solid fa-layer-group text-lg"></i>
-                <span data-i18n="btn_products">برامج محاسبة وإدارة مبيعات ومخزون للكمبيوتر والهاتف</span>
-            </a>
-            <button onclick="openActivationModal()" class="w-full sm:w-auto px-7 py-4 btn-royal font-bold rounded-2xl transition text-sm flex items-center justify-center gap-2">
-                <i class="fa-solid fa-gift text-amber-400"></i>
-                <span data-i18n="btn_free_version">اضغط هنا لطلب نسخة مجانية</span>
+            <button onclick="openActivationModal()" class="w-full sm:w-auto px-8 py-4 btn-gold rounded-2xl transition text-sm flex items-center justify-center gap-2.5">
+                <i class="fa-solid fa-gift text-lg"></i>
+                <span data-i18n="btn_free_version">جرّب مجاناً قبل أن تشتري</span>
             </button>
+            <a href="#products" class="w-full sm:w-auto px-7 py-4 btn-royal font-bold rounded-2xl transition text-sm flex items-center justify-center gap-2">
+                <i class="fa-solid fa-download text-amber-400"></i>
+                <span data-i18n="btn_products">حمّل البرنامج الآن</span>
+            </a>
         </div>
+
+        <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm font-bold text-slate-300 pt-1">
+            <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400"></i><span data-i18n="chip_1">تجربة مجانية</span></li>
+            <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400"></i><span data-i18n="chip_2">دعم عبر واتساب</span></li>
+            <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400"></i><span data-i18n="chip_3">فيديوهات وصور لشرح الاستعمال</span></li>
+        </ul>
     </section>
 
-    <!-- ================= PRODUCTS ================= -->
-    <section id="products" class="scroll-target max-w-6xl mx-auto px-4 py-12">
+    <!-- Products -->
+    <section id="products" class="scroll-target sec-card">
         <div class="text-center mb-10">
             <h2 class="text-2xl sm:text-3xl font-black gold-text inline-block" data-i18n="products_title">برامج محاسبة وإدارة مبيعات ومخزون للكمبيوتر والهاتف</h2>
             <p class="text-xs sm:text-sm text-slate-300 mt-2" data-i18n="products_subtitle">اختر ما يناسب نشاطك التجاري</p>
         </div>
-
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Product 1: PC -->
             <div class="custom-panel hover-card border rounded-3xl p-6 flex flex-col gap-4 shadow-xl">
-                <div class="w-12 h-12 bg-amber-500/15 text-amber-400 border border-amber-400/30 rounded-2xl flex items-center justify-center text-xl">
-                    <i class="fa-brands fa-windows"></i>
-                </div>
+                <div class="w-12 h-12 bg-amber-500/15 text-amber-400 border border-amber-400/30 rounded-2xl flex items-center justify-center text-xl"><i class="fa-brands fa-windows"></i></div>
                 <h3 class="font-bold text-lg" data-i18n="prod_pc_title">أرباح للكمبيوتر</h3>
                 <p class="text-xs text-slate-300 leading-relaxed flex-1" data-i18n="prod_pc_desc">برنامج محاسبة ومخزون لنظام Windows، مع طباعة فورية للفواتير والباركود.</p>
                 <a id="dl-exe" href="https://github.com/zawali4gaming/arbah-web/releases/download/V5/ARBAH-POS-V5.0.5-Setup.zip" target="_blank" rel="noopener" class="px-5 py-3.5 btn-gold rounded-xl transition text-xs sm:text-sm flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-download"></i>
-                    <span data-i18n="btn_download_pc">تحميل البرنامج للكمبيوتر (EXE)</span>
+                    <i class="fa-solid fa-download"></i><span data-i18n="btn_download_pc">تحميل البرنامج للكمبيوتر (EXE)</span>
                 </a>
             </div>
-
-            <!-- Product 2: Phone -->
             <div class="custom-panel hover-card border rounded-3xl p-6 flex flex-col gap-4 shadow-xl">
-                <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 border border-emerald-400/30 rounded-2xl flex items-center justify-center text-xl">
-                    <i class="fa-brands fa-android"></i>
-                </div>
+                <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 border border-emerald-400/30 rounded-2xl flex items-center justify-center text-xl"><i class="fa-brands fa-android"></i></div>
                 <h3 class="font-bold text-lg" data-i18n="prod_phone_title">أرباح للهاتف</h3>
                 <p class="text-xs text-slate-300 leading-relaxed flex-1" data-i18n="prod_phone_desc">نسخة الأندرويد من برنامج المحاسبة، للعمل من الهاتف أو الطابلت.</p>
                 <a href="https://github.com/zawali4gaming/arbah-ecran/releases/download/apk/ARBAH.POS.V1.5.apk" data-dl="apk" target="_blank" rel="noopener" class="px-5 py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-600/25 transition text-xs sm:text-sm flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-download"></i>
-                    <span data-i18n="btn_download_apk">تحميل نسخة الهاتف (APK)</span>
+                    <i class="fa-solid fa-download"></i><span data-i18n="btn_download_apk">تحميل نسخة الهاتف (APK)</span>
                 </a>
             </div>
-
-            <!-- Product 3: Entrepreneurs platform -->
             <div class="custom-panel hover-card border rounded-3xl p-6 flex flex-col gap-4 shadow-xl relative">
                 <span class="absolute bg-gradient-to-r from-amber-500 to-yellow-400 text-purple-950 text-[10px] font-black px-3 py-0.5 rounded-full shadow-lg" style="top:-10px;inset-inline-end:16px" data-i18n="badge_new">جديد</span>
-                <div class="w-12 h-12 bg-purple-500/20 text-amber-300 border border-amber-400/30 rounded-2xl flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-chart-line"></i>
-                </div>
+                <div class="w-12 h-12 bg-purple-500/20 text-amber-300 border border-amber-400/30 rounded-2xl flex items-center justify-center text-xl"><i class="fa-solid fa-chart-line"></i></div>
                 <h3 class="font-bold text-lg" data-i18n="prod_platform_title">منصة رواد الأعمال</h3>
                 <p class="text-xs text-slate-300 leading-relaxed flex-1" data-i18n="prod_platform_desc">تابع سجل مبيعات محلك وعملياته من هاتفك، في أي وقت ومن أي مكان.</p>
+                <p class="text-[11px] font-bold text-amber-300 leading-snug"><i class="fa-solid fa-gift"></i> <span data-i18n="platform_offer">عرض: مجاني مع اشتراك سنة كاملة بدل</span> <s class="opacity-70">2000 <span data-i18n="cur">د.ج</span></s></p>
                 <button type="button" onclick="openGuide('reports')" class="px-5 py-3.5 btn-royal rounded-xl transition text-xs sm:text-sm font-bold flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-circle-question text-amber-400"></i>
-                    <span data-i18n="btn_learn_more">اعرف المزيد</span>
+                    <i class="fa-solid fa-circle-question text-amber-400"></i><span data-i18n="btn_learn_more">اعرف المزيد</span>
                 </button>
             </div>
         </div>
-    
-        <div class="mt-8 max-w-3xl mx-auto custom-panel border border-amber-400/30 rounded-2xl p-4 flex gap-3 items-start text-start">
-            <i class="fa-solid fa-shield-halved text-amber-400 mt-1"></i>
+
+        <div class="mt-8 max-w-3xl mx-auto custom-panel border border-emerald-400/30 rounded-2xl p-4 flex gap-3 items-start text-start">
+            <i class="fa-solid fa-shield-halved text-emerald-400 mt-1"></i>
             <div>
-                <p class="font-bold text-sm text-amber-300" data-i18n="dl_warn_title">ملاحظة قبل التحميل</p>
-                <p class="text-xs text-slate-300 leading-relaxed mt-1" data-i18n="dl_warn_desc">قد يعرض Windows أو Google Play Protect تحذيرًا عند التثبيت، لأن التطبيق غير موقّع رقميًا بعد. حمّل التطبيقات من هذه الصفحة فقط. في Windows اضغط «مزيد من المعلومات» ثم «تشغيل على أي حال»، وفي الأندرويد اسمح بالتثبيت من المتصفح ثم اختر «تثبيت على أي حال».</p>
+                <p class="font-bold text-sm text-amber-300" data-i18n="dl_warn_title">تحميل آمن من موقعنا الرسمي</p>
+                <p class="text-xs text-slate-300 leading-relaxed mt-1" data-i18n="dl_warn_desc">قد يعرض Windows أو Google Play Protect تنبيهاً عند التثبيت لأن البرنامج جديد وغير موقّع رقمياً بعد، وهذا لا يعني أنه ضار. حمّله من هذه الصفحة فقط. في Windows اضغط «مزيد من المعلومات» ثم «تشغيل على أي حال»، وفي الأندرويد اسمح بالتثبيت من المتصفح ثم اختر «تثبيت على أي حال».</p>
             </div>
         </div>
     </section>
 
-    <!-- Business Trust Counter -->
-    <section class="max-w-4xl mx-auto px-4 py-4">
+    <!-- Trust -->
+    <section class="sec-card sec-narrow">
         <div class="flex justify-center">
             <button id="trustCounter" type="button" onclick="openActivationModal()" class="inline-flex items-center gap-4 rounded-2xl custom-panel border border-amber-400/40 px-6 py-3.5 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 hover:shadow-amber-500/20 active:scale-95 cursor-pointer group" data-i18n-aria="trust_aria">
-                <div class="w-12 h-12 shrink-0 rounded-full bg-amber-500/15 text-amber-400 border border-amber-400/40 flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-award"></i>
-                </div>
+                <div class="w-12 h-12 shrink-0 rounded-full bg-amber-500/15 text-amber-400 border border-amber-400/40 flex items-center justify-center text-xl"><i class="fa-solid fa-award"></i></div>
                 <div class="leading-tight text-start">
                     <p class="text-2xl sm:text-3xl font-black gold-text"><span id="trustedCount">238</span><span class="inline-flex text-base align-top ms-0.5 transition-transform duration-300 group-hover:translate-y-[-2px]">+</span></p>
                     <p class="text-xs sm:text-sm font-bold text-slate-300" data-i18n="trust_message">صاحب مشروع يثق بتطبيقات شركة أرباح</p>
                 </div>
-                <div class="w-8 h-8 rounded-full btn-gold flex items-center justify-center text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                    <i class="fa-solid fa-plus"></i>
-                </div>
+                <div class="w-8 h-8 rounded-full btn-gold flex items-center justify-center text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300"><i class="fa-solid fa-plus"></i></div>
             </button>
         </div>
+        <!-- أنواع المحلات (للعرض فقط) -->
+        <div class="biz-inline mt-6 text-center" aria-hidden="false">
+            <p class="text-xs text-slate-300 mb-3" data-i18n="biz_title">مناسب لكل أنواع المحلات</p>
+            <div class="flex flex-wrap justify-center gap-2 text-xs font-bold">
+                <span class="custom-panel border rounded-full px-3.5 py-1.5">📱 <span data-i18n="biz_1">الهواتف والإكسسوارات</span></span>
+                <span class="custom-panel border rounded-full px-3.5 py-1.5">🛠️ <span data-i18n="biz_2">تصليح وصيانة</span></span>
+                <span class="custom-panel border rounded-full px-3.5 py-1.5">🍽️ <span data-i18n="biz_3">المطاعم والمقاهي</span></span>
+                <span class="custom-panel border rounded-full px-3.5 py-1.5">🏨 <span data-i18n="biz_4">الفنادق</span></span>
+                <span class="custom-panel border rounded-full px-3.5 py-1.5">👕 <span data-i18n="biz_5">الملابس</span></span>
+                <span class="custom-panel border rounded-full px-3.5 py-1.5">🛒 <span data-i18n="biz_6">البقالة والمواد الغذائية</span></span>
+                <span class="custom-panel border rounded-full px-3.5 py-1.5">🧱 <span data-i18n="biz_7">مواد البناء</span></span>
+                <span class="custom-panel border rounded-full px-3.5 py-1.5">🏪 <span data-i18n="biz_8">وأي نشاط تجاري آخر</span></span>
+            </div>
+        </div>
+        <!-- مكان آراء الزبائن: أضف هنا 3 بطاقات بآراء حقيقية (اسم المحل + المدينة + جملة قصيرة) -->
     </section>
 
-    <!-- ================= INTERACTIVE POS SALES SIMULATION ================= -->
-    <section class="max-w-4xl mx-auto px-4 py-10">
+    <!-- POS demo -->
+    <section class="sec-card sec-narrow">
         <div class="text-center mb-6">
             <span class="text-amber-400 uppercase text-xs font-extrabold tracking-widest" data-i18n="pos_badge">تجربة حية</span>
             <h2 class="text-2xl sm:text-3xl font-bold mt-1" data-i18n="pos_title">جرب شاشة المبيعات التفاعلية لبرنامج أرباح</h2>
-            <p class="text-xs text-slate-300 mt-1" data-i18n="pos_desc">انقر على أي منتج أدناه لإضافته إلى سلة المبيعات وحساب الإجمالي مباشرة</p>
+            <p class="text-xs text-slate-300 mt-1" data-i18n="pos_desc">انقر على أي منتج لإضافته إلى الفاتورة، وشاهد المجموع وربحك فوراً</p>
         </div>
-
         <div class="flex justify-center" id="visualContainer" style="perspective: 1000px;">
             <div class="custom-panel border border-amber-400/35 rounded-3xl p-5 w-full max-w-lg shadow-2xl transition-transform duration-100 ease-out" id="interactiveDashboard">
-                
                 <div class="flex justify-between items-center mb-4 pb-2.5 border-b border-amber-400/20">
                     <div class="flex gap-1.5">
                         <span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>
@@ -445,114 +385,157 @@
                     <span class="text-xs text-amber-400 font-extrabold tracking-wide" data-i18n="pos_header_title">نقطة بيع أرباح (POS)</span>
                     <span class="text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 rounded-full font-bold" data-i18n="pos_status">● متصل</span>
                 </div>
-
                 <div class="space-y-3">
                     <div class="flex gap-2 bg-[var(--pos-card)] p-2.5 rounded-xl border border-amber-400/20 items-center text-xs text-slate-300">
-                        <i class="fa-solid fa-barcode text-amber-400"></i>
-                        <span data-i18n="pos_search">بحث عن منتج أو مسح باركود...</span>
+                        <i class="fa-solid fa-barcode text-amber-400"></i><span data-i18n="pos_search">بحث عن منتج أو مسح باركود...</span>
                     </div>
-
-                    <!-- Products Grid -->
                     <div class="grid grid-cols-3 gap-2.5">
-                        <div onclick="addToCart('prod_1', 350)" class="bg-[var(--pos-card)] border border-amber-400/20 rounded-xl p-2.5 text-center cursor-pointer hover:border-amber-400 hover:bg-amber-400/5 transition">
+                        <div onclick="addToCart('prod_1', 350, 150)" class="bg-[var(--pos-card)] border border-amber-400/20 rounded-xl p-2.5 text-center cursor-pointer hover:border-amber-400 hover:bg-amber-400/5 transition">
                             <div class="text-xl mb-1">📱</div>
                             <span class="text-[11px] font-bold block truncate" data-i18n="prod_1">حماية شاشة</span>
                             <span class="text-[10px] text-amber-400 font-extrabold">350 <span data-i18n="cur">د.ج</span></span>
                         </div>
-                        <div onclick="addToCart('prod_2', 1500)" class="bg-[var(--pos-card)] border border-amber-400/20 rounded-xl p-2.5 text-center cursor-pointer hover:border-amber-400 hover:bg-amber-400/5 transition">
+                        <div onclick="addToCart('prod_2', 1500, 500)" class="bg-[var(--pos-card)] border border-amber-400/20 rounded-xl p-2.5 text-center cursor-pointer hover:border-amber-400 hover:bg-amber-400/5 transition">
                             <div class="text-xl mb-1">🛠️</div>
                             <span class="text-[11px] font-bold block truncate" data-i18n="prod_2">صيانة / فلاش</span>
                             <span class="text-[10px] text-amber-400 font-extrabold">1500 <span data-i18n="cur">د.ج</span></span>
                         </div>
-                        <div onclick="addToCart('prod_3', 1200)" class="bg-[var(--pos-card)] border border-amber-400/20 rounded-xl p-2.5 text-center cursor-pointer hover:border-amber-400 hover:bg-amber-400/5 transition">
+                        <div onclick="addToCart('prod_3', 1200, 800)" class="bg-[var(--pos-card)] border border-amber-400/20 rounded-xl p-2.5 text-center cursor-pointer hover:border-amber-400 hover:bg-amber-400/5 transition">
                             <div class="text-xl mb-1">🎧</div>
                             <span class="text-[11px] font-bold block truncate" data-i18n="prod_3">سماعات لاسلكية</span>
                             <span class="text-[10px] text-amber-400 font-extrabold">1200 <span data-i18n="cur">د.ج</span></span>
                         </div>
                     </div>
-
-                    <!-- Cart Summary -->
                     <div class="bg-[var(--pos-card)] border border-amber-400/20 rounded-xl p-3">
                         <div class="flex justify-between text-xs font-bold mb-2 pb-1.5 border-b border-amber-400/15">
                             <span data-i18n="cart_title">محتويات الفاتورة</span>
                             <span id="cartCount" class="text-amber-400">2</span>
                         </div>
-                        
-                        <div class="max-h-24 overflow-y-auto space-y-1.5 text-xs" id="cartList">
-                            <!-- Items populated via JS -->
-                        </div>
-
+                        <div class="max-h-24 overflow-y-auto space-y-1.5 text-xs" id="cartList"></div>
                         <div class="flex justify-between items-center mt-3 pt-2 border-t border-dashed border-amber-400/30 font-black text-sm">
                             <span data-i18n="cart_total">المجموع الإجمالي:</span>
                             <span id="cartTotalSum" class="text-emerald-400">1850 د.ج</span>
                         </div>
+                        <div class="flex justify-between items-center mt-2 text-xs font-extrabold bg-emerald-500/10 border border-emerald-500/30 rounded-lg px-2.5 py-1.5">
+                            <span class="text-emerald-400"><i class="fa-solid fa-coins"></i> <span data-i18n="cart_profit">ربح هذه الفاتورة:</span></span>
+                            <span id="cartProfit" class="text-emerald-400">700 د.ج</span>
+                        </div>
                     </div>
-
-                    <button onclick="triggerCheckout(this)" class="w-full btn-gold py-3 rounded-xl text-xs transition" data-i18n="cart_checkout">
-                        إتمام وطباعة الفاتورة صامتاً ↗
-                    </button>
+                    <button onclick="triggerCheckout(this)" class="w-full btn-gold py-3 rounded-xl text-xs transition" data-i18n="cart_checkout">إتمام وطباعة الفاتورة صامتاً ↗</button>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="max-w-6xl mx-auto px-4 py-12 border-t border-amber-400/15">
+    <!-- Features -->
+    <section class="sec-card">
         <div class="text-center mb-10">
             <h2 class="text-2xl sm:text-3xl font-black gold-text inline-block" data-i18n="features_title">مميزات برنامج أرباح</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="custom-panel hover-card p-6 rounded-3xl border space-y-3 shadow-xl">
-                <div class="w-12 h-12 bg-amber-500/15 text-amber-400 border border-amber-400/30 rounded-2xl flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-print"></i>
-                </div>
+                <div class="w-12 h-12 bg-amber-500/15 text-amber-400 border border-amber-400/30 rounded-2xl flex items-center justify-center text-xl"><i class="fa-solid fa-print"></i></div>
                 <h3 class="font-bold text-lg" data-i18n="feat_1_title">طباعة صامتة فورية</h3>
                 <p class="text-xs text-slate-300 leading-relaxed" data-i18n="feat_1_desc">يدعم الطباعة الفورية الصامتة بدون أي نوافذ تأكيد، للوصلات الحرارية (80mm/58mm)، فواتير A4، وملصقات الباركود.</p>
             </div>
             <div class="custom-panel hover-card p-6 rounded-3xl border space-y-3 shadow-xl">
-                <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 border border-emerald-400/30 rounded-2xl flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-chart-line"></i>
-                </div>
+                <div class="w-12 h-12 bg-emerald-500/15 text-emerald-400 border border-emerald-400/30 rounded-2xl flex items-center justify-center text-xl"><i class="fa-solid fa-chart-line"></i></div>
                 <h3 class="font-bold text-lg" data-i18n="feat_2_title">تقارير وأرباح دقيقة</h3>
                 <p class="text-xs text-slate-300 leading-relaxed" data-i18n="feat_2_desc">حساب تلقائي لصافي أرباح اليوم والشهر، متابعة ديون الزبائن والموردين، وتصدير واسترجاع قواعد البيانات بسهولة.</p>
             </div>
             <div class="custom-panel hover-card p-6 rounded-3xl border space-y-3 shadow-xl">
-                <div class="w-12 h-12 bg-purple-500/20 text-amber-300 border border-amber-400/30 rounded-2xl flex items-center justify-center text-xl">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
+                <div class="w-12 h-12 bg-purple-500/20 text-amber-300 border border-amber-400/30 rounded-2xl flex items-center justify-center text-xl"><i class="fa-solid fa-shield-halved"></i></div>
                 <h3 class="font-bold text-lg" data-i18n="feat_3_title">حماية وترخيص إلكتروني</h3>
                 <p class="text-xs text-slate-300 leading-relaxed" data-i18n="feat_3_desc">نظام حماية موثوق يربط التفعيل ببصمة العتاد الثابتة للحاسوب لضمان حقوقك واستدامة اشتراكات عملائك.</p>
             </div>
         </div>
+        <div class="text-center mt-10">
+            <button onclick="openActivationModal()" class="px-8 py-3.5 btn-gold rounded-2xl transition text-sm inline-flex items-center gap-2.5">
+                <i class="fa-solid fa-gift"></i><span data-i18n="btn_free_version">جرّب مجاناً قبل أن تشتري</span>
+            </button>
+        </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="max-w-4xl mx-auto px-4 py-12 border-t border-amber-400/15 text-center">
+    <!-- Pricing -->
+    <section class="sec-card sec-narrow text-center">
         <h2 class="text-2xl sm:text-3xl font-black gold-text inline-block mb-2" data-i18n="pricing_title">اشتراكات برنامج أرباح للمحاسبة</h2>
         <p class="text-xs sm:text-sm text-slate-300 mb-8" data-i18n="pricing_subtitle">اختر الخطة المناسبة لنشاطك التجاري</p>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-bold">
             <button type="button" onclick="openActivationModal('plan_1_name')" class="custom-panel hover-card p-5 rounded-2xl border shadow-md w-full cursor-pointer">
                 <p class="text-amber-400 mb-1.5" data-i18n="plan_1_name">شهر واحد</p>
                 <p class="text-xl font-black">800 <span class="text-sm" data-i18n="cur">د.ج</span></p>
+                <p class="text-[11px] text-slate-400 mt-1.5">800 <span data-i18n="cur">د.ج</span> <span data-i18n="per_month">/ شهر</span></p>
             </button>
             <button type="button" onclick="openActivationModal('plan_2_name')" class="custom-panel hover-card p-5 rounded-2xl border shadow-md w-full cursor-pointer">
                 <p class="text-amber-400 mb-1.5" data-i18n="plan_2_name">3 أشهر</p>
                 <p class="text-xl font-black">2000 <span class="text-sm" data-i18n="cur">د.ج</span></p>
+                <p class="text-[11px] text-slate-400 mt-1.5">≈ 667 <span data-i18n="cur">د.ج</span> <span data-i18n="per_month">/ شهر</span></p>
             </button>
             <button type="button" onclick="openActivationModal('plan_3_name')" class="custom-panel hover-card p-5 rounded-2xl border shadow-md w-full cursor-pointer">
                 <p class="text-amber-400 mb-1.5" data-i18n="plan_3_name">6 أشهر</p>
                 <p class="text-xl font-black">3500 <span class="text-sm" data-i18n="cur">د.ج</span></p>
+                <p class="text-[11px] text-slate-400 mt-1.5">≈ 583 <span data-i18n="cur">د.ج</span> <span data-i18n="per_month">/ شهر</span></p>
             </button>
             <button type="button" onclick="openActivationModal('plan_4_name')" class="bg-gradient-to-b from-purple-900/90 to-purple-950 p-5 rounded-2xl border-2 border-amber-400 shadow-lg shadow-amber-500/15 text-white relative w-full cursor-pointer">
-                <p class="text-amber-300 mb-1.5" data-i18n="plan_4_name">سنة كاملة</p>
+                <span class="absolute bg-gradient-to-r from-amber-500 to-yellow-400 text-purple-950 text-[10px] font-black px-3 py-0.5 rounded-full shadow-lg whitespace-nowrap" style="top:-11px;left:50%;transform:translateX(-50%)" data-i18n="best_badge">الأكثر توفيراً: وفّر 4600 د.ج</span>
+                <p class="text-amber-300 mb-1.5 mt-1" data-i18n="plan_4_name">سنة كاملة</p>
                 <p class="text-xl font-black gold-text">5000 <span class="text-sm" data-i18n="cur">د.ج</span></p>
+                <p class="text-[11px] text-slate-300 mt-1.5">≈ 417 <span data-i18n="cur">د.ج</span> <span data-i18n="per_month">/ شهر</span></p>
+                <div class="mt-3 pt-2.5 border-t border-amber-400/30 text-[11px] leading-snug text-amber-300"><i class="fa-solid fa-gift"></i> <span data-i18n="yr_gift">هدية: تطبيق التقارير للهاتف مجاناً بدل</span> <s class="opacity-70">2000 <span data-i18n="cur">د.ج</span></s></div>
             </button>
+        </div>
+
+        <div class="mt-8 custom-panel border rounded-2xl p-5 text-start max-w-2xl mx-auto">
+            <p class="font-bold text-sm text-amber-300 mb-3" data-i18n="incl_title">كل اشتراك يشمل:</p>
+            <ul class="grid sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-400 mt-0.5"></i><span data-i18n="incl_1">طباعة الفواتير والباركود</span></li>
+                <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-400 mt-0.5"></i><span data-i18n="incl_2">تقارير الأرباح ومتابعة الديون</span></li>
+                <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-400 mt-0.5"></i><span data-i18n="incl_3">نسخ احتياطي واسترجاع البيانات</span></li>
+                <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-400 mt-0.5"></i><span data-i18n="incl_4">دعم فني عبر واتساب</span></li>
+            </ul>
+        </div>
+        <p class="text-sm font-bold text-emerald-400 mt-5"><i class="fa-solid fa-shield-heart"></i> <span data-i18n="risk_line">جرّب قبل أن تدفع، ولا تلتزم بأي شيء قبل أن تقتنع.</span></p>
+        <button onclick="openActivationModal()" class="mt-4 px-8 py-3.5 btn-gold rounded-2xl transition text-sm inline-flex items-center gap-2.5">
+            <i class="fa-solid fa-gift"></i><span data-i18n="btn_free_version">جرّب مجاناً قبل أن تشتري</span>
+        </button>
+    </section>
+
+    <!-- Payment -->
+    <section id="payment" class="scroll-target sec-card sec-narrow text-center">
+        <h2 class="text-2xl sm:text-3xl font-black gold-text inline-block mb-2" data-i18n="pay_title">طرق الدفع</h2>
+        <p class="text-xs sm:text-sm text-slate-300 mb-8" data-i18n="pay_subtitle">ادفع بسهولة من هاتفك أو من مكتب البريد</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-start">
+            <div class="custom-panel hover-card border rounded-2xl p-5 flex items-center gap-4">
+                <span class="w-12 h-12 shrink-0 rounded-2xl bg-amber-500/15 text-amber-400 border border-amber-400/30 flex items-center justify-center text-xl"><i class="fa-solid fa-building-columns"></i></span>
+                <span><span class="block font-black text-lg" data-i18n="pay_ccp">CCP</span><span class="block text-xs text-slate-300 leading-relaxed" data-i18n="pay_ccp_desc">تحويل أو دفع على حساب بريد الجزائر</span></span>
+            </div>
+            <div class="custom-panel hover-card border rounded-2xl p-5 flex items-center gap-4">
+                <span class="w-12 h-12 shrink-0 rounded-2xl bg-emerald-500/15 text-emerald-400 border border-emerald-400/30 flex items-center justify-center text-xl"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                <span><span class="block font-black text-lg" data-i18n="pay_baridi">بريدي موب</span><span class="block text-xs text-slate-300 leading-relaxed" data-i18n="pay_baridi_desc">ادفع من هاتفك عبر تطبيق بريدي موب</span></span>
+            </div>
+        </div>
+        <!-- يمكنك هنا إضافة رقم حساب CCP أو RIP -->
+        <p class="text-xs text-slate-300 mt-6 max-w-xl mx-auto leading-relaxed" data-i18n="pay_note">اطلب تفاصيل الحساب عبر واتساب، وبعد الدفع أرسل لنا الوصل ليصلك مفتاح التفعيل.</p>
+        <a href="https://wa.me/213542054655" data-wa target="_blank" rel="noopener" class="mt-5 px-7 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl transition text-sm inline-flex items-center gap-2.5 shadow-lg shadow-emerald-600/25">
+            <i class="fa-brands fa-whatsapp text-lg"></i><span data-i18n="pay_btn">اطلب تفاصيل الدفع عبر واتساب</span>
+        </a>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="scroll-target sec-card sec-slim">
+        <h2 class="text-2xl sm:text-3xl font-black gold-text text-center mb-8" data-i18n="faq_title">أسئلة شائعة</h2>
+        <div class="space-y-3">
+            <details class="faq custom-panel border rounded-2xl p-4"><summary><span data-i18n="faq_1_q">هل أستطيع تجربة البرنامج قبل الاشتراك؟</span><i class="fa-solid fa-chevron-down"></i></summary><p class="text-xs text-slate-300 leading-relaxed mt-3" data-i18n="faq_1_a">نعم. اضغط «جرّب مجاناً»، أرسل بيانات محلك، وسيصلك مفتاح التفعيل عبر واتساب.</p></details>
+            <details class="faq custom-panel border rounded-2xl p-4"><summary><span data-i18n="faq_2_q">على أي أجهزة يعمل البرنامج؟</span><i class="fa-solid fa-chevron-down"></i></summary><p class="text-xs text-slate-300 leading-relaxed mt-3" data-i18n="faq_2_a">على كمبيوتر Windows، وعلى الهاتف أو الطابلت بنظام أندرويد.</p></details>
+            <details class="faq custom-panel border rounded-2xl p-4"><summary><span data-i18n="faq_3_q">هل بياناتي آمنة؟ ومن يستطيع رؤيتها؟</span><i class="fa-solid fa-chevron-down"></i></summary><p class="text-xs text-slate-300 leading-relaxed mt-3" data-i18n="faq_3_a">صاحب المحل فقط يستطيع رؤية بياناته، والربط يكون بحساب واحد لكل متجر لحماية خصوصية معلوماتك.</p></details>
+            <details class="faq custom-panel border rounded-2xl p-4"><summary><span data-i18n="faq_4_q">ماذا لو تعطل جهازي أو أردت تغييره؟</span><i class="fa-solid fa-chevron-down"></i></summary><p class="text-xs text-slate-300 leading-relaxed mt-3" data-i18n="faq_4_a">يمكنك تصدير نسخة احتياطية من بياناتك واسترجاعها بسهولة على أي جهاز. وللمساعدة في نقل التفعيل تواصل معنا عبر واتساب.</p></details>
+            <details class="faq custom-panel border rounded-2xl p-4"><summary><span data-i18n="faq_5_q">كيف أفعّل البرنامج؟</span><i class="fa-solid fa-chevron-down"></i></summary><p class="text-xs text-slate-300 leading-relaxed mt-3" data-i18n="faq_5_a">ثبّت البرنامج، وانسخ سريال جهازك من شاشة تسجيل الدخول، ثم أرسل طلب التفعيل ليصلك المفتاح.</p></details>
+            <details class="faq custom-panel border rounded-2xl p-4"><summary><span data-i18n="faq_6_q">كيف أدفع؟</span><i class="fa-solid fa-chevron-down"></i></summary><p class="text-xs text-slate-300 leading-relaxed mt-3" data-i18n="faq_6_a">عبر CCP أو بريدي موب. تواصل معنا على واتساب لتحصل على تفاصيل الحساب، وبعد الدفع أرسل الوصل ليصلك مفتاح التفعيل.</p></details>
         </div>
     </section>
 
-    <!-- Footer -->
-    <section id="contact" class="scroll-target max-w-4xl mx-auto px-4 py-12 border-t border-amber-400/20 text-center">
+    <!-- Contact -->
+    <section id="contact" class="scroll-target sec-card sec-narrow text-center">
         <h2 class="text-2xl font-black gold-text inline-block" data-i18n="contact_title">اتصل بنا</h2>
         <p class="text-xs text-slate-300 mt-2 mb-8" data-i18n="contact_subtitle">نرد على استفساراتك وطلبات التفعيل في أقرب وقت</p>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -576,97 +559,69 @@
         <p data-i18n="footer_contact">للتواصل والدعم الفني: واتساب +213542054655 | arbahcom.here@gmail.com</p>
     </footer>
 
-    <!-- ================= ACTIVATION MODAL ================= -->
+    <!-- Activation modal -->
     <div id="activationModal" role="dialog" aria-modal="true" aria-labelledby="actTitle" onclick="if(event.target===this)closeActivationModal()" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
-        <div class="custom-panel border border-amber-400/40 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl relative">
+        <div class="custom-panel border border-amber-400/40 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl relative max-h-full overflow-y-auto">
             <button onclick="closeActivationModal()" class="absolute top-4 end-4 text-slate-400 hover:text-amber-400 transition" aria-label="close"><i class="fa-solid fa-xmark text-lg"></i></button>
-            
             <div class="text-center space-y-1">
-                <div class="w-16 h-16 rounded-full overflow-hidden mx-auto shadow-lg shadow-amber-500/25 border-2 border-amber-400 mb-2">
-                    <img src="icon.png" alt="ARBAH GROUP Logo" class="w-full h-full object-cover">
-                </div>
+                <div class="w-16 h-16 rounded-full overflow-hidden mx-auto shadow-lg shadow-amber-500/25 border-2 border-amber-400 mb-2"><img src="icon.png" alt="ARBAH GROUP Logo" class="w-full h-full object-cover"></div>
                 <h3 id="actTitle" class="text-xl font-black gold-text" data-i18n="modal_title">إرسال طلب تفعيل التطبيق</h3>
                 <p class="text-xs text-slate-300" data-i18n="modal_subtitle">أدخل بيانات متجرك ليصلك مفتاح الترخيص قريباً</p>
                 <p id="actPlan" class="hidden text-xs font-bold text-amber-300 pt-1"></p>
             </div>
-
             <form id="activationForm" onsubmit="handleActivationSubmit(event)" class="space-y-3.5 text-xs">
                 <div>
                     <label for="actStoreName" class="block font-semibold mb-1" data-i18n="form_store">اسم المتجر / المحل *:</label>
                     <input type="text" id="actStoreName" required autocomplete="organization" maxlength="80" data-i18n-ph="ph_store" placeholder="مثال: متجر السعادة للملابس" class="w-full custom-panel2 border rounded-xl px-3.5 py-2.5 outline-none focus:border-amber-400 transition">
                 </div>
-
                 <div>
                     <label for="actPhone" class="block font-semibold mb-1" data-i18n="form_phone">رقم الهاتف *:</label>
                     <input type="tel" id="actPhone" required inputmode="tel" autocomplete="tel" maxlength="20" placeholder="05XX XX XX XX" class="w-full custom-panel2 border rounded-xl px-3.5 py-2.5 outline-none focus:border-amber-400 transition">
                 </div>
-
                 <div>
                     <label for="actEmail" class="block font-semibold mb-1" data-i18n="form_email">البريد الإلكتروني:</label>
                     <input type="email" id="actEmail" autocomplete="email" placeholder="example@gmail.com" class="w-full custom-panel2 border rounded-xl px-3.5 py-2.5 outline-none focus:border-amber-400 transition">
                 </div>
-
                 <div>
                     <label for="actSerial" class="block font-semibold mb-1" data-i18n="form_serial">سريال الجهاز (اختياري):</label>
                     <input type="text" id="actSerial" autocomplete="off" spellcheck="false" placeholder="ARB-HDD-XXXXXX-ARBAH" class="w-full custom-panel2 border rounded-xl px-3.5 py-2.5 font-mono uppercase outline-none focus:border-amber-400 transition">
                     <span class="text-[10px] text-slate-400 mt-0.5 block" data-i18n="form_serial_note">تجده داخل التطبيق في واجهة تسجيل الدخول.</span>
                 </div>
-
                 <div class="pt-2 flex gap-2">
-                    <button type="submit" class="flex-1 py-3 btn-gold rounded-xl transition" data-i18n="form_submit">
-                        إرسال الطلب (OK)
-                    </button>
-                    <button type="button" onclick="closeActivationModal()" class="px-4 py-3 bg-slate-800 text-slate-300 rounded-xl hover:bg-slate-700 font-bold" data-i18n="form_cancel">
-                        إلغاء
-                    </button>
+                    <button type="submit" class="flex-1 py-3 btn-gold rounded-xl transition" data-i18n="form_submit">إرسال الطلب (OK)</button>
+                    <button type="button" onclick="closeActivationModal()" class="px-4 py-3 bg-slate-800 text-slate-300 rounded-xl hover:bg-slate-700 font-bold" data-i18n="form_cancel">إلغاء</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- ================= SUCCESS POPUP MODAL ================= -->
+    <!-- Success modal -->
     <div id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle" onclick="if(event.target===this)closeSuccessModal()" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
         <div class="custom-panel border border-emerald-500/40 rounded-3xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl">
-            <div class="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto text-2xl border border-emerald-500/30">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
+            <div class="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto text-2xl border border-emerald-500/30"><i class="fa-solid fa-circle-check"></i></div>
             <h3 id="successTitle" class="text-lg font-bold" data-i18n="success_title">شكرا لك</h3>
-            <p class="text-xs text-slate-300 leading-relaxed" data-i18n="success_desc">
-                انتظر قليلا وسيتم الرد من فريقنا التقني عبر رقم الهاتف أو البريد الإلكتروني الخاص بك في أقرب وقت.
-            </p>
-            <button onclick="closeSuccessModal()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition text-xs shadow-lg shadow-emerald-600/30" data-i18n="success_btn">
-                حسناً
-            </button>
+            <p class="text-xs text-slate-300 leading-relaxed" data-i18n="success_desc">فتحنا لك واتساب برسالة جاهزة. اضغط «إرسال» هناك لإتمام طلبك، وسيرد عليك فريقنا التقني في أقرب وقت.</p>
+            <button onclick="closeSuccessModal()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition text-xs shadow-lg shadow-emerald-600/30" data-i18n="success_btn">حسناً</button>
         </div>
     </div>
 
-    <!-- ================= GUIDE MODAL ================= -->
+    <!-- Guide modal -->
     <div id="guideModal" role="dialog" aria-modal="true" aria-labelledby="guideTitle" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50" onclick="if(event.target===this)closeGuide()">
         <div class="custom-panel border border-amber-400/40 rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl">
             <div class="flex items-start justify-between gap-3">
                 <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-amber-500/15 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-400/30">
-                        <i id="guideIcon" class="fa-solid fa-chart-line"></i>
-                    </div>
+                    <div class="w-12 h-12 bg-amber-500/15 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-400/30"><i id="guideIcon" class="fa-solid fa-chart-line"></i></div>
                     <h3 id="guideTitle" class="text-lg font-bold"></h3>
                 </div>
                 <button type="button" onclick="closeGuide()" class="text-slate-400 hover:text-amber-400 text-xl leading-none" aria-label="close">&times;</button>
             </div>
             <p id="guideDesc" class="text-xs text-slate-300 leading-relaxed"></p>
-
-            <div id="guideProgress" class="h-1.5 bg-slate-700/50 rounded-full overflow-hidden">
-                <div id="guideBar" class="h-full bg-gradient-to-r from-amber-500 to-yellow-400 transition-all duration-300" style="width:0%"></div>
-            </div>
-            <div id="guidePager" class="flex items-center justify-between text-[11px] text-slate-400">
-                <span id="guideCounter"></span>
-                <div id="guideDots" class="flex gap-1.5"></div>
-            </div>
-
+            <div id="guideProgress" class="h-1.5 bg-slate-700/50 rounded-full overflow-hidden"><div id="guideBar" class="h-full bg-gradient-to-r from-amber-500 to-yellow-400 transition-all duration-300" style="width:0%"></div></div>
+            <div id="guidePager" class="flex items-center justify-between text-[11px] text-slate-400"><span id="guideCounter"></span><div id="guideDots" class="flex gap-1.5"></div></div>
             <div class="custom-panel2 border border-amber-400/25 rounded-2xl p-4 min-h-[88px] flex items-start gap-3">
                 <span id="guideNum" class="w-7 h-7 shrink-0 btn-gold rounded-full flex items-center justify-center text-xs font-black"></span>
                 <p id="guideStep" class="text-sm leading-relaxed"></p>
             </div>
-
             <div class="flex gap-2">
                 <button id="guideBack" type="button" onclick="stepGuide(-1)" class="px-4 py-3 bg-slate-800 text-slate-300 rounded-xl hover:bg-slate-700 text-xs font-bold disabled:opacity-40" data-i18n="guide_back">السابق</button>
                 <button id="guideNext" type="button" onclick="stepGuide(1)" class="flex-1 py-3 btn-gold rounded-xl transition text-xs" data-i18n="guide_next">التالي</button>
@@ -675,15 +630,12 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
     <script>
         const WHATSAPP_NUMBER = "213542054655";
         const REDUCED_MQ = window.matchMedia('(prefers-reduced-motion: reduce)');
         try { if (localStorage.getItem('arbah_motion') === 'on') document.documentElement.setAttribute('data-motion', 'on'); } catch (e) {}
-        /* true فقط إذا كان إعداد النظام "تقليل الحركة" ولم يفعّل الزائر الحركات يدوياً */
         const noMotion = () => REDUCED_MQ.matches && document.documentElement.getAttribute('data-motion') !== 'on';
 
-        /* تشغيل تغيير الواجهة داخل انتقال متصفح ناعم إن كان مدعوماً */
         function withTransition(cls, fn) {
             const root = document.documentElement;
             if (!document.startViewTransition || noMotion()) { fn(); return null; }
@@ -699,288 +651,194 @@
             if (noMotion()) { el.classList.add('hidden'); return; }
             el.classList.add('is-closing');
             setTimeout(() => {
-                if (!el.classList.contains('is-closing')) return; // أُعيد فتحها أثناء الإغلاق
+                if (!el.classList.contains('is-closing')) return;
                 el.classList.add('hidden'); el.classList.remove('is-closing');
             }, 200);
         }
 
-        /* ================= TRANSLATIONS ================= */
         const translations = {
             ar: {
-                brand_name: "ARBAH GROUP",
-                brand_sub: "تطبيقات حسب الطلب",
-                nav_activation: "طلب التفعيل",
-                nav_whatsapp: "واتساب",
-                hero_badge: "الإصدار 5.0.0 متوفر الآن",
-                hero_new: "جديد",
-                cur: "د.ج",
-                theme_aria: "تبديل المظهر",
-                motion_aria: "تفعيل الحركات",
+                brand_name: "ARBAH GROUP", brand_sub: "تطبيقات حسب الطلب",
+                nav_activation: "طلب التفعيل", nav_whatsapp: "واتساب",
+                hero_badge: "الإصدار 5.0.5 متوفر الآن", hero_new: "جديد", cur: "د.ج",
+                theme_aria: "تبديل المظهر", motion_aria: "تفعيل الحركات",
                 err_phone: "أدخل رقم هاتف جزائري صحيحاً، مثال: 0555 12 34 56",
-                form_plan: "الخطة المختارة:",
-                cart_empty: "الفاتورة فارغة، أضف منتجاً",
-                hero_title_1: "النظام الأسهل والأسرع لإدارة",
-                hero_title_2: "المبيعات والمخزون والمحاسبة",
-                hero_title_3: "وتطبيقات كثيرة في انتظارك",
-                hero_desc: "نطوّر برامج المحاسبة وإدارة المخزون وتطبيقات متابعة الأعمال للتجار وأصحاب المشاريع. تعمل برامجنا على الكمبيوتر والهاتف، وتطبع الفواتير والباركود مباشرة، وتتابع الديون والأرباح بدقة.",
-                btn_products: "تطبيقات شركة أرباح",
+                form_plan: "الخطة المختارة:", cart_empty: "الفاتورة فارغة، أضف منتجاً",
+                hero_title_1: "اعرف ربحك الحقيقي كل يوم",
+                hero_title_2: "وأوقف ضياع المخزون والديون",
+                hero_title_3: "برنامج محاسبة ومبيعات يعمل على الكمبيوتر والهاتف",
+                hero_desc: "تستطيع متابعة تجارتك من أي مكان، ومعرفة أرباحك تلقائياً، وتتبّع ديون الزبائن والموردين. صُمم للتجار وأصحاب المحلات، مع فيديوهات وصور تشرح الاستعمال.",
+                chip_1: "تجربة مجانية", chip_2: "دعم عبر واتساب", chip_3: "فيديوهات وصور لشرح الاستعمال",
+                btn_products: "حمّل البرنامج الآن",
                 trust_message: "صاحب مشروع يثق بتطبيقات شركة أرباح",
                 trust_aria: "انضم إلى أصحاب المشاريع الذين يثقون بنا",
-                products_title: "تطبيقات شركة أرباح",
-                products_subtitle: "اختر ما يناسب نشاطك التجاري",
-                prod_pc_title: "أرباح للكمبيوتر",
-                prod_pc_desc: "برنامج محاسبة ومخزون لنظام Windows، مع طباعة فورية للفواتير والباركود.",
-                prod_phone_title: "أرباح للهاتف",
-                prod_phone_desc: "نسخة الأندرويد من برنامج المحاسبة، للعمل من الهاتف أو الطابلت.",
-                prod_platform_title: "منصة رواد الأعمال",
-                prod_platform_desc: "تابع سجل مبيعات محلك وعملياته من هاتفك، في أي وقت ومن أي مكان.",
-                btn_learn_more: "اعرف المزيد",
-                btn_download_pc: "تحميل البرنامج للكمبيوتر (EXE)",
-                btn_download_apk: "تحميل نسخة الهاتف (APK)",
-                badge_new: "جديد",
-                guide_back: "السابق",
-                guide_next: "التالي",
-                guide_step: "الخطوة",
-                guide_of: "من",
-                guide_close: "اشترك بميزة رواد الأعمال",
+                biz_title: "مناسب لكل أنواع المحلات", biz_1: "الهواتف والإكسسوارات", biz_2: "تصليح وصيانة", biz_3: "المطاعم والمقاهي", biz_4: "الفنادق", biz_5: "الملابس", biz_6: "البقالة والمواد الغذائية", biz_7: "مواد البناء", biz_8: "وأي نشاط تجاري آخر",
+                products_title: "تطبيقات شركة أرباح", products_subtitle: "اختر ما يناسب نشاطك التجاري",
+                prod_pc_title: "أرباح للكمبيوتر", prod_pc_desc: "برنامج محاسبة ومخزون لنظام Windows، مع طباعة فورية للفواتير والباركود.",
+                prod_phone_title: "أرباح للهاتف", prod_phone_desc: "نسخة الأندرويد من برنامج المحاسبة، للعمل من الهاتف أو الطابلت.",
+                prod_platform_title: "منصة رواد الأعمال", prod_platform_desc: "تابع سجل مبيعات محلك وعملياته من هاتفك، في أي وقت ومن أي مكان.",
+                btn_learn_more: "اعرف المزيد", btn_download_pc: "تحميل البرنامج للكمبيوتر (EXE)", btn_download_apk: "تحميل نسخة الهاتف (APK)", badge_new: "جديد",
+                guide_back: "السابق", guide_next: "التالي", guide_step: "الخطوة", guide_of: "من", guide_close: "اشترك بميزة رواد الأعمال",
                 guide_reports: {"title": "اشترك بمنصة رواد الأعمال واستفد من مزاياها", "desc": "تابع سجل المبيعات والعمليات داخل محلك من هاتفك، في أي وقت ومن أي مكان.", "steps": ["يتزامن تطبيق الهاتف تلقائياً مع برنامج المحاسبة ليعرض لك سجل العمليات داخل المحل. لا يمكن رؤية بياناتك إلا صاحب المحل، والربط مرتبط بحساب واحد فقط مع المتجر لضمان خصوصية المعلومات وحمايتها."]},
                 dl_soon: "رابط التحميل غير متوفر بعد، تواصل معنا عبر واتساب.",
-                btn_free_version: "اضغط هنا لطلب نسخة مجانية",
+                btn_free_version: "جرّب مجاناً قبل أن تشتري",
                 features_title: "مميزات برنامج أرباح",
-                feat_1_title: "طباعة صامتة فورية",
-                feat_1_desc: "يدعم الطباعة الفورية الصامتة بدون أي نوافذ تأكيد، للوصلات الحرارية (80mm/58mm)، فواتير A4، وملصقات الباركود.",
-                feat_2_title: "تقارير وأرباح دقيقة",
-                feat_2_desc: "حساب تلقائي لصافي أرباح اليوم والشهر، متابعة ديون الزبائن والموردين، وتصدير واسترجاع قواعد البيانات بسهولة.",
-                feat_3_title: "حماية وترخيص إلكتروني",
-                feat_3_desc: "نظام حماية موثوق يربط التفعيل ببصمة العتاد الثابتة للحاسوب لضمان حقوقك واستدامة اشتراكات عملائك.",
-                pricing_title: "اشتراكات برنامج أرباح للمحاسبة",
-                pricing_subtitle: "اختر الخطة المناسبة لنشاطك التجاري",
-                plan_1_name: "شهر واحد",
-                plan_2_name: "3 أشهر",
-                plan_3_name: "6 أشهر",
-                plan_4_name: "سنة كاملة",
-                pos_badge: "تجربة حية",
-                pos_title: "جرب شاشة المبيعات التفاعلية لبرنامج أرباح",
-                pos_desc: "انقر على أي منتج أدناه لإضافته إلى سلة المبيعات وحساب الإجمالي مباشرة",
-                pos_header_title: "نقطة بيع أرباح (POS)",
-                pos_status: "● متصل",
-                pos_search: "بحث عن منتج أو مسح باركود...",
-                prod_1: "حماية شاشة",
-                prod_2: "صيانة / فلاش",
-                prod_3: "سماعات لاسلكية",
-                cart_title: "محتويات الفاتورة",
-                cart_items_label: "عناصر",
-                cart_total: "المجموع الإجمالي:",
-                cart_checkout: "إتمام وطباعة الفاتورة صامتاً ↗",
-                cart_printed: "✓ تم طباعة الفاتورة بنجاح!",
+                feat_1_title: "طباعة صامتة فورية", feat_1_desc: "يدعم الطباعة الفورية الصامتة بدون أي نوافذ تأكيد، للوصلات الحرارية (80mm/58mm)، فواتير A4، وملصقات الباركود.",
+                feat_2_title: "تقارير وأرباح دقيقة", feat_2_desc: "حساب تلقائي لصافي أرباح اليوم والشهر، متابعة ديون الزبائن والموردين، وتصدير واسترجاع قواعد البيانات بسهولة.",
+                feat_3_title: "حماية وترخيص إلكتروني", feat_3_desc: "نظام حماية موثوق يربط التفعيل ببصمة العتاد الثابتة للحاسوب لضمان حقوقك واستدامة اشتراكات عملائك.",
+                pricing_title: "اشتراكات برنامج أرباح للمحاسبة", pricing_subtitle: "اختر الخطة المناسبة لنشاطك التجاري",
+                plan_1_name: "شهر واحد", plan_2_name: "3 أشهر", plan_3_name: "6 أشهر", plan_4_name: "سنة كاملة",
+                per_month: "/ شهر", best_badge: "الأكثر توفيراً: وفّر 4600 د.ج",
+                incl_title: "كل اشتراك يشمل:", incl_1: "طباعة الفواتير والباركود", incl_2: "تقارير الأرباح ومتابعة الديون", incl_3: "نسخ احتياطي واسترجاع البيانات", incl_4: "دعم فني عبر واتساب",
+                risk_line: "جرّب قبل أن تدفع، ولا تلتزم بأي شيء قبل أن تقتنع.",
+                pay_title: "طرق الدفع", pay_subtitle: "ادفع بسهولة من هاتفك أو من مكتب البريد", pay_ccp: "CCP", pay_ccp_desc: "تحويل أو دفع على حساب بريد الجزائر", pay_baridi: "بريدي موب", pay_baridi_desc: "ادفع من هاتفك عبر تطبيق بريدي موب", pay_note: "اطلب تفاصيل الحساب عبر واتساب، وبعد الدفع أرسل لنا الوصل ليصلك مفتاح التفعيل.", pay_btn: "اطلب تفاصيل الدفع عبر واتساب", yr_gift: "هدية: تطبيق التقارير للهاتف مجاناً بدل", platform_offer: "عرض: مجاني مع اشتراك سنة كاملة بدل", faq_6_q: "كيف أدفع؟", faq_6_a: "عبر CCP أو بريدي موب. تواصل معنا على واتساب لتحصل على تفاصيل الحساب، وبعد الدفع أرسل الوصل ليصلك مفتاح التفعيل.",
+                faq_title: "أسئلة شائعة",
+                faq_1_q: "هل أستطيع تجربة البرنامج قبل الاشتراك؟", faq_1_a: "نعم. اضغط «جرّب مجاناً»، أرسل بيانات محلك، وسيصلك مفتاح التفعيل عبر واتساب.",
+                faq_2_q: "على أي أجهزة يعمل البرنامج؟", faq_2_a: "على كمبيوتر Windows، وعلى الهاتف أو الطابلت بنظام أندرويد.",
+                faq_3_q: "هل بياناتي آمنة؟ ومن يستطيع رؤيتها؟", faq_3_a: "صاحب المحل فقط يستطيع رؤية بياناته، والربط يكون بحساب واحد لكل متجر لحماية خصوصية معلوماتك.",
+                faq_4_q: "ماذا لو تعطل جهازي أو أردت تغييره؟", faq_4_a: "يمكنك تصدير نسخة احتياطية من بياناتك واسترجاعها بسهولة على أي جهاز. وللمساعدة في نقل التفعيل تواصل معنا عبر واتساب.",
+                faq_5_q: "كيف أفعّل البرنامج؟", faq_5_a: "ثبّت البرنامج، وانسخ سريال جهازك من شاشة تسجيل الدخول، ثم أرسل طلب التفعيل ليصلك المفتاح.",
+                pos_badge: "تجربة حية", pos_title: "جرب شاشة المبيعات التفاعلية لبرنامج أرباح",
+                pos_desc: "انقر على أي منتج لإضافته إلى الفاتورة، وشاهد المجموع وربحك فوراً",
+                pos_header_title: "نقطة بيع أرباح (POS)", pos_status: "● متصل", pos_search: "بحث عن منتج أو مسح باركود...",
+                prod_1: "حماية شاشة", prod_2: "صيانة / فلاش", prod_3: "سماعات لاسلكية",
+                cart_title: "محتويات الفاتورة", cart_items_label: "عناصر", cart_total: "المجموع الإجمالي:", cart_profit: "ربح هذه الفاتورة:",
+                cart_checkout: "إتمام وطباعة الفاتورة صامتاً ↗", cart_printed: "✓ تم طباعة الفاتورة بنجاح!",
                 page_title: "ARBAH GROUP - برامج المحاسبة وإدارة المبيعات والمخزون",
                 page_desc: "ARBAH GROUP: برامج محاسبة وإدارة مبيعات ومخزون للكمبيوتر والهاتف، مع طباعة الفواتير والباركود ومتابعة الديون والأرباح.",
-                dl_warn_title: "ملاحظة قبل التحميل",
-                dl_warn_desc: "قد يعرض Windows أو Google Play Protect تحذيرًا عند التثبيت، لأن التطبيق غير موقّع رقميًا بعد. حمّل التطبيقات من هذه الصفحة فقط. في Windows اضغط «مزيد من المعلومات» ثم «تشغيل على أي حال»، وفي الأندرويد اسمح بالتثبيت من المتصفح ثم اختر «تثبيت على أي حال».",
-                contact_title: "اتصل بنا",
-                contact_subtitle: "نرد على استفساراتك وطلبات التفعيل في أقرب وقت",
-                contact_fb: "صفحتنا على فيسبوك",
-                contact_email: "البريد الإلكتروني",
-                contact_phone: "الهاتف / واتساب",
+                dl_warn_title: "تحميل آمن من موقعنا الرسمي",
+                dl_warn_desc: "قد يعرض Windows أو Google Play Protect تنبيهاً عند التثبيت لأن البرنامج جديد وغير موقّع رقمياً بعد، وهذا لا يعني أنه ضار. حمّله من هذه الصفحة فقط. في Windows اضغط «مزيد من المعلومات» ثم «تشغيل على أي حال»، وفي الأندرويد اسمح بالتثبيت من المتصفح ثم اختر «تثبيت على أي حال».",
+                contact_title: "اتصل بنا", contact_subtitle: "نرد على استفساراتك وطلبات التفعيل في أقرب وقت",
+                contact_fb: "صفحتنا على فيسبوك", contact_email: "البريد الإلكتروني", contact_phone: "الهاتف / واتساب",
                 ph_store: "مثال: متجر السعادة للملابس",
-                footer_rights: "جميع الحقوق محفوظة © ARBAH GROUP",
-                footer_contact: "للتواصل والدعم الفني: واتساب +213542054655 | arbahcom.here@gmail.com",
-                modal_title: "إرسال طلب تفعيل التطبيق",
-                modal_subtitle: "أدخل بيانات متجرك ليصلك مفتاح الترخيص قريباً",
-                form_store: "اسم المتجر / المحل *:",
-                form_phone: "رقم الهاتف *:",
-                form_email: "البريد الإلكتروني:",
-                form_serial: "سريال الجهاز (اختياري):",
-                form_serial_note: "تجده داخل التطبيق في واجهة تسجيل الدخول.",
-                form_submit: "إرسال الطلب (OK)",
-                form_cancel: "إلغاء",
-                success_title: "شكرا لك",
-                success_desc: "فتحنا لك واتساب برسالة جاهزة. اضغط «إرسال» هناك لإتمام طلبك، وسيرد عليك فريقنا التقني في أقرب وقت.",
-                success_btn: "حسناً"
+                footer_rights: "جميع الحقوق محفوظة © ARBAH GROUP", footer_contact: "للتواصل والدعم الفني: واتساب +213542054655 | arbahcom.here@gmail.com",
+                modal_title: "إرسال طلب تفعيل التطبيق", modal_subtitle: "أدخل بيانات متجرك ليصلك مفتاح الترخيص قريباً",
+                form_store: "اسم المتجر / المحل *:", form_phone: "رقم الهاتف *:", form_email: "البريد الإلكتروني:",
+                form_serial: "سريال الجهاز (اختياري):", form_serial_note: "تجده داخل التطبيق في واجهة تسجيل الدخول.",
+                form_submit: "إرسال الطلب (OK)", form_cancel: "إلغاء",
+                success_title: "شكرا لك", success_desc: "فتحنا لك واتساب برسالة جاهزة. اضغط «إرسال» هناك لإتمام طلبك، وسيرد عليك فريقنا التقني في أقرب وقت.", success_btn: "حسناً"
             },
             fr: {
-                brand_name: "ARBAH GROUP",
-                brand_sub: "Applications sur mesure",
-                nav_activation: "Demander Activation",
-                nav_whatsapp: "WhatsApp",
-                hero_badge: "Version 5.0.0 disponible maintenant",
-                hero_new: "Nouveau",
-                cur: "DA",
-                theme_aria: "Changer de thème",
-                motion_aria: "Activer les animations",
+                brand_name: "ARBAH GROUP", brand_sub: "Applications sur mesure",
+                nav_activation: "Demander Activation", nav_whatsapp: "WhatsApp",
+                hero_badge: "Version 5.0.5 disponible maintenant", hero_new: "Nouveau", cur: "DA",
+                theme_aria: "Changer de thème", motion_aria: "Activer les animations",
                 err_phone: "Entrez un numéro algérien valide, ex. : 0555 12 34 56",
-                form_plan: "Offre choisie :",
-                cart_empty: "Facture vide, ajoutez un produit",
-                hero_title_1: "Le système le plus simple et rapide pour gérer",
-                hero_title_2: "les ventes, le stock et la comptabilité",
-                hero_title_3: "et de nombreuses applications vous attendent",
-                hero_desc: "Nous développons des logiciels de comptabilité, de gestion de stock et de suivi d'activité pour les commerçants et les entrepreneurs. Nos logiciels fonctionnent sur PC et sur mobile, impriment factures et codes-barres directement, et suivent vos dettes et vos profits avec précision.",
-                btn_products: "Applications d'Arbah",
+                form_plan: "Offre choisie :", cart_empty: "Facture vide, ajoutez un produit",
+                hero_title_1: "Connaissez votre vrai bénéfice chaque jour",
+                hero_title_2: "et arrêtez les pertes de stock et de dettes",
+                hero_title_3: "Logiciel de comptabilité et de ventes pour PC et mobile",
+                hero_desc: "Suivez votre commerce de n'importe où, connaissez vos bénéfices automatiquement et suivez les dettes clients et fournisseurs. Conçu pour les commerçants, avec vidéos et images pour apprendre à l'utiliser.",
+                chip_1: "Essai gratuit", chip_2: "Support WhatsApp", chip_3: "Vidéos et images explicatives",
+                btn_products: "Télécharger maintenant",
                 trust_message: "propriétaires de projets font confiance aux applications d'Arbah",
                 trust_aria: "Rejoignez les propriétaires de projets qui nous font confiance",
-                products_title: "Applications de la société Arbah",
-                products_subtitle: "Choisissez ce qui convient à votre activité",
-                prod_pc_title: "Arbah pour PC",
-                prod_pc_desc: "Logiciel de comptabilité et de stock pour Windows, avec impression instantanée des factures et des codes-barres.",
-                prod_phone_title: "Arbah pour mobile",
-                prod_phone_desc: "Version Android du logiciel de comptabilité, pour travailler depuis un téléphone ou une tablette.",
-                prod_platform_title: "Plateforme Entrepreneurs",
-                prod_platform_desc: "Suivez les ventes et les opérations de votre magasin depuis votre téléphone, où que vous soyez.",
-                btn_learn_more: "En savoir plus",
-                btn_download_pc: "Télécharger pour PC (EXE)",
-                btn_download_apk: "Télécharger pour mobile (APK)",
-                badge_new: "Nouveau",
-                guide_back: "Précédent",
-                guide_next: "Suivant",
-                guide_step: "Étape",
-                guide_of: "sur",
-                guide_close: "S'abonner à la fonctionnalité Entrepreneurs",
+                biz_title: "Adapté à tous les types d'activités", biz_1: "Téléphones et accessoires", biz_2: "Réparation et maintenance", biz_3: "Restaurants et cafés", biz_4: "Hôtels", biz_5: "Vêtements", biz_6: "Épicerie et alimentation", biz_7: "Matériaux de construction", biz_8: "et toute autre activité",
+                products_title: "Applications de la société Arbah", products_subtitle: "Choisissez ce qui convient à votre activité",
+                prod_pc_title: "Arbah pour PC", prod_pc_desc: "Logiciel de comptabilité et de stock pour Windows, avec impression instantanée des factures et des codes-barres.",
+                prod_phone_title: "Arbah pour mobile", prod_phone_desc: "Version Android du logiciel de comptabilité, pour travailler depuis un téléphone ou une tablette.",
+                prod_platform_title: "Plateforme Entrepreneurs", prod_platform_desc: "Suivez les ventes et les opérations de votre magasin depuis votre téléphone, où que vous soyez.",
+                btn_learn_more: "En savoir plus", btn_download_pc: "Télécharger pour PC (EXE)", btn_download_apk: "Télécharger pour mobile (APK)", badge_new: "Nouveau",
+                guide_back: "Précédent", guide_next: "Suivant", guide_step: "Étape", guide_of: "sur", guide_close: "S'abonner à la fonctionnalité Entrepreneurs",
                 guide_reports: {"title": "Abonnez-vous à la plateforme Entrepreneurs", "desc": "Suivez les ventes et les opérations de votre magasin depuis votre téléphone, où que vous soyez.", "steps": ["L'application mobile se synchronise automatiquement avec le logiciel de comptabilité pour afficher le journal des opérations du magasin. Seul le propriétaire peut consulter les données. La connexion est liée à un compte lié uniquement à votre magasin, pour protéger vos informations."]},
                 dl_soon: "Lien de téléchargement bientôt disponible, contactez-nous sur WhatsApp.",
-                btn_free_version: "Cliquez ici pour demander version gratuite",
+                btn_free_version: "Essayez gratuitement avant d'acheter",
                 features_title: "Fonctionnalités d'Arbah",
-                feat_1_title: "Impression silencieuse instantanée",
-                feat_1_desc: "Prend en charge l'impression thermique instantanée sans fenêtres de confirmation (80mm/58mm), factures A4 et étiquettes codes-barres.",
-                feat_2_title: "Rapports et bénéfices précis",
-                feat_2_desc: "Calcul automatique des profits nets journaliers et mensuels, suivi des dettes clients/fournisseurs, et gestion des sauvegardes.",
-                feat_3_title: "Sécurité et licence électronique",
-                feat_3_desc: "Système de protection fiable liant l'activation à l'empreinte matérielle pour garantir vos droits et la durabilité des abonnements.",
-                pricing_title: "Abonnements du logiciel de comptabilité Arbah",
-                pricing_subtitle: "Choisissez le plan adapté à votre activité commerciale",
-                plan_1_name: "1 Mois",
-                plan_2_name: "3 Mois",
-                plan_3_name: "6 Mois",
-                plan_4_name: "1 An",
-                pos_badge: "Démo en direct",
-                pos_title: "Testez l'écran de vente interactif d'Arbah",
-                pos_desc: "Cliquez sur un produit ci-dessous pour l'ajouter au panier et calculer le total en direct",
-                pos_header_title: "Caisse Arbah (POS)",
-                pos_status: "● En ligne",
-                pos_search: "Rechercher un produit ou scanner...",
-                prod_1: "Film protection",
-                prod_2: "Réparation / Flash",
-                prod_3: "Écouteurs sans fil",
-                cart_title: "Contenu de la facture",
-                cart_items_label: "articles",
-                cart_total: "Total général :",
-                cart_checkout: "Valider et imprimer silencieusement ↗",
-                cart_printed: "✓ Facture imprimée avec succès !",
+                feat_1_title: "Impression silencieuse instantanée", feat_1_desc: "Prend en charge l'impression thermique instantanée sans fenêtres de confirmation (80mm/58mm), factures A4 et étiquettes codes-barres.",
+                feat_2_title: "Rapports et bénéfices précis", feat_2_desc: "Calcul automatique des profits nets journaliers et mensuels, suivi des dettes clients/fournisseurs, et gestion des sauvegardes.",
+                feat_3_title: "Sécurité et licence électronique", feat_3_desc: "Système de protection fiable liant l'activation à l'empreinte matérielle pour garantir vos droits et la durabilité des abonnements.",
+                pricing_title: "Abonnements du logiciel de comptabilité Arbah", pricing_subtitle: "Choisissez le plan adapté à votre activité commerciale",
+                plan_1_name: "1 Mois", plan_2_name: "3 Mois", plan_3_name: "6 Mois", plan_4_name: "1 An",
+                per_month: "/ mois", best_badge: "Meilleure économie : gagnez 4600 DA",
+                incl_title: "Chaque abonnement inclut :", incl_1: "Impression des factures et codes-barres", incl_2: "Rapports de profits et suivi des dettes", incl_3: "Sauvegarde et restauration des données", incl_4: "Support technique via WhatsApp",
+                risk_line: "Essayez avant de payer, sans aucun engagement tant que vous n'êtes pas convaincu.",
+                pay_title: "Moyens de paiement", pay_subtitle: "Payez facilement depuis votre téléphone ou au bureau de poste", pay_ccp: "CCP", pay_ccp_desc: "Virement ou versement sur un compte Algérie Poste", pay_baridi: "BaridiMob", pay_baridi_desc: "Payez depuis votre téléphone avec l'application BaridiMob", pay_note: "Demandez les coordonnées du compte sur WhatsApp, puis envoyez-nous le reçu après paiement pour recevoir votre clé d'activation.", pay_btn: "Demander les détails de paiement sur WhatsApp", yr_gift: "Cadeau : application de rapports mobile gratuite au lieu de", platform_offer: "Offre : gratuit avec l'abonnement 1 an au lieu de", faq_6_q: "Comment payer ?", faq_6_a: "Par CCP ou BaridiMob. Contactez-nous sur WhatsApp pour obtenir les coordonnées du compte, puis envoyez le reçu après paiement pour recevoir votre clé d'activation.",
+                faq_title: "Questions fréquentes",
+                faq_1_q: "Puis-je essayer le logiciel avant de m'abonner ?", faq_1_a: "Oui. Cliquez sur « Essayer gratuitement », envoyez les informations de votre magasin et vous recevrez la clé d'activation sur WhatsApp.",
+                faq_2_q: "Sur quels appareils fonctionne-t-il ?", faq_2_a: "Sur PC Windows, ainsi que sur téléphone ou tablette Android.",
+                faq_3_q: "Mes données sont-elles en sécurité ? Qui peut les voir ?", faq_3_a: "Seul le propriétaire du magasin peut consulter ses données, avec un compte unique par magasin pour protéger votre confidentialité.",
+                faq_4_q: "Et si mon appareil tombe en panne ou si je veux en changer ?", faq_4_a: "Vous pouvez exporter une sauvegarde de vos données et la restaurer facilement sur n'importe quel appareil. Pour transférer l'activation, contactez-nous sur WhatsApp.",
+                faq_5_q: "Comment activer le logiciel ?", faq_5_a: "Installez le logiciel, copiez le numéro de série de votre appareil depuis l'écran de connexion, puis envoyez la demande d'activation pour recevoir la clé.",
+                pos_badge: "Démo en direct", pos_title: "Testez l'écran de vente interactif d'Arbah",
+                pos_desc: "Cliquez sur un produit pour l'ajouter à la facture et voyez le total et votre bénéfice en direct",
+                pos_header_title: "Caisse Arbah (POS)", pos_status: "● En ligne", pos_search: "Rechercher un produit ou scanner...",
+                prod_1: "Film protection", prod_2: "Réparation / Flash", prod_3: "Écouteurs sans fil",
+                cart_title: "Contenu de la facture", cart_items_label: "articles", cart_total: "Total général :", cart_profit: "Bénéfice de cette facture :",
+                cart_checkout: "Valider et imprimer silencieusement ↗", cart_printed: "✓ Facture imprimée avec succès !",
                 page_title: "ARBAH GROUP - Logiciels de comptabilité, ventes et stock",
                 page_desc: "ARBAH GROUP : logiciels de comptabilité, de ventes et de stock pour PC et mobile, avec impression des factures et codes-barres et suivi des dettes et profits.",
-                dl_warn_title: "À savoir avant de télécharger",
-                dl_warn_desc: "Windows ou Google Play Protect peut afficher un avertissement à l'installation, car l'application n'est pas encore signée numériquement. Téléchargez les applications uniquement depuis cette page. Sous Windows, cliquez sur « Informations complémentaires » puis « Exécuter quand même » ; sous Android, autorisez l'installation depuis le navigateur puis choisissez « Installer quand même ».",
-                contact_title: "Contactez-nous",
-                contact_subtitle: "Nous répondons à vos questions et demandes d'activation dans les meilleurs délais",
-                contact_fb: "Notre page Facebook",
-                contact_email: "E-mail",
-                contact_phone: "Téléphone / WhatsApp",
+                dl_warn_title: "Téléchargement sûr depuis notre site officiel",
+                dl_warn_desc: "Windows ou Google Play Protect peut afficher un avertissement à l'installation, car l'application est récente et pas encore signée numériquement ; cela ne signifie pas qu'elle est dangereuse. Téléchargez-la uniquement depuis cette page. Sous Windows, cliquez sur « Informations complémentaires » puis « Exécuter quand même » ; sous Android, autorisez l'installation depuis le navigateur puis choisissez « Installer quand même ».",
+                contact_title: "Contactez-nous", contact_subtitle: "Nous répondons à vos questions et demandes d'activation dans les meilleurs délais",
+                contact_fb: "Notre page Facebook", contact_email: "E-mail", contact_phone: "Téléphone / WhatsApp",
                 ph_store: "Ex : Boutique Al Saada Vêtements",
-                footer_rights: "Tous droits réservés © ARBAH GROUP",
-                footer_contact: "Contact & Support : WhatsApp +213542054655 | arbahcom.here@gmail.com",
-                modal_title: "Envoyer une demande d'activation",
-                modal_subtitle: "Entrez les détails de votre magasin pour recevoir la clé de licence",
-                form_store: "Nom du magasin / boutique *:",
-                form_phone: "Numéro de téléphone *:",
-                form_email: "E-mail:",
-                form_serial: "Numéro de série de l'appareil (optionnel):",
-                form_serial_note: "Trouvé dans l'application sur l'écran de connexion.",
-                form_submit: "Envoyer (OK)",
-                form_cancel: "Annuler",
-                success_title: "Merci",
-                success_desc: "WhatsApp s'est ouvert avec un message prêt. Appuyez sur « Envoyer » pour finaliser votre demande ; notre équipe technique vous répondra rapidement.",
-                success_btn: "D'accord"
+                footer_rights: "Tous droits réservés © ARBAH GROUP", footer_contact: "Contact & Support : WhatsApp +213542054655 | arbahcom.here@gmail.com",
+                modal_title: "Envoyer une demande d'activation", modal_subtitle: "Entrez les détails de votre magasin pour recevoir la clé de licence",
+                form_store: "Nom du magasin / boutique *:", form_phone: "Numéro de téléphone *:", form_email: "E-mail:",
+                form_serial: "Numéro de série de l'appareil (optionnel):", form_serial_note: "Trouvé dans l'application sur l'écran de connexion.",
+                form_submit: "Envoyer (OK)", form_cancel: "Annuler",
+                success_title: "Merci", success_desc: "WhatsApp s'est ouvert avec un message prêt. Appuyez sur « Envoyer » pour finaliser votre demande ; notre équipe technique vous répondra rapidement.", success_btn: "D'accord"
             },
             en: {
-                brand_name: "ARBAH GROUP",
-                brand_sub: "Custom Applications",
-                nav_activation: "Request Activation",
-                nav_whatsapp: "WhatsApp",
-                hero_badge: "Version 5.0.0 is now available",
-                hero_new: "New",
-                cur: "DZD",
-                theme_aria: "Toggle theme",
-                motion_aria: "Enable animations",
+                brand_name: "ARBAH GROUP", brand_sub: "Custom Applications",
+                nav_activation: "Request Activation", nav_whatsapp: "WhatsApp",
+                hero_badge: "Version 5.0.5 is now available", hero_new: "New", cur: "DZD",
+                theme_aria: "Toggle theme", motion_aria: "Enable animations",
                 err_phone: "Enter a valid Algerian phone number, e.g. 0555 12 34 56",
-                form_plan: "Selected plan:",
-                cart_empty: "Invoice is empty, add a product",
-                hero_title_1: "The easiest and fastest system to manage",
-                hero_title_2: "sales, inventory and accounting",
-                hero_title_3: "and many more apps are waiting for you",
-                hero_desc: "We build accounting, inventory and business-tracking software for merchants and entrepreneurs. Our software runs on PC and mobile, prints invoices and barcodes directly, and tracks debts and profits accurately.",
-                btn_products: "Arbah Company Apps",
+                form_plan: "Selected plan:", cart_empty: "Invoice is empty, add a product",
+                hero_title_1: "Know your real profit every day",
+                hero_title_2: "and stop losing stock and debts",
+                hero_title_3: "Accounting and sales software for PC and mobile",
+                hero_desc: "Follow your business from anywhere, see your profits automatically, and track customer and supplier debts. Built for shop owners, with videos and images that show how to use it.",
+                chip_1: "Free trial", chip_2: "WhatsApp support", chip_3: "Usage videos and images",
+                btn_products: "Download now",
                 trust_message: "business owners trust Arbah apps",
                 trust_aria: "Join the business owners who trust us",
-                products_title: "Arbah Company Apps",
-                products_subtitle: "Choose what fits your business",
-                prod_pc_title: "Arbah for PC",
-                prod_pc_desc: "Accounting and inventory software for Windows, with instant invoice and barcode printing.",
-                prod_phone_title: "Arbah for Mobile",
-                prod_phone_desc: "The Android version of the accounting software, for working from a phone or tablet.",
-                prod_platform_title: "Entrepreneurs Platform",
-                prod_platform_desc: "Follow your store's sales and operations from your phone, anytime and anywhere.",
-                btn_learn_more: "Learn more",
-                btn_download_pc: "Download for PC (EXE)",
-                btn_download_apk: "Download Mobile Version (APK)",
-                badge_new: "New",
-                guide_back: "Back",
-                guide_next: "Next",
-                guide_step: "Step",
-                guide_of: "of",
-                guide_close: "Subscribe to Entrepreneurs Feature",
+                biz_title: "Suitable for every kind of business", biz_1: "Phones & accessories", biz_2: "Repair & maintenance", biz_3: "Restaurants & cafés", biz_4: "Hotels", biz_5: "Clothing", biz_6: "Grocery & food", biz_7: "Building materials", biz_8: "and any other business",
+                products_title: "Arbah Company Apps", products_subtitle: "Choose what fits your business",
+                prod_pc_title: "Arbah for PC", prod_pc_desc: "Accounting and inventory software for Windows, with instant invoice and barcode printing.",
+                prod_phone_title: "Arbah for Mobile", prod_phone_desc: "The Android version of the accounting software, for working from a phone or tablet.",
+                prod_platform_title: "Entrepreneurs Platform", prod_platform_desc: "Follow your store's sales and operations from your phone, anytime and anywhere.",
+                btn_learn_more: "Learn more", btn_download_pc: "Download for PC (EXE)", btn_download_apk: "Download Mobile Version (APK)", badge_new: "New",
+                guide_back: "Back", guide_next: "Next", guide_step: "Step", guide_of: "of", guide_close: "Subscribe to Entrepreneurs Feature",
                 guide_reports: {"title": "Subscribe to Entrepreneurs Platform", "desc": "Follow your store's sales and operations log from your phone, anytime and anywhere.", "steps": ["The mobile app automatically synchronizes with the accounting software to display the store's operations log. Only the store owner can view the data. Access is linked to one account for each store to keep your information private and protected."]},
                 dl_soon: "Download link not available yet, contact us on WhatsApp.",
-                btn_free_version: "Click here to request a free version",
+                btn_free_version: "Try it free before you buy",
                 features_title: "Arbah Features",
-                feat_1_title: "Instant Silent Printing",
-                feat_1_desc: "Supports instant silent printing without confirmation popups for thermal receipts (80mm/58mm), A4 invoices, and barcode labels.",
-                feat_2_title: "Accurate Reports & Profits",
-                feat_2_desc: "Automatic daily and monthly net profit calculation, customer/supplier debt tracking, and database backup/restore.",
-                feat_3_title: "Electronic Security & Licensing",
-                feat_3_desc: "Reliable protection system linking activation to hardware fingerprint to protect your rights and sustain client subscriptions.",
-                pricing_title: "Arbah Accounting Subscription Plans",
-                pricing_subtitle: "Choose the right plan for your commercial business",
-                plan_1_name: "1 Month",
-                plan_2_name: "3 Months",
-                plan_3_name: "6 Months",
-                plan_4_name: "1 Year",
-                pos_badge: "Live Demo",
-                pos_title: "Test Arbah's Interactive Sales Screen",
-                pos_desc: "Click on any product below to add it to the cart and calculate the total instantly",
-                pos_header_title: "Arbah POS",
-                pos_status: "● Online",
-                pos_search: "Search product or scan barcode...",
-                prod_1: "Screen Protector",
-                prod_2: "Repair / Flash",
-                prod_3: "Wireless Earbuds",
-                cart_title: "Invoice Items",
-                cart_items_label: "items",
-                cart_total: "Grand Total:",
-                cart_checkout: "Complete & Print Silently ↗",
-                cart_printed: "✓ Invoice printed successfully!",
+                feat_1_title: "Instant Silent Printing", feat_1_desc: "Supports instant silent printing without confirmation popups for thermal receipts (80mm/58mm), A4 invoices, and barcode labels.",
+                feat_2_title: "Accurate Reports & Profits", feat_2_desc: "Automatic daily and monthly net profit calculation, customer/supplier debt tracking, and database backup/restore.",
+                feat_3_title: "Electronic Security & Licensing", feat_3_desc: "Reliable protection system linking activation to hardware fingerprint to protect your rights and sustain client subscriptions.",
+                pricing_title: "Arbah Accounting Subscription Plans", pricing_subtitle: "Choose the right plan for your commercial business",
+                plan_1_name: "1 Month", plan_2_name: "3 Months", plan_3_name: "6 Months", plan_4_name: "1 Year",
+                per_month: "/ month", best_badge: "Best value: save 4600 DZD",
+                incl_title: "Every plan includes:", incl_1: "Invoice and barcode printing", incl_2: "Profit reports and debt tracking", incl_3: "Data backup and restore", incl_4: "Technical support via WhatsApp",
+                risk_line: "Try before you pay, with no commitment until you're convinced.",
+                pay_title: "Payment methods", pay_subtitle: "Pay easily from your phone or at the post office", pay_ccp: "CCP", pay_ccp_desc: "Transfer or deposit to an Algérie Poste account", pay_baridi: "BaridiMob", pay_baridi_desc: "Pay from your phone with the BaridiMob app", pay_note: "Ask for the account details on WhatsApp, then send us the receipt after paying to receive your activation key.", pay_btn: "Ask for payment details on WhatsApp", yr_gift: "Bonus: mobile reports app free instead of", platform_offer: "Offer: free with the 1-year plan instead of", faq_6_q: "How do I pay?", faq_6_a: "By CCP or BaridiMob. Contact us on WhatsApp for the account details, then send the receipt after paying to receive your activation key.",
+                faq_title: "Frequently asked questions",
+                faq_1_q: "Can I try the software before subscribing?", faq_1_a: "Yes. Click “Try free”, send your store details, and you'll receive the activation key on WhatsApp.",
+                faq_2_q: "Which devices does it run on?", faq_2_a: "On Windows PCs, and on Android phones or tablets.",
+                faq_3_q: "Is my data safe? Who can see it?", faq_3_a: "Only the store owner can see their data, with one account per store to protect your privacy.",
+                faq_4_q: "What if my device breaks or I want to change it?", faq_4_a: "You can export a backup of your data and restore it easily on any device. To move the activation, contact us on WhatsApp.",
+                faq_5_q: "How do I activate the software?", faq_5_a: "Install it, copy your device serial from the login screen, then send the activation request to receive your key.",
+                pos_badge: "Live Demo", pos_title: "Test Arbah's Interactive Sales Screen",
+                pos_desc: "Click any product to add it to the invoice and see the total and your profit instantly",
+                pos_header_title: "Arbah POS", pos_status: "● Online", pos_search: "Search product or scan barcode...",
+                prod_1: "Screen Protector", prod_2: "Repair / Flash", prod_3: "Wireless Earbuds",
+                cart_title: "Invoice Items", cart_items_label: "items", cart_total: "Grand Total:", cart_profit: "Profit on this invoice:",
+                cart_checkout: "Complete & Print Silently ↗", cart_printed: "✓ Invoice printed successfully!",
                 page_title: "ARBAH GROUP - Accounting, Sales & Inventory Software",
                 page_desc: "ARBAH GROUP: accounting, sales and inventory software for PC and mobile, with invoice and barcode printing and debt and profit tracking.",
-                dl_warn_title: "Before you download",
-                dl_warn_desc: "Windows or Google Play Protect may show a warning during installation because the app is not digitally signed yet. Download the apps from this page only. On Windows, click “More info” then “Run anyway”; on Android, allow installation from your browser, then choose “Install anyway”.",
-                contact_title: "Contact us",
-                contact_subtitle: "We reply to questions and activation requests as soon as possible",
-                contact_fb: "Our Facebook page",
-                contact_email: "Email",
-                contact_phone: "Phone / WhatsApp",
+                dl_warn_title: "Safe download from our official site",
+                dl_warn_desc: "Windows or Google Play Protect may show a warning during installation because the app is new and not digitally signed yet; this doesn't mean it is harmful. Download it from this page only. On Windows, click “More info” then “Run anyway”; on Android, allow installation from your browser, then choose “Install anyway”.",
+                contact_title: "Contact us", contact_subtitle: "We reply to questions and activation requests as soon as possible",
+                contact_fb: "Our Facebook page", contact_email: "Email", contact_phone: "Phone / WhatsApp",
                 ph_store: "e.g. Al Saada Clothing Store",
-                footer_rights: "All rights reserved © ARBAH GROUP",
-                footer_contact: "Contact & Support: WhatsApp +213542054655 | arbahcom.here@gmail.com",
-                modal_title: "Send App Activation Request",
-                modal_subtitle: "Enter your store details to receive your license key soon",
-                form_store: "Store / Shop Name *:",
-                form_phone: "Phone Number *:",
-                form_email: "Email:",
-                form_serial: "Device Serial (Optional):",
-                form_serial_note: "Found inside the app on the login screen.",
-                form_submit: "Send Request (OK)",
-                form_cancel: "Cancel",
-                success_title: "Thank You",
-                success_desc: "WhatsApp opened with a ready message. Press “Send” there to complete your request; our technical team will reply shortly.",
-                success_btn: "OK"
+                footer_rights: "All rights reserved © ARBAH GROUP", footer_contact: "Contact & Support: WhatsApp +213542054655 | arbahcom.here@gmail.com",
+                modal_title: "Send App Activation Request", modal_subtitle: "Enter your store details to receive your license key soon",
+                form_store: "Store / Shop Name *:", form_phone: "Phone Number *:", form_email: "Email:",
+                form_serial: "Device Serial (Optional):", form_serial_note: "Found inside the app on the login screen.",
+                form_submit: "Send Request (OK)", form_cancel: "Cancel",
+                success_title: "Thank You", success_desc: "WhatsApp opened with a ready message. Press “Send” there to complete your request; our technical team will reply shortly.", success_btn: "OK"
             }
         };
 
@@ -993,46 +851,23 @@
             if (!translations[lang]) lang = 'ar';
             document.documentElement.setAttribute('lang', lang);
             document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-            
             const dict = translations[lang];
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (dict[key]) {
-                    el.textContent = dict[key];
-                }
-            });
-            document.querySelectorAll('[data-i18n-aria]').forEach(el => {
-                const key = el.getAttribute('data-i18n-aria');
-                if (dict[key]) {
-                    el.setAttribute('aria-label', dict[key]);
-                }
-            });
-
+            document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (dict[k]) el.textContent = dict[k]; });
+            document.querySelectorAll('[data-i18n-aria]').forEach(el => { const k = el.getAttribute('data-i18n-aria'); if (dict[k]) el.setAttribute('aria-label', dict[k]); });
             document.querySelectorAll('[data-i18n-ph]').forEach(el => { const v = dict[el.getAttribute('data-i18n-ph')]; if (v) el.setAttribute('placeholder', v); });
-
             if (dict.page_title) document.title = dict.page_title;
-
             const md = document.querySelector('meta[name="description"]'); if (md && dict.page_desc) md.setAttribute('content', dict.page_desc);
-
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
-            });
-
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false'));
             try { localStorage.setItem('arbah_lang', lang); } catch (e) {}
             renderCart();
             if (typeof guideKey !== 'undefined' && guideKey && !document.getElementById('guideModal').classList.contains('hidden')) renderGuide();
         }
 
-        /* ===== روابط تحميل تطبيقات الأندرويد ===== */
-        /* رابط الـ APK الوحيد موجود في الـ HTML؛ إن كان الرابط فارغاً يظهر تنبيه "غير متوفر" */
         document.querySelectorAll('[data-dl]').forEach(a => {
             const href = a.getAttribute('href');
-            if (!href || href === '#') {
-                a.addEventListener('click', e => { e.preventDefault(); alert(getCurrentDict().dl_soon); });
-            }
+            if (!href || href === '#') a.addEventListener('click', e => { e.preventDefault(); alert(getCurrentDict().dl_soon); });
         });
 
-        /* ===== شرح تفاعلي لكل زر ===== */
         const GUIDE_ICONS = { reports: 'fa-solid fa-chart-line' };
         let guideKey = null, guideIdx = 0;
         function renderGuide() {
@@ -1052,10 +887,10 @@
             const cta = document.getElementById('guideCta');
             cta.classList.toggle('hidden', !last);
             cta.textContent = d.guide_close;
-            const singleScreen = n === 1;
-            document.getElementById('guideProgress').classList.toggle('hidden', singleScreen);
-            document.getElementById('guidePager').classList.toggle('hidden', singleScreen);
-            document.getElementById('guideBack').classList.toggle('hidden', singleScreen);
+            const single = n === 1;
+            document.getElementById('guideProgress').classList.toggle('hidden', single);
+            document.getElementById('guidePager').classList.toggle('hidden', single);
+            document.getElementById('guideBack').classList.toggle('hidden', single);
             if (!noMotion()) ['guideStep', 'guideNum'].forEach(id => document.getElementById(id).animate(
                 [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],
                 { duration: 280, easing: 'cubic-bezier(.2,.7,.2,1)' }));
@@ -1068,10 +903,7 @@
             guideIdx = Math.max(0, Math.min(n - 1, guideIdx + dir));
             renderGuide();
         }
-        function guideAction() {
-            closeGuide();
-            if (guideKey === 'reports') openActivationModal();
-        }
+        function guideAction() { closeGuide(); if (guideKey === 'reports') openActivationModal(); }
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') { closeGuide(); closeActivationModal(); closeSuccessModal(); return; }
             if (document.getElementById('guideModal').classList.contains('hidden')) return;
@@ -1080,10 +912,7 @@
             if (e.key === 'ArrowRight') stepGuide(rtl ? -1 : 1);
         });
 
-        /* ===== أزرار اللغات ===== */
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => withTransition('vt-lang', () => setLanguage(btn.dataset.lang)));
-        });
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => withTransition('vt-lang', () => setLanguage(btn.dataset.lang))));
 
         let selectedPlan = null;
         function openActivationModal(planKey) {
@@ -1093,19 +922,12 @@
                 const d = getCurrentDict();
                 planEl.textContent = d.form_plan + ' ' + (d[selectedPlan] || '');
                 planEl.classList.remove('hidden');
-            } else {
-                planEl.textContent = '';
-                planEl.classList.add('hidden');
-            }
+            } else { planEl.textContent = ''; planEl.classList.add('hidden'); }
             document.getElementById('activationModal').classList.remove('hidden', 'is-closing');
             setTimeout(() => document.getElementById('actStoreName').focus(), 50);
         }
+        function closeActivationModal() { hideModal('activationModal'); }
 
-        function closeActivationModal() {
-            hideModal('activationModal');
-        }
-
-        /* يقبل 0555.. أو +213555.. أو 213555.. ويعيد الرقم بصيغة 05xxxxxxxx أو null */
         function normalizePhone(v) {
             let d = v.replace(/[\s.\-()]/g, '');
             if (d.startsWith('+213')) d = '0' + d.slice(4);
@@ -1123,7 +945,6 @@
             if (!phone) { phoneEl.setCustomValidity(getCurrentDict().err_phone); phoneEl.reportValidity(); return; }
             const email = document.getElementById('actEmail').value.trim();
             const serial = document.getElementById('actSerial').value.trim();
-
             const lines = [
                 'طلب تفعيل جديد لبرنامج أرباح ARBAH:',
                 '- اسم المتجر: ' + storeName,
@@ -1132,71 +953,44 @@
                 '- السريال العتادي: ' + (serial || 'غير مدخل')
             ];
             if (selectedPlan) lines.push('- الخطة: ' + translations.ar[selectedPlan]);
-
             window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
             closeActivationModal();
             document.getElementById('activationForm').reset();
             document.getElementById('successModal').classList.remove('hidden', 'is-closing');
         }
+        function closeSuccessModal() { hideModal('successModal'); }
 
-        function closeSuccessModal() {
-            hideModal('successModal');
-        }
-
-        /* ================= TRUST COUNTER ANIMATION ================= */
+        /* Trust counter */
         const TRUSTED_TOTAL = 238;
         const trustedCount = document.getElementById('trustedCount');
         const trustCounter = document.getElementById('trustCounter');
         let trustAnimationStarted = false;
-
         function animateTrustedCount() {
             if (trustAnimationStarted) return;
             trustAnimationStarted = true;
-
-            if (noMotion()) {
-                trustedCount.textContent = String(TRUSTED_TOTAL);
-                return;
+            if (noMotion()) { trustedCount.textContent = String(TRUSTED_TOTAL); return; }
+            const duration = 1200, startTime = performance.now();
+            function updateCount(now) {
+                const p = Math.min((now - startTime) / duration, 1);
+                trustedCount.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * TRUSTED_TOTAL).toLocaleString('en-US');
+                if (p < 1) requestAnimationFrame(updateCount); else trustedCount.textContent = String(TRUSTED_TOTAL);
             }
-
-            const duration = 1200;
-            const startTime = performance.now();
-
-            function updateCount(currentTime) {
-                const progress = Math.min((currentTime - startTime) / duration, 1);
-                const easedProgress = 1 - Math.pow(1 - progress, 3);
-                trustedCount.textContent = Math.floor(easedProgress * TRUSTED_TOTAL).toLocaleString('en-US');
-
-                if (progress < 1) {
-                    requestAnimationFrame(updateCount);
-                } else {
-                    trustedCount.textContent = String(TRUSTED_TOTAL);
-                }
-            }
-
             requestAnimationFrame(updateCount);
         }
-
         if ('IntersectionObserver' in window && trustedCount) {
-            const trustObserver = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    animateTrustedCount();
-                    trustObserver.disconnect();
-                }
-            }, { threshold: 0.5 });
-            trustObserver.observe(trustCounter);
-        } else {
-            animateTrustedCount();
-        }
+            const o = new IntersectionObserver(en => { if (en[0].isIntersecting) { animateTrustedCount(); o.disconnect(); } }, { threshold: 0.5 });
+            o.observe(trustCounter);
+        } else animateTrustedCount();
 
-        /* ================= THEME (dark / light) ================= */
+        /* Theme */
         const themeToggle = document.getElementById('themeToggle');
         function applyTheme(t) {
             document.documentElement.setAttribute('data-theme', t);
             themeToggle.innerHTML = t === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
-            try { localStorage.setItem('arbah_theme', t); } catch (e) {}
+            try { localStorage.setItem('arbah_theme_v2', t); } catch (e) {}
         }
-        let savedTheme = 'dark';
-        try { savedTheme = localStorage.getItem('arbah_theme') === 'light' ? 'light' : 'dark'; } catch (e) {}
+        let savedTheme = 'light';
+        try { savedTheme = localStorage.getItem('arbah_theme_v2') === 'dark' ? 'dark' : 'light'; } catch (e) {}
         applyTheme(savedTheme);
         themeToggle.addEventListener('click', () => {
             const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -1210,45 +1004,37 @@
             )).catch(() => {});
         });
 
-        /* ================= 3D PARALLAX EFFECT ================= */
+        /* 3D parallax */
         const dashboard = document.getElementById('interactiveDashboard');
         const visualContainer = document.getElementById('visualContainer');
-
         if (visualContainer && dashboard) {
             visualContainer.addEventListener('mousemove', (e) => {
                 const rect = visualContainer.getBoundingClientRect();
-                const x = e.clientX - rect.left - (rect.width / 2);
-                const y = e.clientY - rect.top - (rect.height / 2);
-                const rotateX = (-y / rect.height) * 14;
-                const rotateY = (x / rect.width) * 14;
-                dashboard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                const x = e.clientX - rect.left - rect.width / 2, y = e.clientY - rect.top - rect.height / 2;
+                dashboard.style.transform = `rotateX(${(-y / rect.height) * 14}deg) rotateY(${(x / rect.width) * 14}deg)`;
             });
-            visualContainer.addEventListener('mouseleave', () => {
-                dashboard.style.transform = `rotateX(0deg) rotateY(0deg)`;
-            });
+            visualContainer.addEventListener('mouseleave', () => { dashboard.style.transform = 'rotateX(0deg) rotateY(0deg)'; });
         }
 
-        /* ================= POS CART SIMULATION ================= */
+        /* POS cart (مع حساب الربح) */
         let cartItems = [
-            { key: 'prod_1', price: 350, qty: 1 },
-            { key: 'prod_2', price: 1500, qty: 1 }
+            { key: 'prod_1', price: 350, cost: 150, qty: 1 },
+            { key: 'prod_2', price: 1500, cost: 500, qty: 1 }
         ];
-
         function renderCart() {
             const cartList = document.getElementById('cartList');
             const dict = getCurrentDict();
             cartList.replaceChildren();
-            let totalSum = 0, totalQty = 0;
-
+            let totalSum = 0, totalQty = 0, totalProfit = 0;
             if (!cartItems.length) {
                 const p = document.createElement('p');
                 p.className = 'text-center text-slate-400 py-2';
                 p.textContent = dict.cart_empty;
                 cartList.appendChild(p);
             }
-
             cartItems.forEach(item => {
                 totalSum += item.price * item.qty;
+                totalProfit += (item.price - item.cost) * item.qty;
                 totalQty += item.qty;
                 const row = document.createElement('div');
                 row.className = 'flex justify-between items-center bg-[var(--panel2)] border border-amber-400/15 p-2 rounded-lg';
@@ -1263,27 +1049,19 @@
                 row.append(left, right);
                 cartList.appendChild(row);
             });
-
             document.getElementById('cartCount').textContent = `${totalQty} ${dict.cart_items_label}`;
             document.getElementById('cartTotalSum').textContent = `${totalSum} ${dict.cur}`;
+            document.getElementById('cartProfit').textContent = `${totalProfit} ${dict.cur}`;
         }
-
-        function addToCart(key, price) {
+        function addToCart(key, price, cost) {
             const existing = cartItems.find(i => i.key === key);
-            if (existing) {
-                existing.qty++;
-            } else {
-                cartItems.push({ key, price, qty: 1 });
-            }
+            if (existing) existing.qty++; else cartItems.push({ key, price, cost, qty: 1 });
             renderCart();
         }
-
         function triggerCheckout(btn) {
-            const dict = getCurrentDict();
-            btn.textContent = dict.cart_printed;
+            btn.textContent = getCurrentDict().cart_printed;
             btn.style.background = '#10b981';
             btn.style.color = '#ffffff';
-            
             setTimeout(() => {
                 btn.textContent = getCurrentDict().cart_checkout;
                 btn.style.background = '';
@@ -1293,25 +1071,20 @@
             }, 1800);
         }
 
-        /* ===== انتقالات تفاعلية عند التمرير ===== */
+        /* Scroll reveal */
         (function () {
-            const els = document.querySelectorAll('section h2, #products .grid > div, section.border-t .grid > div, #visualContainer, #trustCounter');
+            const els = document.querySelectorAll('section h2, .sec-card .grid > div, #visualContainer, #trustCounter');
             if (noMotion() || !('IntersectionObserver' in window)) return;
-            const io = new IntersectionObserver(en => en.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.15 });
+            const io = new IntersectionObserver(en => en.forEach(e => e.target.classList.toggle('in', e.isIntersecting)), { threshold: 0.15 });
             els.forEach(el => { el.style.setProperty('--d', [...el.parentElement.children].indexOf(el) % 4); el.classList.add('reveal'); io.observe(el); });
         })();
 
-        /* زر تجاوز "تقليل الحركة" (يظهر فقط عند تفعيله في النظام) */
         (function () {
             const mt = document.getElementById('motionToggle');
             if (noMotion()) mt.style.display = 'inline-flex';
-            mt.addEventListener('click', () => {
-                try { localStorage.setItem('arbah_motion', 'on'); } catch (e) {}
-                location.reload();
-            });
+            mt.addEventListener('click', () => { try { localStorage.setItem('arbah_motion', 'on'); } catch (e) {} location.reload(); });
         })();
 
-        /* شريط تقدم التمرير + انكماش الهيدر */
         (function () {
             const bar = document.getElementById('scrollBar'), hdr = document.querySelector('header');
             let queued = false;
@@ -1325,16 +1098,27 @@
             update();
         })();
 
-        /* رقم واتساب من مصدر واحد (WHATSAPP_NUMBER) */
+        /* انتقال البطاقات عند التمرير */
+        (function () {
+            if (noMotion() || !('IntersectionObserver' in window)) return;
+            const io = new IntersectionObserver(en => en.forEach(e => e.target.classList.toggle('in-view', e.isIntersecting)), { threshold: 0.06 });
+            document.querySelectorAll('.sec-card:not(#top)').forEach(el => { el.classList.add('sec-anim'); io.observe(el); });
+        })();
+
+        /* ضوء يتبع المؤشر */
+        document.addEventListener('pointermove', e => {
+            const c = e.target.closest && e.target.closest('.hover-card');
+            if (!c) return;
+            const r = c.getBoundingClientRect();
+            c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+            c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        }, { passive: true });
+
         document.querySelectorAll('[data-wa]').forEach(a => { a.href = 'https://wa.me/' + WHATSAPP_NUMBER; });
         document.querySelectorAll('[data-wa-text]').forEach(el => { el.textContent = '+' + WHATSAPP_NUMBER; });
 
-        // تهيئة اللغة الافتراضية
         let initialLang = 'ar';
-        try {
-            const savedLang = localStorage.getItem('arbah_lang');
-            if (savedLang && translations[savedLang]) initialLang = savedLang;
-        } catch (e) {}
+        try { const s = localStorage.getItem('arbah_lang'); if (s && translations[s]) initialLang = s; } catch (e) {}
         setLanguage(initialLang);
     </script>
 </body>
