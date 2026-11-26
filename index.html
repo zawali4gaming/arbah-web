@@ -457,48 +457,39 @@
         </div>
     </section>
 
-    <!-- Pricing -->
-    <section class="sec-card sec-narrow text-center">
-        <h2 class="text-2xl sm:text-3xl font-black gold-text inline-block mb-2" data-i18n="pricing_title">اشتراكات برنامج أرباح للمحاسبة</h2>
-        <p class="text-xs sm:text-sm text-slate-300 mb-8" data-i18n="pricing_subtitle">اختر الخطة المناسبة لنشاطك التجاري</p>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-bold">
-            <button type="button" onclick="openActivationModal('plan_1_name')" class="custom-panel hover-card p-5 rounded-2xl border shadow-md w-full cursor-pointer">
-                <p class="text-amber-400 mb-1.5" data-i18n="plan_1_name">شهر واحد</p>
-                <p class="text-xl font-black">800 <span class="text-sm" data-i18n="cur">د.ج</span></p>
-                <p class="text-[11px] text-slate-400 mt-1.5">800 <span data-i18n="cur">د.ج</span> <span data-i18n="per_month">/ شهر</span></p>
+    <!-- Offers -->
+    <section id="offers" class="scroll-target sec-card sec-narrow text-center">
+        <h2 class="text-2xl sm:text-3xl font-black gold-text inline-block mb-2" data-i18n="offers_title">باقات وعروض التطبيقات</h2>
+        <p class="text-xs sm:text-sm text-slate-300 mb-8" data-i18n="offers_subtitle">اختر ما يناسب محلك: حاسوب، هاتف، أو الاثنين معاً</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-bold">
+            <button type="button" onclick="openActivationModal('offer_1_name')" class="custom-panel hover-card p-5 rounded-2xl border shadow-md w-full cursor-pointer">
+                <div class="w-12 h-12 mx-auto mb-3 bg-amber-500/15 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-400/30 gap-1"><i class="fa-solid fa-desktop"></i></div>
+                <p class="text-amber-400 text-sm mb-1.5" data-i18n="offer_1_name">تطبيق الحاسوب + تطبيق الهاتف</p>
+                <p class="text-[11px] text-slate-300 font-normal leading-relaxed mb-3" data-i18n="offer_1_desc">تطبيق حاسوب للبيع والتسيير مع تطبيق هاتف لمراقبة العمال والتقارير</p>
+                <p class="text-2xl font-black gold-text">5000 <span class="text-sm" data-i18n="cur">د.ج</span></p>
+                <p class="text-[11px] text-slate-400 mt-1.5" data-i18n="offer_1_term">تفعيل لمدة سنة</p>
             </button>
-            <button type="button" onclick="openActivationModal('plan_2_name')" class="custom-panel hover-card p-5 rounded-2xl border shadow-md w-full cursor-pointer">
-                <p class="text-amber-400 mb-1.5" data-i18n="plan_2_name">3 أشهر</p>
-                <p class="text-xl font-black">2000 <span class="text-sm" data-i18n="cur">د.ج</span></p>
-                <p class="text-[11px] text-slate-400 mt-1.5">≈ 667 <span data-i18n="cur">د.ج</span> <span data-i18n="per_month">/ شهر</span></p>
+            <button type="button" onclick="openActivationModal('offer_2_name')" class="custom-panel hover-card p-5 rounded-2xl border shadow-md w-full cursor-pointer">
+                <div class="w-12 h-12 mx-auto mb-3 bg-amber-500/15 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-400/30"><i class="fa-solid fa-infinity"></i></div>
+                <p class="text-amber-400 text-sm mb-1.5" data-i18n="offer_2_name">تطبيق الحاسوب مدى الحياة</p>
+                <p class="text-[11px] text-slate-300 font-normal leading-relaxed mb-3" data-i18n="offer_2_desc">تطبيق حاسوب للبيع والتسيير، مفعّل مدى الحياة</p>
+                <p class="text-2xl font-black gold-text">12000 <span class="text-sm" data-i18n="cur">د.ج</span></p>
+                <p class="text-[11px] text-slate-400 mt-1.5" data-i18n="offer_2_term">تفعيل مدى الحياة</p>
             </button>
-            <button type="button" onclick="openActivationModal('plan_3_name')" class="custom-panel hover-card p-5 rounded-2xl border shadow-md w-full cursor-pointer">
-                <p class="text-amber-400 mb-1.5" data-i18n="plan_3_name">6 أشهر</p>
-                <p class="text-xl font-black">3500 <span class="text-sm" data-i18n="cur">د.ج</span></p>
-                <p class="text-[11px] text-slate-400 mt-1.5">≈ 583 <span data-i18n="cur">د.ج</span> <span data-i18n="per_month">/ شهر</span></p>
+            <button type="button" onclick="openActivationModal('offer_3_name')" class="custom-panel hover-card p-5 rounded-2xl border shadow-md w-full cursor-pointer">
+                <div class="w-12 h-12 mx-auto mb-3 bg-amber-500/15 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-400/30"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <p class="text-amber-400 text-sm mb-1.5" data-i18n="offer_3_name">تطبيق الهاتف للبيع والتسيير</p>
+                <p class="text-[11px] text-slate-300 font-normal leading-relaxed mb-3" data-i18n="offer_3_desc">تطبيق هاتف للبيع وتسيير التجارة بكل أنواعها</p>
+                <p class="text-2xl font-black gold-text">3000 <span class="text-sm" data-i18n="cur">د.ج</span></p>
             </button>
-            <button type="button" onclick="openActivationModal('plan_4_name')" class="bg-gradient-to-b from-purple-900/90 to-purple-950 p-5 rounded-2xl border-2 border-amber-400 shadow-lg shadow-amber-500/15 text-white relative w-full cursor-pointer">
-                <span class="absolute bg-gradient-to-r from-amber-500 to-yellow-400 text-purple-950 text-[10px] font-black px-3 py-0.5 rounded-full shadow-lg whitespace-nowrap" style="top:-11px;left:50%;transform:translateX(-50%)" data-i18n="best_badge">الأكثر توفيراً: وفّر 4600 د.ج</span>
-                <p class="text-amber-300 mb-1.5 mt-1" data-i18n="plan_4_name">سنة كاملة</p>
-                <p class="text-xl font-black gold-text">5000 <span class="text-sm" data-i18n="cur">د.ج</span></p>
-                <p class="text-[11px] text-slate-300 mt-1.5">≈ 417 <span data-i18n="cur">د.ج</span> <span data-i18n="per_month">/ شهر</span></p>
-                <div class="mt-3 pt-2.5 border-t border-amber-400/30 text-[11px] leading-snug text-amber-300"><i class="fa-solid fa-gift"></i> <span data-i18n="yr_gift">هدية: تطبيق التقارير للهاتف مجاناً بدل</span> <s class="opacity-70">2000 <span data-i18n="cur">د.ج</span></s></div>
+            <button type="button" onclick="contactGroupOffer()" class="custom-panel hover-card p-5 rounded-2xl border shadow-md w-full cursor-pointer">
+                <div class="w-12 h-12 mx-auto mb-3 bg-amber-500/15 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-400/30"><i class="fa-solid fa-layer-group"></i></div>
+                <p class="text-amber-400 text-sm mb-1.5" data-i18n="offer_4_name">مجموعة حواسيب أو هواتف</p>
+                <p class="text-[11px] text-slate-300 font-normal leading-relaxed mb-3" data-i18n="offer_4_desc">لعدة أجهزة: تواصل معنا لطلب الخدمة مع ذكر عدد الأجهزة ونوع التجارة</p>
+                <p class="text-base font-black gold-text" data-i18n="offer_4_price">السعر حسب الطلب</p>
+                <p class="text-[11px] text-emerald-400 mt-1.5"><i class="fa-brands fa-whatsapp"></i> <span data-i18n="offer_4_btn">تواصل معنا عبر واتساب</span></p>
             </button>
         </div>
-
-        <div class="mt-8 custom-panel border rounded-2xl p-5 text-start max-w-2xl mx-auto">
-            <p class="font-bold text-sm text-amber-300 mb-3" data-i18n="incl_title">كل اشتراك يشمل:</p>
-            <ul class="grid sm:grid-cols-2 gap-2 text-xs text-slate-300">
-                <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-400 mt-0.5"></i><span data-i18n="incl_1">طباعة الفواتير والباركود</span></li>
-                <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-400 mt-0.5"></i><span data-i18n="incl_2">تقارير الأرباح ومتابعة الديون</span></li>
-                <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-400 mt-0.5"></i><span data-i18n="incl_3">نسخ احتياطي واسترجاع البيانات</span></li>
-                <li class="flex gap-2"><i class="fa-solid fa-check text-emerald-400 mt-0.5"></i><span data-i18n="incl_4">دعم فني عبر واتساب</span></li>
-            </ul>
-        </div>
-        <p class="text-sm font-bold text-emerald-400 mt-5"><i class="fa-solid fa-shield-heart"></i> <span data-i18n="risk_line">جرّب قبل أن تدفع، ولا تلتزم بأي شيء قبل أن تقتنع.</span></p>
-        <button onclick="openActivationModal()" class="mt-4 px-8 py-3.5 btn-gold rounded-2xl transition text-sm inline-flex items-center gap-2.5">
-            <i class="fa-solid fa-gift"></i><span data-i18n="btn_free_version">جرّب مجاناً قبل أن تشتري</span>
-        </button>
     </section>
 
     <!-- Payment -->
@@ -690,6 +681,12 @@
                 feat_3_title: "حماية وترخيص إلكتروني", feat_3_desc: "نظام حماية موثوق يربط التفعيل ببصمة العتاد الثابتة للحاسوب لضمان حقوقك واستدامة اشتراكات عملائك.",
                 pricing_title: "اشتراكات برنامج أرباح للمحاسبة", pricing_subtitle: "اختر الخطة المناسبة لنشاطك التجاري",
                 plan_1_name: "شهر واحد", plan_2_name: "3 أشهر", plan_3_name: "6 أشهر", plan_4_name: "سنة كاملة",
+                offers_title: "باقات وعروض التطبيقات", offers_subtitle: "اختر ما يناسب محلك: حاسوب، هاتف، أو الاثنين معاً",
+                offer_1_name: "تطبيق الحاسوب + تطبيق الهاتف", offer_1_desc: "تطبيق حاسوب للبيع والتسيير مع تطبيق هاتف لمراقبة العمال والتقارير", offer_1_term: "تفعيل لمدة سنة",
+                offer_2_name: "تطبيق الحاسوب مدى الحياة", offer_2_desc: "تطبيق حاسوب للبيع والتسيير، مفعّل مدى الحياة", offer_2_term: "تفعيل مدى الحياة",
+                offer_3_name: "تطبيق الهاتف للبيع والتسيير", offer_3_desc: "تطبيق هاتف للبيع وتسيير التجارة بكل أنواعها",
+                offer_4_name: "مجموعة حواسيب أو هواتف", offer_4_desc: "لعدة أجهزة: تواصل معنا لطلب الخدمة مع ذكر عدد الأجهزة ونوع التجارة", offer_4_price: "السعر حسب الطلب", offer_4_btn: "تواصل معنا عبر واتساب",
+                offer_4_msg: "السلام عليكم، أريد طلب خدمة لمجموعة أجهزة (حواسيب أو هواتف) من برنامج أرباح ARBAH:\n- عدد الأجهزة: \n- نوع التجارة: ",
                 per_month: "/ شهر", best_badge: "الأكثر توفيراً: وفّر 4600 د.ج",
                 incl_title: "كل اشتراك يشمل:", incl_1: "طباعة الفواتير والباركود", incl_2: "تقارير الأرباح ومتابعة الديون", incl_3: "نسخ احتياطي واسترجاع البيانات", incl_4: "دعم فني عبر واتساب",
                 risk_line: "جرّب قبل أن تدفع، ولا تلتزم بأي شيء قبل أن تقتنع.",
@@ -752,6 +749,11 @@
                 feat_3_title: "Sécurité et licence électronique", feat_3_desc: "Système de protection fiable liant l'activation à l'empreinte matérielle pour garantir vos droits et la durabilité des abonnements.",
                 pricing_title: "Abonnements du logiciel de comptabilité Arbah", pricing_subtitle: "Choisissez le plan adapté à votre activité commerciale",
                 plan_1_name: "1 Mois", plan_2_name: "3 Mois", plan_3_name: "6 Mois", plan_4_name: "1 An",
+                offers_title: "Packs et offres des applications", offers_subtitle: "Choisissez ce qui convient à votre commerce : PC, téléphone ou les deux",
+                offer_1_name: "Application PC + application mobile", offer_1_desc: "Application PC de vente et gestion avec une application mobile pour surveiller les employés et consulter les rapports", offer_1_term: "Activation 1 an",
+                offer_2_name: "Application PC à vie", offer_2_desc: "Application PC de vente et gestion, activée à vie", offer_2_term: "Activation à vie",
+                offer_3_name: "Application mobile de vente et gestion", offer_3_desc: "Application mobile de vente et de gestion pour tous types de commerce",
+                offer_4_name: "Plusieurs PC ou téléphones", offer_4_desc: "Pour plusieurs appareils : contactez-nous en précisant le nombre d'appareils et le type de commerce", offer_4_price: "Prix sur demande", offer_4_btn: "Contactez-nous sur WhatsApp",
                 per_month: "/ mois", best_badge: "Meilleure économie : gagnez 4600 DA",
                 incl_title: "Chaque abonnement inclut :", incl_1: "Impression des factures et codes-barres", incl_2: "Rapports de profits et suivi des dettes", incl_3: "Sauvegarde et restauration des données", incl_4: "Support technique via WhatsApp",
                 risk_line: "Essayez avant de payer, sans aucun engagement tant que vous n'êtes pas convaincu.",
@@ -814,6 +816,11 @@
                 feat_3_title: "Electronic Security & Licensing", feat_3_desc: "Reliable protection system linking activation to hardware fingerprint to protect your rights and sustain client subscriptions.",
                 pricing_title: "Arbah Accounting Subscription Plans", pricing_subtitle: "Choose the right plan for your commercial business",
                 plan_1_name: "1 Month", plan_2_name: "3 Months", plan_3_name: "6 Months", plan_4_name: "1 Year",
+                offers_title: "App Packages & Offers", offers_subtitle: "Choose what fits your shop: PC, phone, or both",
+                offer_1_name: "PC app + mobile app", offer_1_desc: "PC app for sales and management, plus a mobile app to monitor workers and view reports", offer_1_term: "1-year activation",
+                offer_2_name: "Lifetime PC app", offer_2_desc: "PC app for sales and management, activated for life", offer_2_term: "Lifetime activation",
+                offer_3_name: "Mobile app for sales & management", offer_3_desc: "Mobile app for sales and managing any type of business",
+                offer_4_name: "Multiple PCs or phones", offer_4_desc: "For several devices: contact us with the number of devices and your type of business", offer_4_price: "Price on request", offer_4_btn: "Contact us on WhatsApp",
                 per_month: "/ month", best_badge: "Best value: save 4600 DZD",
                 incl_title: "Every plan includes:", incl_1: "Invoice and barcode printing", incl_2: "Profit reports and debt tracking", incl_3: "Data backup and restore", incl_4: "Technical support via WhatsApp",
                 risk_line: "Try before you pay, with no commitment until you're convinced.",
@@ -931,6 +938,10 @@
             setTimeout(() => document.getElementById('actStoreName').focus(), 50);
         }
         function closeActivationModal() { hideModal('activationModal'); }
+
+        function contactGroupOffer() {
+            window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(translations.ar.offer_4_msg), '_blank', 'noopener');
+        }
 
         function normalizePhone(v) {
             let d = v.replace(/[\s.\-()]/g, '');
